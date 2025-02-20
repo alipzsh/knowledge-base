@@ -1,3 +1,14 @@
 {
-  "vimMode": true
+  "vimMode": true,
+  "readableLineLength": true,
+  "showLineNumber": false,
+  "strictLineBreaks": false,
+  "newFileLocation": "root",
+  "newFileFolderPath": "",
+  "useMarkdownLinks": false,
+  "showInlineTitle": true,
+  "foldHeading": false,
+  "foldIndent": false,
+  "alwaysUpdateLinks": true,
+  "propertiesInDocument": "visible"
 }

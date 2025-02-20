@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "4df338e231f310f2",
+        "id": "8caa16ebdd3be4aa",
         "type": "tabs",
         "children": [
           {
@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "EC2.md",
+                "file": "Splunk Search & Reporting.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "EC2"
+              "title": "Splunk Search & Reporting"
             }
           }
         ]
@@ -35,12 +35,25 @@
         "type": "tabs",
         "children": [
           {
+            "id": "9348044f143e41a4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
             "id": "fc2d1b1f87a25d83",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "splunk",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,12 +74,12 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 316.5,
+    "collapsed": true
   },
   "right": {
     "id": "20f060bf07009e92",
@@ -129,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "EC2.md",
+                "file": "Splunk Search & Reporting.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of EC2"
+              "title": "Outline of Splunk Search & Reporting"
             }
           },
           {
@@ -166,6 +179,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1731548dea00a443",
-  "lastOpenFiles": []
+  "active": "66bc42011068d02a",
+  "lastOpenFiles": [
+    "Splunk.md",
+    "Splunk Search & Reporting.md",
+    "botsv1.md",
+    "Screenshot from 2025-02-18 12-14-33.png",
+    "EC2.md"
+  ]
 }
