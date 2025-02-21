@@ -17,7 +17,7 @@ we can also search our server IP to see if a request were sent (which shouldn't 
 
 #att be sure not to sample the output at this point.
 
-	after analyzing the requests to get info on the staging server:
+after analyzing the requests to get info on the staging server:
 ```http
 dest_ip: 23.22.63.114
 request: GET /poisonivy-is-coming-for-you-batman.jpeg HTTP/1.0
