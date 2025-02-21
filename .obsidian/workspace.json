@@ -22,20 +22,6 @@
             }
           },
           {
-            "id": "9dae424b0b5ccf70",
-            "type": "leaf",
-            "state": {
-              "type": "split-diff-view",
-              "state": {
-                "aFile": "botsv1.md",
-                "bFile": "botsv1.md",
-                "aRef": ""
-              },
-              "icon": "diff",
-              "title": "Diff: botsv1"
-            }
-          },
-          {
             "id": "2c8f93070cd53cee",
             "type": "leaf",
             "state": {
@@ -49,8 +35,7 @@
               "title": "Splunk Search & Reporting"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -103,8 +88,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -183,12 +167,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Splunk.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Splunk"
             }
           }
         ],
@@ -209,11 +194,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9dae424b0b5ccf70",
+  "active": "1731548dea00a443",
   "lastOpenFiles": [
-    "botsv1.md",
     "Splunk Search & Reporting.md",
     "Splunk.md",
+    "botsv1.md",
     "Screenshot from 2025-02-18 12-14-33.png",
     "EC2.md"
   ]

@@ -2,5 +2,9 @@
   "showRibbon": false,
   "showViewHeader": true,
   "nativeMenus": false,
-  "cssTheme": ""
+  "cssTheme": "Material Gruvbox",
+  "interfaceFontFamily": "JetBrains Mono",
+  "textFontFamily": "JetBrains Mono",
+  "monospaceFontFamily": "JetBrains Mono",
+  "baseFontSize": 16
 }

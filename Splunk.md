@@ -1,5 +1,4 @@
-all devices on your network register logs. the idea is to forward all those into a central
-repository.
+all devices on your network register logs. the idea is to forward all those into a central repository.
 
 search head: SQL queries to search through server
 indexer: server with storage, stores and searches through the data
