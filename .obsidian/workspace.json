@@ -13,26 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Splunk.md",
+                "file": "Splun.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Splunk"
-            }
-          },
-          {
-            "id": "9dae424b0b5ccf70",
-            "type": "leaf",
-            "state": {
-              "type": "split-diff-view",
-              "state": {
-                "aFile": "botsv1.md",
-                "bFile": "botsv1.md",
-                "aRef": ""
-              },
-              "icon": "diff",
-              "title": "Diff: botsv1"
+              "title": "Splun"
             }
           },
           {
@@ -49,8 +35,7 @@
               "title": "Splunk Search & Reporting"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -103,13 +88,11 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 316.5,
-    "collapsed": true
+    "width": 316.5
   },
   "right": {
     "id": "20f060bf07009e92",
@@ -209,11 +192,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9dae424b0b5ccf70",
+  "active": "1731548dea00a443",
   "lastOpenFiles": [
     "botsv1.md",
     "Splunk Search & Reporting.md",
-    "Splunk.md",
+    "Splun.md",
     "Screenshot from 2025-02-18 12-14-33.png",
     "EC2.md"
   ]
