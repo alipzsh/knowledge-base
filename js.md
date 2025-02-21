@@ -17,7 +17,7 @@ that are the last child of `ul`.
 
 `elem.querySelector(css)` returns the first element for the given CSS selector.
 
-# modifying  the DOM
+# modifying the DOM
 
 The syntax for adding an onload event should not immediately invoke the function. For example, `img.onload = function() { alert('Image loaded!'); };`
 
