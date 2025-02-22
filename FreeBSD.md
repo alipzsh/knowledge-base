@@ -70,7 +70,7 @@ issue is perhaps because I didn't do these in order.
 
 and for some reason labwc also works now.
 
-## mount USB
+## [[mount USB]]
 
 `-t msdos` or maybe `msdosfs`?
 `mount /dev/da0s1 /homem/ali/usb`

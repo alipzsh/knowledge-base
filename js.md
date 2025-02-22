@@ -1,4 +1,5 @@
 # js
+
 `document.body.children` returns every elements in `body` element.
 `childNodes` returns texts too.
 
@@ -24,7 +25,8 @@ The syntax for adding an onload event should not immediately invoke the function
 another way of setting attributes: `img.setAttribute('src', 'URL');` or `onload` or whatever.
 
 load jQuery then select and change title:
-`
+
+```
 let script = document.createElement("script");
 script.src = "https://code.jquery.com/jquery-3.6.0.min.js";
 
@@ -33,10 +35,11 @@ script.onload = function() {
 };
 
 document.head.appendChild(script);
-`
+```
 
 fetch data from an api and show it somewhere in the document
-``
+
+```
 fetch('https://dummy.restapiexample.com/api/v1/employee/1')
     .then(response => response.json()) // Step 2: Parse the JSON response
     .then(data => {
@@ -46,11 +49,11 @@ fetch('https://dummy.restapiexample.com/api/v1/employee/1')
         // Step 4: Update the DOM with data
         contentDiv.innerHTML = `<p>${data.data.id}</p>`;
     })
-``
+```
 
 # authentication
 
-look for login.js in sources part of inspect element.
+look for `login.js` in sources part of inspect element.
 
 # obfuscation
 
