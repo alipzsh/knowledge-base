@@ -2,7 +2,7 @@
 
 ## XOR
 
-XOR is  commonly used because it's self-inverse it means if we do it twice (enc and dec), we
+XOR is commonly used because it's self-inverse it means if we do it twice (enc and dec), we
 will get the input back: `5 ^ 9 == 12` and `12 ^ 9 == 5`.
 
 `print(0b1011)` => `11` translates to decimal.
@@ -129,8 +129,7 @@ and then you can ignore the padded stuff.
 a crypto system is considered broken if you could figure out the plaintext from the cipher
 text.
 
-ECB is vulnerable to *known plaintext* (the attacker knows part or all of the plaintext) and
-*chosen plaintext attack* (attacker can manipulate the plaintext).
+ECB is vulnerable to *known plaintext* (the attacker knows part or all of the plaintext) and *chosen plaintext attack* (attacker can manipulate the plaintext).
 
 because the key is the same in all blocks, the attacker could observe identical ciphers
 across different blocks, then map the plaintext to their ciphers.
