@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "crypto.md",
+                "file": "TODO.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "crypto"
+              "title": "TODO"
             }
           }
         ]
@@ -178,8 +178,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1ee77cb888e36122",
+  "active": "9348044f143e41a4",
   "lastOpenFiles": [
+    "cmds.md",
+    "TODO.md",
+    "Untitled",
+    "403_bypass.md",
+    "crypto.md",
     "Splunk Search & Reporting.md",
     "Splunk.md",
     "FreeBSD.md",
