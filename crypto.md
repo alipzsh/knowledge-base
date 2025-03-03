@@ -145,5 +145,22 @@ than bruteforcing the key, even if that attack is practically infeasible.
 Encryption oracle: an oracle is any system which can give some extra information on a
 system, which otherwise would not be available.
 
-if there is a jump in cipher text length, it will be the block size.
+if there is a jump in cipher text length, it will be the block size. EX: if it reaches 16, and more, the next block should be padded, which makes the cipher much longer.
+
 a code to [[find_block_size]].
+
+```
+17: b'^.,\x16bZy\x94\x95\x85\xd6\r\xea\x98\xf6<m\x0bY\x9c\xf1\xfb\xa5\xe8\xf5\x99\xec\xeeVR\x03' 32
+
+A 1: b'<m\x0bY\x9c\xf1\xfb\xa5\xe8\xf5\x99\xec\xeeVR\x03' 16
+```
+
+here, after adding an 'A' more than 16 bytes, we can detect it in the new block.
+
+```
+hello 5: b'=\xc8R\xdd\x8e\xdb\x1c\x05\x05Vi|\xf8\xfa\xa7\xf3' 16
+AAAAAAAAAAAAAAAA 16: b'\xaft@\x99\x96\xb5\xe8\xaf\x9eE\xc2\xcc\xd3;\x86\x05' 16
+AAAAAAAAAAAAAAAAhello 21: b'\xaft@\x99\x96\xb5\xe8\xaf\x9eE\xc2\xcc\xd3;\x86\x05=\xc8R\xdd\x8e\xdb\x1c\x05\x05Vi|\xf8\xfa\xa7\xf3' 32
+```
+
+here we clearly see separate blocks.
