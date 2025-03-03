@@ -10,5 +10,6 @@
   "foldHeading": false,
   "foldIndent": false,
   "alwaysUpdateLinks": true,
-  "propertiesInDocument": "visible"
+  "propertiesInDocument": "visible",
+  "promptDelete": false
 }

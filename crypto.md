@@ -20,6 +20,7 @@ use `strxor` to xor two strings in python: `strxor(x.encode('utf-8'), y.encode('
 
 `str.encode()` => returns an object of type bytes.
 `b64encode()` works in bytes
+`b'string'` and `"string".encode()` are the same.
 
 ## HEX
 
@@ -106,14 +107,13 @@ symmetric, one key for encryption and decryption.
 
 a block cipher; encrypts one block at a time. Which is 16 in AES.
 
-if the remaining block is shorter than 16 bytes, it will be padded.
+if the remaining block is shorter than 16 bytes, it should be padded.
 
-if the plaintext is longer that 16 bytes, AES *modes* define the options ways these separate
-blocks are considered in the encryption process.
+if the plaintext is longer that 16 bytes, AES *modes* define the ways these separate blocks are considered in the encryption process.
 
 ## ECB
 
-each block is encrypted separately with the same key and simply concatenated together.
+each block is encrypted separately with the same key then concatenated together.
 
 ```
 cipher= AES.new(b64decode("YrJGzJOtABiGd2lzhHyvKw==".encode()), AES.MODE_ECB)
@@ -123,7 +123,9 @@ cipher.decrypt(padded)
 ==> gwn.college{MH-1K7DQ0y8plf83IgTB_c-tkru.dZzNzMDL1gTMxgzW}\n\x06\x06\x06\x06\x06\x06\xbc\t\xb1}\xdc\xa5\xcfv.\xc5\x1c\x00\x86\x81\x95\xcc
 ```
 
-and then you can ignore the padded stuff.
+* I guess I should have un-padded the cipher text.
+
+and then you should ignore the padded stuff.
 
 
 a crypto system is considered broken if you could figure out the plaintext from the cipher
@@ -142,3 +144,6 @@ than bruteforcing the key, even if that attack is practically infeasible.
 
 Encryption oracle: an oracle is any system which can give some extra information on a
 system, which otherwise would not be available.
+
+if there is a jump in cipher text length, it will be the block size.
+a code to [[find_block_size]].
