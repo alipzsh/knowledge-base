@@ -24,3 +24,5 @@ sudo /opt/splunk/bin/splunk start
 
 [[Splunk Search & Reporting]]
 [[botsv1]]
+
+[[Example queries]]

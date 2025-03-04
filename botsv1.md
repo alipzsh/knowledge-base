@@ -1,28 +1,38 @@
-after searching the host and `stream:http`, we find out there are too many requests that happened in a small period.
 
-after more investigation we find a request that contains ``
+## level 1
 
-```
+in the selected fields, view the top `sourcetype` values.
+
+then to view http traffic: `index="botsv1" sourcetype="stream:http"`
+
+we see that each event is parsed into different fields.
+
+adding host `imreallynotbatman.com` to the search, we see some attack strings, that also include a header field that belongs to a vulnerability scanner.
+
+```http
 Acunetix-Product: WVS/10.0 (Acunetix Web Vulnerability Scanner - Free Edition)
 Acunetix-Scanning-agreement: Third Party Scanning PROHIBITED
 Acunetix-User-agreement: http://www.acunetix.com/wvs/disc.htm
 ```
-`src_ip: 40.80.148.42`
-`dest_ip: 192.168.250.70`
 
-so we found the malicious source of requests IP.
+noting the fields, we find info:
 
-we can also search our server IP to see if a request were sent (which shouldn't be allowed, e.g. reverse sell.)
-`sourcetype="stream:http" c_ip="dest_ip"`, then we found 9 suspicious events.
+`src_ip: 40.80.148.42` (attacker's IP)
+`dest_ip: 192.168.250.70`  (target IP)
 
-#att be sure not to sample the output at this point.
+if we search for target IP as the source of the request, we find 9 suspicious events (no *request* from a server is allowed):
 
-after analyzing the requests to get info on the staging server:
+`sourcetype="stream:http" c_ip="dest_ip"`
+
+analyze the requests to get info on the staging server:
+
 ```http
 dest_ip: 23.22.63.114
 request: GET /poisonivy-is-coming-for-you-batman.jpeg HTTP/1.0
 site: prankglassinebracket.jumpingcrab.com:1337
 ```
+
+## level 2
 
 there are brute-force attacks, from `40.80.148.42`.
 uploaded file `filename="3791.exe"`
