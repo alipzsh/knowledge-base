@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "splu",
+                "query": "splunk",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,8 +74,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -182,10 +181,13 @@
   },
   "active": "1ee77cb888e36122",
   "lastOpenFiles": [
+    "Pasted image 20250305021051.png",
     "Splunk.md",
     "botsv1.md",
-    "Example queries.md",
+    "break ECB.md",
     "crypto.md",
+    "Screenshot from 2025-02-18 12-14-33.png",
+    "Example queries.md",
     "find_block_size.md",
     "find block size.md",
     "python.md",
@@ -201,7 +203,6 @@
     "js.md",
     "Splun.md",
     "conflict-files-obsidian-git.md",
-    "Screenshot from 2025-02-18 12-14-33.png",
     "EC2.md"
   ]
 }

@@ -127,7 +127,6 @@ cipher.decrypt(padded)
 
 and then you should ignore the padded stuff.
 
-
 a crypto system is considered broken if you could figure out the plaintext from the cipher
 text.
 
@@ -164,3 +163,5 @@ AAAAAAAAAAAAAAAAhello 21: b'\xaft@\x99\x96\xb5\xe8\xaf\x9eE\xc2\xcc\xd3;\x86\x05
 ```
 
 here we clearly see separate blocks.
+
+how to [[break ECB]]

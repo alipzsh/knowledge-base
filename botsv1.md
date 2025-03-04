@@ -34,5 +34,44 @@ site: prankglassinebracket.jumpingcrab.com:1337
 
 ## level 2
 
-there are brute-force attacks, from `40.80.148.42`.
-uploaded file `filename="3791.exe"`
+looking for bruteforce attacks:
+
+`sourcetype="stream:http" http_method=POST NOT Acunetix`
+
+excluding requests that came from the scanner, we will have 431 remaining events.
+
+`form_data` fields on some of them (containing the POST data), has admin as username and multiple passwords.
+
+`sourcetype="stream:http" http_method=POST NOT Acunetix "passwd=" | table _time, form_data `
+
+attacks are coming from `23.22.63.114`
+
+`http_user_agent` is an interesting field, in this case there are a browser and something indicating a python script.
+
+after the script executed, there is a browser request from the same IP.
+they successfully logged in to a `joomla` control panel.
+
+on further investigation, a familiar executable in uploaded. `filename="3791.exe"`
+
+## level 3
+
+first: find the MD5 hash of the uploaded file.
+
+`sysmon`: a simpler alternative to windows events log.
+
+use the appropriate `sourcetype` to get it in the results.
+`sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"`
+
+`EventID` field captures `sysmon` Event's IDs. which is one for process creation (lunches a process).
+
+searching for executed with that file name.
+
+`sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventID=1 3791.exe`
+
+we will find couple of stuff.
+
+there are multiple events (and hashes) because by executing a file other processes are also running.
+
+to find the correct one add a table: `| table CommandLine, MD5`
+
+![[Pasted image 20250305021051.png]]

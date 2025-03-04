@@ -22,7 +22,10 @@ sudo /opt/splunk/bin/splunk start
  
 ![[Screenshot from 2025-02-18 12-14-33.png]]
 
+looking for rare values of fields makes more sense because more popular stuff are probably automated system programs.
+
 [[Splunk Search & Reporting]]
 [[botsv1]]
 
+[what do splunk fields mean](https://docs.splunk.com/Documentation/StreamApp/7.1.2/DeployStreamApp/FileTransfer#HTTP)
 [[Example queries]]
