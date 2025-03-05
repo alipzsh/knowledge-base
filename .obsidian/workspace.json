@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "botsv1.md",
+                "file": "crypto.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "botsv1"
+              "title": "crypto"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "splunk",
+                "query": "crypto",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +74,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -179,13 +180,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1ee77cb888e36122",
+  "active": "66bc42011068d02a",
   "lastOpenFiles": [
+    "ECB-CPA.md",
+    "crypto.md",
+    "botsv1.md",
     "Pasted image 20250305021051.png",
     "Splunk.md",
-    "botsv1.md",
-    "break ECB.md",
-    "crypto.md",
     "Screenshot from 2025-02-18 12-14-33.png",
     "Example queries.md",
     "find_block_size.md",

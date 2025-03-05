@@ -164,4 +164,4 @@ AAAAAAAAAAAAAAAAhello 21: b'\xaft@\x99\x96\xb5\xe8\xaf\x9eE\xc2\xcc\xd3;\x86\x05
 
 here we clearly see separate blocks.
 
-how to [[break ECB]]
+[[ECB-CPA]]
