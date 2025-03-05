@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "crypto",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -180,7 +180,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "66bc42011068d02a",
+  "active": "1ee77cb888e36122",
   "lastOpenFiles": [
     "ECB-CPA.md",
     "crypto.md",

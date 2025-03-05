@@ -1,8 +1,8 @@
 {
   "vimMode": true,
-  "readableLineLength": true,
+  "readableLineLength": false,
   "showLineNumber": false,
-  "strictLineBreaks": false,
+  "strictLineBreaks": true,
   "newFileLocation": "root",
   "newFileFolderPath": "",
   "useMarkdownLinks": false,
@@ -11,5 +11,6 @@
   "foldIndent": false,
   "alwaysUpdateLinks": true,
   "propertiesInDocument": "visible",
-  "promptDelete": false
+  "promptDelete": false,
+  "tabSize": 4
 }
