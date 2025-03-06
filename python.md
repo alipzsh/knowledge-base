@@ -21,11 +21,12 @@ encoded = base64.b64encode(result.stdout).decode("utf-8")
 `base64.b64encode()`: This function returns a bytes object, not a string.
 
 # requests
+
 `https://requests.readthedocs.io/en/latest/user/quickstart/#make-a-request`
 
 ## get
 
-`r = requests.get('https://api.github.com/user', auth=('user', 'pass')), cookies=cookies)`
+	`r = requests.get('https://api.github.com/user', auth=('user', 'pass')), cookies=cookies)`
 look in `sql/*.py`
 
 ## add headers

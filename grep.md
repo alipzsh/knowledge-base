@@ -20,3 +20,16 @@ corresponds to the first version number found in the changelog.
 
 
 
+
+EX:
+
+```
+<b>Query:</b> <pre>SELECT 'B' FROM secrets</pre><br>
+<b>Results:</b><pre>IxgTUlsGeM+Zfsu7VYyq1A==</pre>
+```
+
+* **`(?<=<pre>)`** → A **lookbehind**, ensuring the match happens **after**
+	`<pre>` but not including it.
+
+* **`[^<]+`** → Matches **one or more (`+`) characters that are NOT `<`** (stops
+	at the next HTML tag

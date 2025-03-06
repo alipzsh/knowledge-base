@@ -1,9 +1,7 @@
-# crypto
-
 ## XOR
 
-XOR is commonly used because it's self-inverse it means if we do it twice (enc and dec), we
-will get the input back: `5 ^ 9 == 12` and `12 ^ 9 == 5`.
+XOR is commonly used because it's self-inverse it means if we do it twice (enc
+and dec), we will get the input back: `5 ^ 9 == 12` and `12 ^ 9 == 5`.
 
 `print(0b1011)` => `11` translates to decimal.
 `str(n)` does the same
@@ -47,9 +45,9 @@ character encoding, or just an encoding.
 in python every string is a Unicode, `chr()` takes a Unicode code point and
 returns a Unicode character: `chr(57344) => '\ue000'`
 
-u is a string that contains two Unicode characters. this returns bytes. 
+u is a string that contains two Unicode characters. this returns bytes.
 
-```py
+```python
 >>> u = chr(40960) + 'abcd' + chr(1972)
 >>> u.encode('utf-8')
 
@@ -170,4 +168,5 @@ AAAAAAAAAAAAAAAAhello 21: b'\xaft@\x99\x96\xb5\xe8\xaf\x9eE\xc2\xcc\xd3;\x86\x05
 
 here we clearly see separate blocks.
 
-[[ECB-CPA]]
+[[AES-ECB-CPA]]
+[[AES-ECB-CPA-HTTP]]
