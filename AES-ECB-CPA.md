@@ -18,7 +18,7 @@ for i in range(33, 127):
 for i in dict:
     print(i, ":", dict[i])
 
-i=0
+i = 0
 flag = ""
 while True:
 
@@ -31,8 +31,8 @@ while True:
     enc = io.recvuntil(b"Choose an action?").decode().strip().split("Result: ")[-1].split("\n")[0] 
     for key, value in dict.items():
         if value == enc:
-            flag+=key
+            flag += key
 
     print(flag)
-    i+=1
+    i += 1
 ```
