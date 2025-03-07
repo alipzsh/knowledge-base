@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AES-ECB-CPA-HTTP.md",
+                "file": "Splunk.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AES-ECB-CPA-HTTP"
+              "title": "Splunk"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "crypto",
+                "query": "splunk",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -180,10 +180,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1ee77cb888e36122",
+  "active": "66bc42011068d02a",
   "lastOpenFiles": [
-    "crypto.md",
+    "splunk pivots.md",
+    "Splunk.md",
     "AES-ECB-CPA-HTTP.md",
+    "crypto.md",
     "AES-ECB-CPA.md",
     "natas.md",
     "python.md",
@@ -192,7 +194,6 @@
     "crypto.md~",
     "botsv1.md",
     "Pasted image 20250305021051.png",
-    "Splunk.md",
     "Screenshot from 2025-02-18 12-14-33.png",
     "Example queries.md",
     "find_block_size.md",

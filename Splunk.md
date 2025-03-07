@@ -24,6 +24,9 @@ sudo /opt/splunk/bin/splunk start
 
 looking for rare values of fields makes more sense because more popular stuff are probably automated system programs.
 
+lookup: are ways to add additional data that isn't in the original data.
+EX: your data might just have product IDs, not product name or description.
+
 [[Splunk Search & Reporting]]
 [[botsv1]]
 
