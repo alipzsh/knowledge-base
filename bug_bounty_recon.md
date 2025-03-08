@@ -1,109 +1,11 @@
-# bug bounty recon
-
 `https://github.com/dwisiswant0/awesome-oneliner-bugbounty`
 
-## dorking
+# dorking
 
 github search: "'website' password"
 
-## scope discovery
-
-getting IP spaces
-finding top-level domains
-
-### whois
-
-get info on the registered domains and their associated owners.
-
-### reverse whois
-
-(maybe not that useful, EX: it might contains stuff that are owned by the same person but
-not in the scope).
-
-find other assets owned by a person or company.
-
-Simply enter the email address or name of the person or company to find other domains
-registered using those same details.
-
-`https://viewdns.info/reversewhois/`
-
-### reverse IP lookup/ reverse DNS lookup: domain => info of the host server
-
-Reverse IP Lookup is a way to identify hostnames that have DNS (A) records associated with
-an IP address. A web server can be configured to serve multiple virtual hosts from a single
-IP address.
-
-[nslookup](109/README.md) `<known_domain>` => IP
-`whois <IP>` => `NetRange`
-                   `CIDR`
-                   `AS`
-### ASN
-
-collections of networks assigned to a company; use `https://www.bgp.he.net/`.
-(sometimes, not finding anything?)
-
-bgphe.net copy > bgp.sh (to clean the ASNs) > amass intel (to get domains)
-
-if no ASN found in `bgp`, the ASN in `whois` is public, not very useful.
-try other stuff with amass.
-
-ASN (IP space owned by an organization) → IP Range (addresses owned) → CIDR (compact
-representation of range).
-
-### certificate parsing
-
-find host names that use the same certificate `https://crt.sh/?q=facebook.com&output=json`
-
-also, `sslscrape.py` for each found IP.
-
-## subdomain enumeration; host => subdomains
-
-Subdomain enumeration is dependent on DNS, as subdomains are registered in DNS records.
-
-* remove duplicates from combination of two wordlists: `sort -u wordlist1.txt
-  wordlist2.txt`
-* find pattern in subdomains
-* take note of company's stack; Jenkins: check if `jenkins.example.com` is valid
-* run tools recursively.
-
-### amass
-
-`intel` finds root domains (using IP space or ASNs)
-
-`intel -asn 1748`
-
-`enum -d` for subdomain enumeration
-
-to do it in active mode:
-
-`amass enum -active -d <domain> -o <output>`
-
-different options:
-  * active: the interesting one
-  * passive: found subdomains
-  * normal: less than others
-
-### subfinder
-
-(passive): more straight forward
-`subfinder -d <domain> -o <output>`
-
-* use amass active and subfinder
-
-
-#### put the results together
-
-put the result of all used tools together:
-`cat * | grep -Eo '([a-zA-Z0-9_-]+\.)+<host_name>' | sort | uniq > subdomains`
-
-#### find the working subdomains: subdomains => working ones
-
-then use curl and `httpx` to check which ones and are UP.
-
-* `httpx -list subdomains -timeout 10 -status-code -silent"`
-* `httprobe` could be good to try.
-* and [this](32/IPtest.sh) script.
-
+[[scope discovery]]
+[[subdomain enumeration]]; host => subdomains
 ## gowitness: working subdomains => screenshots of them => interesting subdomains
 if issues, see the [end](#issues)
 
