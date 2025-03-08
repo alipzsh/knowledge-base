@@ -31,10 +31,8 @@ different options:
 
 * use amass active and subfinder
 
+##### put the result of all used tools together:
 
-#### put the results together
-
-put the result of all used tools together:
 `cat * | grep -Eo '([a-zA-Z0-9_-]+\.)+<host_name>' | sort | uniq > subdomains`
 
 #### find the working subdomains: subdomains => working ones
@@ -43,4 +41,7 @@ then use curl and `httpx` to check which ones and are UP.
 
 * `httpx -list subdomains -timeout 10 -status-code -silent"`
 * `httprobe` could be good to try.
-* and [this](32/IPtest.sh) script.
+
+##### then you could clean more:
+
+EX: to get 200 or 300s: `cat * | grep -E '(2[0-9]{2}|3[0-9]{2}) | cut -d " " -f 1'

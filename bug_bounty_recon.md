@@ -5,42 +5,10 @@
 github search: "'website' password"
 
 [[scope discovery]]
-[[subdomain enumeration]]; host => subdomains
-## gowitness: working subdomains => screenshots of them => interesting subdomains
-if issues, see the [end](#issues)
-
-`gowitness scan file -f <file> --timeout 10 --write-stdout -t 1`
-
-then `gowitness report server`
-then `google-chrome --proxy-server="socks5://localhost:8089"` and use `0.0.0.0:7171`.
-you could use a different port that your ssh tunnel.
-
-I can't get them from my headless server. but can from the local:
-`gowitness scan file -f httpx --timeout 10 --write-stdout --chrome-proxy=socks://localhost:8089`
-
-`cat report | grep -Eo 'target=http[s]?://[^ ]* status-code=200'` to get 200.
-
-# when you want to find bug on on webpages
-
-then open them in the browser. use `wappalyzer` extension to see the technologies.
-
-## service enum/ port scanning
-
-active scanning: directly sending requests to the target machine, using
-nmap.
-
-slow scan on top 100 ports: `nmap -A -v -F -T1 <target>`
-
-passive scanning: using third-party resources to stay hidden; shodan,
-census, project sonar.
-
-## directory brute-forcing: interesting subdomains => content discovery
-
-`ffuf -u <url/FUZZ> -w wordlist.txt` and `-fc <status_code>` to exclude
-
-### cleanup
-
-`cat * | grep -E 'Status: (2[0-9]{2}|3[0-9]{2})' | awk '{print $1$2$3}' | sort | uniq > final`
+[[subdomain enumeration]]: host => subdomains
+[[gowitness]]: working subdomains => screenshots of them => interesting subdomains
+[[directory enumeration]]: interesting subdomains => content discovery
+[[service enum/ port scanning]] more info on interesting subdomains
 
 ## crawling/spidering
 
@@ -101,14 +69,3 @@ loop:
   Fallback or Failover Configuration: primary IP became unavailable
   Use of Multiple IPs for Redundancy
 
-# issues
-
-## gowitness
-
-to try to fix errors, make it simple:
-  * `gowitness scan single --url "http://google.com" --screenshot-fullpage --write-stdout`
-  * check if you could do this on the network without issue.
-  * it seems `screen-shot=false` is due to network issues.
-  * remember to use `-t 1` on the server (or 2?).
-  * Screenshoting isn't that reliable or I don't get it, so I'll better move on and try
-    things manually in layers.
