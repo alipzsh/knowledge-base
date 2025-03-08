@@ -17,7 +17,7 @@ Subdomain enumeration is dependent on DNS, as subdomains are registered in DNS r
 
 to do it in active mode:
 
-`amass enum -active -d <domain> -o <output>`
+`amass enum -active -d <domain> -o <output> -nocolor`
 
 different options:
   * active: the interesting one
