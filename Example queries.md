@@ -21,7 +21,6 @@ what are the top 3 usernames for each category (x_webcat_code_full):
 top 3 best selling products:
 `index=main sourcetype=access_combined_wcookie file=success.do status=200 | top limit=3 productId`
 
-
 find the files accessed the least:
 `index=main sourcetype=access_combined_wcookie method=GET status=200| rare file by date_month | sort date_month count`
 
@@ -42,3 +41,15 @@ what browsers are being used to access the application:
 
 for each `hostname`, sum of `sc_bytes` field:
 `| stats sum(sc_bytes) as Bandwidth by s_hostname`
+
+verify a lookup definition was created:
+`| inputlookup products_lookup`
+
+Match the productId in lookup table to the productId field in the event data.
+Use the OUTPUT function to output the product_name lookup table data to a
+ProductName field:
+`index=main sourcetype=access_combined_wcookie status=200 file=success.do | lookup products_lookup productId as productId OUTPUT product_name as ProductName`
+
+you can set an  automatic lookup that applies these to every search. example
+search that uses automatic lookup:
+`index=main sourcetype="access_combined_wcookie" file=success.do status=200 | stats sum(Price) as Revenue by ProductName`
