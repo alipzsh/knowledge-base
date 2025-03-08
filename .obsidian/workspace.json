@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Splunk.md",
+                "file": "Example queries.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Splunk"
+              "title": "Example queries"
             }
           }
         ]
@@ -182,8 +182,9 @@
   },
   "active": "66bc42011068d02a",
   "lastOpenFiles": [
-    "splunk pivots.md",
     "Splunk.md",
+    "Splunk Search & Reporting.md",
+    "splunk pivots.md",
     "AES-ECB-CPA-HTTP.md",
     "crypto.md",
     "AES-ECB-CPA.md",
@@ -203,7 +204,6 @@
     "cmds.md",
     "Untitled",
     "403_bypass.md",
-    "Splunk Search & Reporting.md",
     "FreeBSD.md",
     "mount USB.md",
     "insecureDeserialization.md",
