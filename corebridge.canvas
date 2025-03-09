@@ -1,0 +1,6 @@
+{
+	"nodes":[
+		{"id":"25525a40ef8ce1e4","x":-2740,"y":-1200,"width":645,"height":527,"type":"text","text":"http://live.stp.annuities.corebridgefinancial.com [301]\nhttps://connext.corebridgefinancial.com [302]\nhttps://live.pensions.im.corebridgefinancial.com [302]\nhttps://analytics-lgs.corebridgefinancial.com [200]\nhttps://lifeportal.corebridgefinancial.com [302]\nhttps://uat.agsourcetrac.im.corebridgefinancial.com [302]\nhttps://live.agsourcetrac.im.corebridgefinancial.com [302]\nhttps://surveyrs.corebridgefinancial.com [301]\nhttps://giwl.life2.corebridgefinancial.com [301]\nhttp://uat.stp.annuities.corebridgefinancial.com [301]\nhttps://intranet.corebridgefinancial.com [200]\nhttps://uat.pensions.im.corebridgefinancial.com [302]\nhttps://intranet-cms.corebridgefinancial.com [200]\nhttps://compass.corebridgefinancial.com [302]\nhttps://quizrs.corebridgefinancial.com [200]\nhttps://brandcentral.corebridgefinancial.com [302]\nhttps://compass-cms.corebridgefinancial.com [302]\nhttps://optout.life2.corebridgefinancial.com [302]\nhttps://brandcentral-test.corebridgefinancial.com [302]\nhttps://www.corebridgefinancial.com [302]\n"}
+	],
+	"edges":[]
+}

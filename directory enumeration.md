@@ -1,4 +1,9 @@
 
+### [[gobuster#dir]]
+### ffuf
+
+for some reason always returns the same status code.
+
 `ffuf -u <url/FUZZ> -w wordlist.txt` and `-fc <status_code>` to exclude
 ##### cleanup:
 
