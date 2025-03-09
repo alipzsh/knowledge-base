@@ -8,35 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f6f43142ac8f09b0",
+            "id": "7a713342743b8356",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "pwn.college_web_security.md",
+                "file": "botsv1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "pwn.college_web_security"
-            }
-          },
-          {
-            "id": "26e43ae25e374d03",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "path_traversal.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "path_traversal"
+              "title": "botsv1"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -68,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "pwn",
+                "query": "splunk",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -195,10 +180,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "66bc42011068d02a",
+  "active": "7a713342743b8356",
   "lastOpenFiles": [
-    "pwn.college_web_security.md",
+    "Splunk.md",
     "path_traversal.md",
+    "pwn.college_web_security.md",
     "bug_bounty_recon.md",
     "flask.md",
     "pwn.college.md",
@@ -213,7 +199,6 @@
     "getCanonicalName.java.md",
     "72/getCanonicalName.java.md",
     "72",
-    "Splunk.md",
     "Example queries.md",
     "lab_setup.md",
     "qemu.md",

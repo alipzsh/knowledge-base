@@ -75,3 +75,13 @@ there are multiple events (and hashes) because by executing a file other process
 to find the correct one add a table: `| table CommandLine, MD5`
 
 ![[Pasted image 20250305021051.png]]
+
+## level 4
+
+`we8105desk source="stream:ldap"` IP address = 192.168.250.100
+
+to find the FQDN the cerber ransomware tries to direct the users to:
+* look for onion domain lookups
+* look for dns lookups close to that time, (dns lookup happens if users are accessing a new domain, the rest are cached)
+
+query field of `stream:dns`

