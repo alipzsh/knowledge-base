@@ -80,8 +80,27 @@ to find the correct one add a table: `| table CommandLine, MD5`
 
 `we8105desk source="stream:ldap"` IP address = 192.168.250.100
 
-to find the FQDN the cerber ransomware tries to direct the users to:
-* look for onion domain lookups
-* look for dns lookups close to that time, (dns lookup happens if users are accessing a new domain, the rest are cached)
+find the FQDN the cerber ransomware tries to direct users to, after narrowing
+down the search to two seconds after suricata's alerts:
 
-query field of `stream:dns`
+`index=* sourcetype="stream:dns" | table _time, query` => cerberhhyed5frqa.xmfir0.win
+
+hostname visited by we8105desk:
+
+`index=*  src_ip="192.168.250.100" sourcetype=suricata event_type=http | stats dc(http.hostname) by http.hostname"`
+
+name of the first function defined in the VB script:
+
+`index=* earliest="08/24/2016:00:00:00" latest="08/24/2025:23:59:59" .vbs .exe | table body`
+
+name of the inserted usb key:
+
+`index=* earliest="08/24/2016:00:00:00" latest="08/24/2025:23:59:59"  sourcetype="WinRegistry" "FriendlyName" | table data`
+
+domain name and IP address of the *file server* that Bob smith's computer connected to:
+
+`index=* earliest="08/24/2016:00:00:00" latest="08/24/2025:23:59:59" path="*" sourcetype="stream:smb" | table path, dest_ip`
+
+the number of PDFs the ransomware encrypted:
+
+`index=* earliest="08/24/2016:09:45:00" latest="08/24/2025:23:59:59" .pdf app="win:unknown" | table _time, Relative_Target_Name`
