@@ -87,7 +87,7 @@ down the search to two seconds after suricata's alerts:
 
 hostname visited by we8105desk:
 
-`index=*  src_ip="192.168.250.100" sourcetype=suricata event_type=http | stats dc(http.hostname) by http.hostname"`
+`index=*  src_ip="192.168.250.100" sourcetype=suricata event_type=http | stats dc(http.hostname) by http.hostname"` => solidaritedeproximite.org
 
 name of the first function defined in the VB script:
 
@@ -104,3 +104,15 @@ domain name and IP address of the *file server* that Bob smith's computer connec
 the number of PDFs the ransomware encrypted:
 
 `index=* earliest="08/24/2016:09:45:00" latest="08/24/2025:23:59:59" .pdf app="win:unknown" | table _time, Relative_Target_Name`
+
+ParentProcessId of the initial launch of 121214.tmp:
+
+`121214.tmp EventDescription="Process Create" | table CommandLine, process, process_id, parent_process, parent_process_id | sort _time`
+
+the number of .txt files encrypted in Bob Smith's Windows profile:
+
+`index=* earliest="08/24/2016:09:45:00" latest="08/24/2025:23:59:59" .txt "C:\\Users\\bob.smith" | stats count(file_path) by file_path`
+
+name of the Downloaded file that contains the ransomware crypto code:
+
+`index=* earliest="08/24/2016:00:00:00" latest="08/24/2025:23:59:59" solidaritedeproximite.org http_method=GET` => mhtr.jpg
