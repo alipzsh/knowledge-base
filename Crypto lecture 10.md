@@ -24,4 +24,4 @@ computation is in the table (if it's a collision):
 
 ![[Pasted image 20250312050228.png]]
 
-![[Pasted image 20250312050300.png]]
+then these keys could be ($K_L$, $K_R$).
