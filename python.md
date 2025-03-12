@@ -26,7 +26,8 @@ encoded = base64.b64encode(result.stdout).decode("utf-8")
 
 ## get
 
-	`r = requests.get('https://api.github.com/user', auth=('user', 'pass')), cookies=cookies)`
+`r = requests.get('https://api.github.com/user', auth=('user', 'pass')), cookies=cookies)`
+
 look in `sql/*.py`
 
 ## add headers

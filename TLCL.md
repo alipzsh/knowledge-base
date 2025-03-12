@@ -12,6 +12,8 @@
   * export PATH=~/bin:`"$PATH"`
   * source: `. .bashrc`
 
+## [[bash IF statement]]
+## [[get first characters of a string]]
 
 
 # 20

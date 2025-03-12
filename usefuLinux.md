@@ -1,5 +1,8 @@
 # usefuLinux
 
+## qemu
+
+virsh {start, suspend, resume, shutdown?, destroy}
 # virtualbox
 
 * get virtual box vm ip:

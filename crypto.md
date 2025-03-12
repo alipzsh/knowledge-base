@@ -170,3 +170,6 @@ here we clearly see separate blocks.
 
 [[AES-ECB-CPA]]
 [[AES-ECB-CPA-HTTP]]
+[[AES-ECB-CPA-suffix]]
+
+# [[Crypto lecture 10]]
