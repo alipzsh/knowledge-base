@@ -34,8 +34,23 @@
               "icon": "lucide-file",
               "title": "AES-ECB-CPA"
             }
+          },
+          {
+            "id": "aa64cf381773c25e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "AES-ECB-CPA-suffix.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AES-ECB-CPA-suffix"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -92,8 +107,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 316.5,
-    "collapsed": true
+    "width": 316.5
   },
   "right": {
     "id": "20f060bf07009e92",
@@ -193,23 +207,24 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "66bc42011068d02a",
+  "active": "aa64cf381773c25e",
   "lastOpenFiles": [
+    "pwn.college.md",
+    "AES-ECB-CPA.md",
+    "crypto.md",
+    "AES.md",
+    "Crypto lecture 10.md",
     "Pasted image 20250312050300.png",
     "Pasted image 20250312050228.png",
     "Pasted image 20250312043007.png",
     "Pasted image 20250312042720.png",
     "Pasted image 20250312042027.png",
-    "crypto.md",
-    "Crypto lecture 10.md",
     "AES-ECB-CPA-suffix.md",
-    "AES-ECB-CPA.md",
     "AES-ECB-CPA-HTTP.md",
     "get first characters of a string.md",
     "pwn.college_web_security.md",
     "TLCL.md",
     "bash IF statement.md",
-    "pwn.college.md",
     "python.md",
     "corebridge.canvas",
     "khealth.md",
