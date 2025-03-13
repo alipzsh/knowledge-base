@@ -13,7 +13,8 @@
   * source: `. .bashrc`
 
 ## [[bash IF statement]]
-## [[get first characters of a string]]
+
+# [[bash useful stuff]]
 
 
 # 20
