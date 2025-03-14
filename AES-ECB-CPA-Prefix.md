@@ -45,14 +45,14 @@ while True:
     enc = b64decode(enc)
 
 
-    for i in range(33, 123):
+    for i in range(33, 127):
         io.sendline(b'1')
         bf= prefix + flag + chr(i)
         io.sendafter(b'Data?', bf.encode() + b'\n')
         pof = io.recvline().decode().strip().split(" ")[1]
         pof = b64decode(pof)
 
-        if enc[:16] == pof[:16]:
+        if enc[:16] == pof:
             flag += chr(i)
             break
 
@@ -60,16 +60,8 @@ while True:
     prefix = prefix[1:]
 ```
 
-pwn.colleg 10 16 0
-prefix:AAAAA 5 b'n-\xd5^\x050F\x16\x1e6\x93\x0c/\x9f\x97h' 32
-pwn.college 11 16 0
-prefix:AAAA 4 b'i\x19\xdb\xe2*\x82\x13koGL\xfb\xa7n\xa7t' 32
-pwn.college 11 16 0
-prefix:AAA 3 b'\x98\xa2\xc0^2d>\x15;\xd4\x0c\xf8\xd5\xc8t\xcf' 32
-pwn.college 11 15 15
-prefix:AA 2 b'\ni6\x9b\xd2\t[9\x10\x99\x80\x8e\xa3\xa3\xe9q' 32
-pwn.college 11 14 14
-prefix:A 1 b'\x1a\xa1U\xe0\xbe\x9e\xce\nbX\x82\xd7\xcb\xab`W' 32
-pwn.college 11 13 13
-
 after somepoint len bf reduces which it shouldn't and we won't go further.
+
+bf AAAAAAAAAAAAAAAp
+enc b'\xa8\xe3\xc6b\xc1W\xc9az\x15\x0f~\x9a\x1bL\x1b' (0, 16)
+pof b'\xa8\xe3\xc6b\xc1W\xc9az\x15\x0f~\x9a\x1bL\x1b'
