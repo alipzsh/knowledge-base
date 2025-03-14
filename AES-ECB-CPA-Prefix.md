@@ -33,8 +33,11 @@ from base64 import b64decode
 
 io = process('/challenge/run')
 
-prefix = "AAAAAAAAAAAAAAA"
 flag = ""
+prefix = "AAAAAAAAAAAAAAA"
+
+m = 0
+n = 16
 
 while True:
 
@@ -47,21 +50,21 @@ while True:
 
     for i in range(33, 127):
         io.sendline(b'1')
-        bf= prefix + flag + chr(i)
+        bf= (prefix + flag + chr(i))[-16:]
         io.sendafter(b'Data?', bf.encode() + b'\n')
         pof = io.recvline().decode().strip().split(" ")[1]
         pof = b64decode(pof)
 
-        if enc[:16] == pof:
+        if enc[m:n] == pof:
             flag += chr(i)
+
+            if len(flag) % 16 == 0:
+                m += 16
+                n += 16
+                prefix = "AAAAAAAAAAAAAAAA"
+				
             break
 
     print(flag)
     prefix = prefix[1:]
 ```
-
-after somepoint len bf reduces which it shouldn't and we won't go further.
-
-bf AAAAAAAAAAAAAAAp
-enc b'\xa8\xe3\xc6b\xc1W\xc9az\x15\x0f~\x9a\x1bL\x1b' (0, 16)
-pof b'\xa8\xe3\xc6b\xc1W\xc9az\x15\x0f~\x9a\x1bL\x1b'
