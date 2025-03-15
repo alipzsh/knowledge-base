@@ -22,34 +22,6 @@
             }
           },
           {
-            "id": "1d692e2850ea6ae7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "pwn.college.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "pwn.college"
-            }
-          },
-          {
-            "id": "e10f8fc41ce1f8d3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "pwn.college_web_security.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "pwn.college_web_security"
-            }
-          },
-          {
             "id": "e7bf5932045b9df8",
             "type": "leaf",
             "state": {
@@ -63,8 +35,7 @@
               "title": "AES-ECB-CPA-Prefix"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -96,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "command injection",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -117,8 +88,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -139,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "pwn.college_web_security.md",
+                "file": "command_Injection.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -149,7 +119,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for pwn.college_web_security"
+              "title": "Backlinks for command_Injection"
             }
           },
           {
@@ -158,12 +128,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "toLearn.md",
+                "file": "command_Injection.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from toLearn"
+              "title": "Outgoing links from command_Injection"
             }
           },
           {
@@ -187,15 +157,17 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "command_Injection.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of command_Injection"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -213,12 +185,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e10f8fc41ce1f8d3",
+  "active": "5fc9cd0ab27bdf32",
   "lastOpenFiles": [
-    "pwn.college.md",
+    "pwn.college_web_security.md",
     "command_Injection.md",
     "toLearn.md",
-    "pwn.college_web_security.md",
+    "pwn.college.md",
     "AES-ECB-CPA-Prefix.md",
     "AES-ECB-CPA-suffix.md",
     "crypto.md",

