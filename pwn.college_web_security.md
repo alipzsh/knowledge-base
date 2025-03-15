@@ -60,6 +60,8 @@ DEBUG: requested_path='/challenge/files/fortunes/../../../flag'
 
 #### CMDi 5
 
+it won't show us any result.
+
 ```python
 import requests
 import time

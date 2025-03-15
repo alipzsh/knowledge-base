@@ -8,21 +8,49 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f1f31dabb7a37642",
+            "id": "5fc9cd0ab27bdf32",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "crypto.md",
+                "file": "command_Injection.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "crypto"
+              "title": "command_Injection"
             }
           },
           {
             "id": "1d692e2850ea6ae7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "pwn.college.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "pwn.college"
+            }
+          },
+          {
+            "id": "e10f8fc41ce1f8d3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "pwn.college_web_security.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "pwn.college_web_security"
+            }
+          },
+          {
+            "id": "e7bf5932045b9df8",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -36,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -68,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "ECB",
+                "query": "command injection",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -111,7 +139,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "EC2.md",
+                "file": "pwn.college_web_security.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +149,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for EC2"
+              "title": "Backlinks for pwn.college_web_security"
             }
           },
           {
@@ -130,12 +158,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "botsv1.md",
+                "file": "toLearn.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from botsv1"
+              "title": "Outgoing links from toLearn"
             }
           },
           {
@@ -154,16 +182,6 @@
             }
           },
           {
-            "id": "66bc42011068d02a",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
-            }
-          },
-          {
             "id": "01904f36b66f05cc",
             "type": "leaf",
             "state": {
@@ -177,12 +195,12 @@
               "title": "Outline"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -195,12 +213,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "66bc42011068d02a",
+  "active": "e10f8fc41ce1f8d3",
   "lastOpenFiles": [
-    "crypto.md",
-    "AES-ECB-CPA-Prefix.md",
     "pwn.college.md",
+    "command_Injection.md",
+    "toLearn.md",
+    "pwn.college_web_security.md",
+    "AES-ECB-CPA-Prefix.md",
     "AES-ECB-CPA-suffix.md",
+    "crypto.md",
     "find_block_size.md",
     "bash useful stuff.md",
     "AES-ECB-CPA.md",
@@ -216,7 +237,6 @@
     "Pasted image 20250312042720.png",
     "Pasted image 20250312042027.png",
     "AES-ECB-CPA-HTTP.md",
-    "pwn.college_web_security.md",
     "python.md",
     "corebridge.canvas",
     "khealth.md",
@@ -227,8 +247,6 @@
     "usefuLinux.md",
     "bug_bounty_recon.md",
     "directory enumeration.md",
-    "gobuster.md",
-    "command_Injection.md",
     "service enum",
     "32",
     "72",
