@@ -15,18 +15,6 @@ for i in range(1,50):
 ```
 
 
-flag: G8MTw139J+/J2QpCVQ0OXqnK4dCSdTOH5720meTMasE=
-flag[:16] block 1:  pwn.college{prac => G8MTw139J+/J2QpCVQ0OXg==
-flag[:-5] block 2: tice} => qcrh0JJ1M4fnvbSZ5MxqwQ==
-
-two issues: the plaintext is 21 characters long, why the enc is 44, instead of 32.
-second: why the cipher text can't be splitted into two seperate blocks.
-
-it's base64 encoded: the issues is that I remember trying it, but it wasn't it.
-but I did it now (after HOURS of trying) and it was. so there wasn't anything
-more to it.
-
-
 ```python
 from pwn import *
 from base64 import b64decode
@@ -68,3 +56,6 @@ while True:
     print(flag)
     prefix = prefix[1:]
 ```
+
+add to the flag until it's length equals to the length of one block, 16.
+then go for the second block by
