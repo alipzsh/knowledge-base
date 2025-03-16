@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "command_Injection.md",
+                "file": "bug_bounty_recon.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "command_Injection"
+              "title": "bug_bounty_recon"
             }
           },
           {
@@ -187,8 +187,8 @@
   },
   "active": "5fc9cd0ab27bdf32",
   "lastOpenFiles": [
-    "pwn.college_web_security.md",
     "command_Injection.md",
+    "pwn.college_web_security.md",
     "toLearn.md",
     "pwn.college.md",
     "AES-ECB-CPA-Prefix.md",

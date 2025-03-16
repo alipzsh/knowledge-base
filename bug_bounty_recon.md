@@ -54,3 +54,20 @@ in a script versus in a one line terminal request.
   Fallback or Failover Configuration: primary IP became unavailable
   Use of Multiple IPs for Redundancy
 
+Then I'd suggest upping your game.
+
+E.g. use different wordlists than everyone else is using
+
+Sign up for API keys on the scanning tools you're using, so you get more urls than other hunters
+
+Search for origin IP of your target server so you can bypass their waf
+
+Etc
+
+ 4. Send the probed-domains list to httpx to remove dead domains using the -fc flag
+
+cat probed-domains.txt | httpx -fc 404 | tee -a live-domains.txt
+
+5. Send the live domains to httpx to fetch interesting headers:
+
+cat live-domains.txt | httpx -title -sc -server -location -td -method -silent | tee -a final-domains.txt 
