@@ -11,10 +11,14 @@
             "id": "24f905adb635695e",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "boss.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "boss"
             }
           }
         ]
@@ -49,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "curl",
+                "query": "python",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -169,11 +173,13 @@
   },
   "active": "24f905adb635695e",
   "lastOpenFiles": [
-    "AES-ECB-CPA-Prefix.md",
-    "curl.md",
-    "AES-ECB-CPA-Prefix-miniboss.md",
     "pwn.college.md",
+    "AES-ECB-CPA-Prefix-miniboss.md",
+    "AES-ECB-CPA-Prefix.md",
     "AES-ECB-CPA-Prefix2.md",
+    "boss.md",
+    "python.md",
+    "curl.md",
     "crypto.md",
     "bug_bounty_recon.md",
     "command_Injection.md",
@@ -195,12 +201,10 @@
     "Pasted image 20250312042720.png",
     "Pasted image 20250312042027.png",
     "AES-ECB-CPA-HTTP.md",
-    "python.md",
     "corebridge.canvas",
     "khealth.md",
     "JSON.md",
     "kioprix1.md",
-    "lab.md",
     "service enum",
     "32",
     "72",

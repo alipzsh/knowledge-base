@@ -1,5 +1,9 @@
 build the codebook using the preifx: use the first 15 characters and brueforce the rest.
 
+we can append stuff to the flag.
+we will isolate a character at a time, then brute-forcing a single block, comparing these two.
+
+
 ```python
 from pwn import *
 from base64 import b64decode, b64encode

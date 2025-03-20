@@ -37,6 +37,10 @@ headers = {'user-agent': 'my-app/0.0.1'}
 r = requests.get(url, headers=headers)
 ```
 
+## Post
+
+`requests.post(url, data={'content': content})`
+
 # The Problem with sh -i in os.system:
 
 `os.system`(and perhaps `exec`) tries to execute `sh` in interactive mode (`-i`), but the environment may not
