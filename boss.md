@@ -20,14 +20,6 @@ url = "http://challenge.localhost:80/"
 def post(content):
     response = requests.post(url, data={'content': content})
 
-import requests
-from base64 import b64decode
-
-url = "http://challenge.localhost:80/"
-
-def post(content):
-    response = requests.post(url, data={'content': content})
-
 def get():
 
     response = requests.get(url)
@@ -61,9 +53,13 @@ while True:
     for i in range(33, 127):
 
         if len(flag) == 15:
-            bf = flag + chr(i)[-16:]
-            print(pof)
-            print(ci)
+            bf = flag + chr(i)
+
+            if chr(i) == 'c' :
+                print("prefix", prefix)
+                print("bf", bf, len(bf))
+                print("previous pof", pof)
+                print("previous enc", ci)
         else :
             bf = (prefix+'|'+flag+chr(i))[-16:]
 
@@ -84,3 +80,17 @@ while True:
     prefix = prefix[1:]
     print(flag, len(flag))
 ```
+
+pwn.college{p 13
+pwn.college{pr 14
+pwn.college{pra 15
+prefix 
+bf pwn.college{prac 16
+previous pof b'w$\xda?1`Ak\x80\x85*#\xf0\x1a\xc6X\xdbz\n\xc9\x9a\x90\r\xb3\xba\xb4\xed\xc6\xbb\x93\x99\x87\t<\xa2\xe9gq\xd2\xce\xfbDj\x8fX\x8f\x1e\xe7'
+previous enc b'\xdbz\n\xc9\x9a\x90\r\xb3\xba\xb4\xed\xc6\xbb\x93\x99\x87\t<\xa2\xe9gq\xd2\xce\xfbDj\x8fX\x8f\x1e\xe7'
+pwn.college{pra 15
+prefix 
+bf pwn.college{prac 16
+previous pof b'w$\xda?1`Ak\x80\x85*#\xf0\x1a\xc6X\xdbz\n\xc9\x9a\x90\r\xb3\xba\xb4\xed\xc6\xbb\x93\x99\x87\t<\xa2\xe9gq\xd2\xce\xfbDj\x8fX\x8f\x1e\xe7'
+previous enc b'\xdbz\n\xc9\x9a\x90\r\xb3\xba\xb4\xed\xc6\xbb\x93\x99\x87\t<\xa2\xe9gq\xd2\xce\xfbDj\x8fX\x8f\x1e\xe7'
+pwn.college{pra 15
