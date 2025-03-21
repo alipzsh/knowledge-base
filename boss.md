@@ -55,17 +55,22 @@ while True:
         if len(flag) == 15:
             bf = flag + chr(i)
 
+            post(bf)
+            pof = get()
+            reset()
+            
             if chr(i) == 'c' :
                 print("prefix", prefix)
                 print("bf", bf, len(bf))
-                print("previous pof", pof)
-                print("previous enc", ci)
+                print("pof", pof)
+                print("ci", ci)
         else :
             bf = (prefix+'|'+flag+chr(i))[-16:]
 
-        post(bf)
-        pof = get()
-        reset()
+            post(bf)
+            pof = get()
+            reset()
+
              
 
         if ci[m:n] == pof[:16]:
@@ -94,3 +99,44 @@ bf pwn.college{prac 16
 previous pof b'w$\xda?1`Ak\x80\x85*#\xf0\x1a\xc6X\xdbz\n\xc9\x9a\x90\r\xb3\xba\xb4\xed\xc6\xbb\x93\x99\x87\t<\xa2\xe9gq\xd2\xce\xfbDj\x8fX\x8f\x1e\xe7'
 previous enc b'\xdbz\n\xc9\x9a\x90\r\xb3\xba\xb4\xed\xc6\xbb\x93\x99\x87\t<\xa2\xe9gq\xd2\xce\xfbDj\x8fX\x8f\x1e\xe7'
 pwn.college{pra 15
+
+
+
+127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Mar/2025 06:19:07] "POST / HTTP/1.1" 302 -
+b'pwn.college{praa|pwn.college{practice}'
+127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
+b'pwn.college{praa|pwn.college{practice}'
+127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Mar/2025 06:19:07] "POST /reset HTTP/1.1" 302 -
+b'pwn.college{practice}'
+127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Mar/2025 06:19:07] "POST / HTTP/1.1" 302 -
+b'pwn.college{prab|pwn.college{practice}'
+127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
+b'pwn.college{prab|pwn.college{practice}'
+127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Mar/2025 06:19:07] "POST /reset HTTP/1.1" 302 -
+b'pwn.college{practice}'
+127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Mar/2025 06:19:07] "POST / HTTP/1.1" 302 -
+b'pwn.college{prac|pwn.college{practice}'
+127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
+b'pwn.college{prac|pwn.college{practice}'
+
+
+b'pwn.college{prac|pwn.college{practice}'
+127.0.0.1 - - [21/Mar/2025 09:04:28] "GET / HTTP/1.1" 200 -
+b'pwn.college{prac|pwn.college{practice}'
+127.0.0.1 - - [21/Mar/2025 09:04:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Mar/2025 09:04:28] "POST /reset HTTP/1.1" 302 -
+b'pwn.college{practice}'
+127.0.0.1 - - [21/Mar/2025 09:04:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Mar/2025 09:04:28] "POST / HTTP/1.1" 302 -
+b'pwn.college{prad|pwn.college{practice}'
+127.0.0.1 - - [21/Mar/2025 09:04:28] "GET / HTTP/1.1" 200 -
+b'pwn.college{prad|pwn.college{practice}'
+127.0.0.1 - - [21/Mar/2025 09:04:28] "GET 
+o
+
+when the prefix is zero, we still want to keep somethin
