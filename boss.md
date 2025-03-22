@@ -52,91 +52,37 @@ while True:
 
     for i in range(33, 127):
 
-        if len(flag) == 15:
-            bf = flag + chr(i)
+        bf = (prefix+'|'+flag+chr(i))[-16:]
 
-            post(bf)
-            pof = get()
-            reset()
-            
-            if chr(i) == 'c' :
-                print("prefix", prefix)
-                print("bf", bf, len(bf))
-                print("pof", pof)
-                print("ci", ci)
-        else :
-            bf = (prefix+'|'+flag+chr(i))[-16:]
+        post(bf)
+        pf = get()
+        reset()
 
-            post(bf)
-            pof = get()
-            reset()
+        if len(flag) == 30:
 
-             
+            print(bf)
+            print(pf)
+            print(ci)
 
-        if ci[m:n] == pof[:16]:
+
+        if ci[m:n] == pf[:16]:
             flag += chr(i)
-            if len(flag) % 16 == 0:
+            if len(flag) % 15 == 0:
                 m += 16
                 n += 16
                 prefix = "AAAAAAAAAAAAAAAA"
             break
-    j += 1
 
     prefix = prefix[1:]
     print(flag, len(flag))
 ```
 
-pwn.college{p 13
-pwn.college{pr 14
-pwn.college{pra 15
-prefix 
-bf pwn.college{prac 16
-previous pof b'w$\xda?1`Ak\x80\x85*#\xf0\x1a\xc6X\xdbz\n\xc9\x9a\x90\r\xb3\xba\xb4\xed\xc6\xbb\x93\x99\x87\t<\xa2\xe9gq\xd2\xce\xfbDj\x8fX\x8f\x1e\xe7'
-previous enc b'\xdbz\n\xc9\x9a\x90\r\xb3\xba\xb4\xed\xc6\xbb\x93\x99\x87\t<\xa2\xe9gq\xd2\xce\xfbDj\x8fX\x8f\x1e\xe7'
-pwn.college{pra 15
-prefix 
-bf pwn.college{prac 16
-previous pof b'w$\xda?1`Ak\x80\x85*#\xf0\x1a\xc6X\xdbz\n\xc9\x9a\x90\r\xb3\xba\xb4\xed\xc6\xbb\x93\x99\x87\t<\xa2\xe9gq\xd2\xce\xfbDj\x8fX\x8f\x1e\xe7'
-previous enc b'\xdbz\n\xc9\x9a\x90\r\xb3\xba\xb4\xed\xc6\xbb\x93\x99\x87\t<\xa2\xe9gq\xd2\xce\xfbDj\x8fX\x8f\x1e\xe7'
-pwn.college{pra 15
+these are : bf, pf, ci
 
-
-
-127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [21/Mar/2025 06:19:07] "POST / HTTP/1.1" 302 -
-b'pwn.college{praa|pwn.college{practice}'
-127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
-b'pwn.college{praa|pwn.college{practice}'
-127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [21/Mar/2025 06:19:07] "POST /reset HTTP/1.1" 302 -
-b'pwn.college{practice}'
-127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [21/Mar/2025 06:19:07] "POST / HTTP/1.1" 302 -
-b'pwn.college{prab|pwn.college{practice}'
-127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
-b'pwn.college{prab|pwn.college{practice}'
-127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [21/Mar/2025 06:19:07] "POST /reset HTTP/1.1" 302 -
-b'pwn.college{practice}'
-127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [21/Mar/2025 06:19:07] "POST / HTTP/1.1" 302 -
-b'pwn.college{prac|pwn.college{practice}'
-127.0.0.1 - - [21/Mar/2025 06:19:07] "GET / HTTP/1.1" 200 -
-b'pwn.college{prac|pwn.college{practice}'
-
-
-b'pwn.college{prac|pwn.college{practice}'
-127.0.0.1 - - [21/Mar/2025 09:04:28] "GET / HTTP/1.1" 200 -
-b'pwn.college{prac|pwn.college{practice}'
-127.0.0.1 - - [21/Mar/2025 09:04:28] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [21/Mar/2025 09:04:28] "POST /reset HTTP/1.1" 302 -
-b'pwn.college{practice}'
-127.0.0.1 - - [21/Mar/2025 09:04:28] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [21/Mar/2025 09:04:28] "POST / HTTP/1.1" 302 -
-b'pwn.college{prad|pwn.college{practice}'
-127.0.0.1 - - [21/Mar/2025 09:04:28] "GET / HTTP/1.1" 200 -
-b'pwn.college{prad|pwn.college{practice}'
-127.0.0.1 - - [21/Mar/2025 09:04:28] "GET 
-o
-
-when the prefix is zero, we still want to keep somethin
+ctice}pwn.collef
+b'\x99,\x055\x95\x05\xe6\x1f\xc7\xc6\\\xfc\x8a\x86\x08b]+\x84\xfa\xf7\x87\xb1\xa9\xdeD\xc3\xa3%3Z\xb4\x8f\xf2\xb3\xeb\x88\xb4\x93eu\xc8\xe1\xf8\x86M\x00\x0bg\xe6\x92\xfcj\x8a\x11\xa3=z\xce{\xaa~\x06^'
+b'-\x1f\xa8\xc3\xc1\xe9\xb6\xed\x9f\xab\xbau\xa9\xb8\x85\xd6\xca\xd5\x1a\xf6\xd0>\xf2\xbfeZ\x93\xad\x93\xb3J5\xc9\x9du\x8fU\xb9f\xcf;\x12\xe2\x0f;\x11\x99\x1f\xea)\xa9U\xa9\xab\xc4u\xda\xb2e\x18lu7\x88'
+ctice}pwn.colleg
+b'\x8f\xf2\xb3\xeb\x88\xb4\x93eu\xc8\xe1\xf8\x86M\x00\x0b]+\x84\xfa\xf7\x87\xb1\xa9\xdeD\xc3\xa3%3Z\xb4\x8f\xf2\xb3\xeb\x88\xb4\x93eu\xc8\xe1\xf8\x86M\x00\x0bg\xe6\x92\xfcj\x8a\x11\xa3=z\xce{\xaa~\x06^'
+b'-\x1f\xa8\xc3\xc1\xe9\xb6\xed\x9f\xab\xbau\xa9\xb8\x85\xd6\xca\xd5\x1a\xf6\xd0>\xf2\xbfeZ\x93\xad\x93\xb3J5\xc9\x9du\x8fU\xb9f\xcf;\x12\xe2\x0f;\x11\x99\x1f\xea)\xa9U\xa9\xab\xc4u\xda\xb2e\x18lu7\x88'
+ctice}pwn.colleh
