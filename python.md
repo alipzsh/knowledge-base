@@ -1,45 +1,5 @@
-# python
-
-Normalize the response and target string by collapsing multiple spaces, tabs, and newlines into a single space:
-
-```py
-normalized_response = ' '.join(response.text.split())
-target_string = "<div>Welcome back!</div><p>|</p>"
-normalized_target = ' '.join(target_string.split())
-```
-
-Check if the normalized target string is in the normalized response text:
-
-`if normalized_target in normalized_response:
-    print("Match found!")`
-Baser encode:
-
-```py
-encoded = base64.b64encode(result.stdout).decode("utf-8")
-```
-
-`base64.b64encode()`: This function returns a bytes object, not a string.
-
-# requests
-
-`https://requests.readthedocs.io/en/latest/user/quickstart/#make-a-request`
-
-## get
-
-`r = requests.get('https://api.github.com/user', auth=('user', 'pass')), cookies=cookies)`
-
-look in `sql/*.py`
-
-## add headers
-
-```py
-headers = {'user-agent': 'my-app/0.0.1'}
-r = requests.get(url, headers=headers)
-```
-
-## Post
-
-`requests.post(url, data={'content': content})`
+[[useful python stuff]]
+[[python requests]]
 
 # The Problem with sh -i in os.system:
 

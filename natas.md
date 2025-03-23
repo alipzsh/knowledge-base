@@ -197,6 +197,7 @@ second one: will be true if it starts with something greater than 10.
 # natas24
 
 `
+```
 if(array_key_exists("passwd",$_REQUEST)){
     if(!strcmp($_REQUEST["passwd"],"<censored>")){
         echo "<br>The credentials for the next level are:<br>";
@@ -206,13 +207,13 @@ if(array_key_exists("passwd",$_REQUEST)){
         echo "<br>Wrong!<br>";
     }
 }
-`
+```
 
 The strcmp() function will:
 
-    Return < 0 if string1 is less than string2
-    Return > 0 if string1 is greater than string2
-    Return 0 if equal
+Return < 0 if string1 is less than string2
+Return > 0 if string1 is greater than string2
+Return 0 if equal
 
 If we were able to get any feedback from the strcmp() function, it might be
 possible to brute force the password by using the negative or positive feedback
@@ -226,6 +227,7 @@ payload: `/?passwd[]=test`
 # natal 25
 
 path traversal:
+
 `
 function safeinclude($filename){
         // check for directory traversal
@@ -387,8 +389,23 @@ the authorization is based64 encoded: `natas28:1JNwQM1Oi6J6j1k49Xyw7ZN6pXMQInVj`
 
 `Whack Computer Joke Database` so it is a database.
 
-Removing couple of characters from the query: `Zero padding found instead of PKCS#7 padding`
+it's a database of jokes that we can search:
 
-given the PKCS#7 error and repeating info, it’s more likely an ECB (electronic code book) cipher mode
+`SELECT joke FROM jokes` where perhaps some characters exit.
 
-This mode is insecure for most applications, because there’s no chaining between blocks, or other dependencies between blocks. Instead, each block of plaintext will be encoding with the key, meaning that every identical plaintext block will result in the same ciphertext block output. In cryptographic terms, this is known as lack of diffusion: the method of encryption does not hide data patterns well.
+
+after modifying the query in the URL:
+
+```
+Notice: Uninitialized string offset: -1 in /var/www/natas/natas28/search.php on line 59
+Zero padding found instead of PKCS#7 padding
+```
+
+a : G%2BglEae6W%2F1XjA7vRm21nNyEco%2Fc%2BJ2TdR0Qp8dcjPKriAqPE2%2B%2BuYlniRMkobB1vfoQVOxoUVz5bypVRFkZR5BPSyq%2FLC12hqpypTFRyXA%3D
+b : G%2BglEae6W%2F1XjA7vRm21nNyEco%2Fc%2BJ2TdR0Qp8dcjPIYiwNnSJY7KHJGU%2BXjuMzVvfoQVOxoUVz5bypVRFkZR5BPSyq%2FLC12hqpypTFRyXA%3D
+
+after URL and b64 decoding these `"\x89\x0cL\xf2\xfa\xfa'\xc5(\x8b\xe1\x8eS5\xe5z"` are being repeated. so it's a 16 bytes block.
+
+if we add more than 10 characters, we will go for the next block.
+
+then if we try punctuation, we will have different stuff afterward. on `'"\`
