@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "10832e1ee7681e6f",
+        "id": "d815d5ae2b3ac7d8",
         "type": "tabs",
         "children": [
           {
-            "id": "24f905adb635695e",
+            "id": "764a6ceb8ce7a34f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "boss.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "boss"
+              "title": "New tab"
             }
           }
         ]
@@ -171,13 +167,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "24f905adb635695e",
+  "active": "764a6ceb8ce7a34f",
   "lastOpenFiles": [
+    "boss.md",
     "pwn.college.md",
     "AES-ECB-CPA-Prefix-miniboss.md",
     "AES-ECB-CPA-Prefix.md",
     "AES-ECB-CPA-Prefix2.md",
-    "boss.md",
     "python.md",
     "curl.md",
     "crypto.md",
