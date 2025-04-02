@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "2ca6424330461f22",
+        "id": "ee956a0abdcf5cdc",
         "type": "tabs",
         "children": [
           {
-            "id": "061c469bc0b54ec2",
+            "id": "8b64c0d95ba42b51",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "natas.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "natas"
+              "title": "New tab"
             }
           }
         ]
@@ -171,14 +167,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "061c469bc0b54ec2",
+  "active": "8b64c0d95ba42b51",
   "lastOpenFiles": [
+    "natas.md",
     "AES-ECB-CPA-HTTP.md",
     "pwn.college.md",
     "AES-ECB-CPA-suffix.md",
     "crypto.md",
     "Crypto lecture 10.md",
-    "natas.md",
     "useful python stuff.md",
     "python requests.md",
     "python.md",
