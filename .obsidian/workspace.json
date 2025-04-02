@@ -11,10 +11,14 @@
             "id": "061c469bc0b54ec2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "natas.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "natas"
             }
           }
         ]
@@ -49,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "natas",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -75,7 +79,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 316.5
+    "width": 316.5,
+    "collapsed": true
   },
   "right": {
     "id": "20f060bf07009e92",
@@ -168,11 +173,12 @@
   },
   "active": "061c469bc0b54ec2",
   "lastOpenFiles": [
-    "natas.md",
+    "AES-ECB-CPA-HTTP.md",
     "pwn.college.md",
+    "AES-ECB-CPA-suffix.md",
     "crypto.md",
     "Crypto lecture 10.md",
-    "AES-ECB-CPA-HTTP.md",
+    "natas.md",
     "useful python stuff.md",
     "python requests.md",
     "python.md",
@@ -186,7 +192,6 @@
     "command_Injection.md",
     "pwn.college_web_security.md",
     "toLearn.md",
-    "AES-ECB-CPA-suffix.md",
     "find_block_size.md",
     "bash useful stuff.md",
     "AES-ECB-CPA.md",

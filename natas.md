@@ -447,4 +447,3 @@ print(quote(b64encode(final)))
 ```
 
 ## natas 29
-
