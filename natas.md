@@ -447,3 +447,5 @@ print(quote(b64encode(final)))
 ```
 
 ## natas 29
+
+it loads files like this `/index.pl?file=perl+underground`
