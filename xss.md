@@ -1,5 +1,3 @@
-# xss
-
 finding the functionalities where user changes some part of the applications code, then
 changing it.
 
@@ -27,6 +25,7 @@ POC:
 * look for scripts
 * use console and debugger
 * test every input
+* send a combination of characters `abc ' " } < > ; // # - ()` to see how they are handled.
 
 1. look for input opportunities:
 

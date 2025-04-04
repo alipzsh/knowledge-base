@@ -10,6 +10,8 @@
 Glance over everything, learn new techs, understand what is happening, but don't get too
 deep.
 
+use burp and look more.
+
 ## find a target
 
 not too popular

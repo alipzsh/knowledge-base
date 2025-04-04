@@ -1,8 +1,6 @@
 `https://github.com/dwisiswant0/awesome-oneliner-bugbounty`
 
-# dorking
-
-github search: "'website' password"
+[[dorking]]
 
 [[scope discovery]]
 [[subdomain enumeration]]: host => subdomains
@@ -16,6 +14,24 @@ on the whole or maybe on an interesting subdomains spider for more info and para
 pass data.
 
 something like this: `domians | httpx | katana`
+
+
+an example of the whole process:
+
+```
+cat subs.txt | httpx-toolkit -o urls.txt  
+  
+cat urls.txt | waybackurls > wayback_urls  
+  
+cat urls.txt | katana -o katana_urls  
+  
+cat urls.txt | gauplus > gauplus_urls
+
+cat wayback_urls katana_urls gauplua_urls | sort -u | uro | urless > filtered_endpoints.txt
+
+```
+
+then you can filter it even more for specific stuff: `cat filtered_endpoints.txt | grep /api/`
 
 # next:
 
