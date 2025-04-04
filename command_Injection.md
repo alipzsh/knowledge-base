@@ -5,6 +5,7 @@ to execute operating system (OS) commands on the server.
 the attacker extends the default functionality of a vulnerable
 application, causing it to pass commands to the system shell.
 
+sometimes, you might need to add space after the injected code. 
 ## basic
 
 `productId=2&storeId=1`
@@ -78,3 +79,5 @@ Inline execution: inside backticks or `$()`
 replacing characters with `.repalce()`:
 
 use `%0A` which will be interpreted as newline. [[pwn.college_web_security#CMDi 6]]
+
+sometimes, you might need to add space after the injected code. [[natas#natas 29]]

