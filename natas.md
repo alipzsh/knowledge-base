@@ -462,6 +462,8 @@ it's interesting that it needs a space after `pwd` or `ls` to work:
 
 everything we request, is added a `.txt` prefix and that space kinda escapes that.
 
+as a rule of thumb you could just use `%00`
+
 ```perl
 $f=param('file'); if($f=~/natas/){ print "meeeeeep!
 "; } else{ open(FD, "$f.txt"); print "

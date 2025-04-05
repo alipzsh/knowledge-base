@@ -81,3 +81,6 @@ replacing characters with `.repalce()`:
 use `%0A` which will be interpreted as newline. [[pwn.college_web_security#CMDi 6]]
 
 sometimes, you might need to add space after the injected code. [[natas#natas 29]]
+
+also `%00` is useful in these situations. `%00` is the URL-encoded
+rpresentation of the null byte.
