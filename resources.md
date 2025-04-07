@@ -2,6 +2,8 @@
 
 ## crypto
 
+it seems I'm on lecture 10 on paar's course on youtube.
+
 Courses:
 
 https://cryptopals.com/
