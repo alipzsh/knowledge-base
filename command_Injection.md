@@ -1,5 +1,3 @@
-# command Injection
-
 to execute operating system (OS) commands on the server.
 
 the attacker extends the default functionality of a vulnerable

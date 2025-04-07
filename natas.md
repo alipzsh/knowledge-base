@@ -18,6 +18,7 @@ ckELKUWZUfpOv6uxS6M7lXBpBssJZ4Ws
 28:1JNwQM1Oi6J6j1k49Xyw7ZN6pXMQInVj
 29: 31F4j3Qi2PnuhIZQokxXk1L3QT9Cppns
 30: WQhx1BvcmP9irs2MP9tRnLsNaDI76YrH
+31:‌ m7bfjAHpJmSYgQWWeqRE2qVBuMiRNq0y
 
 check /files
 check /robots.txt
@@ -470,3 +471,24 @@ $f=param('file'); if($f=~/natas/){ print "meeeeeep!
 ```
 
 and obviously `|%20cat%20/etc/*_webpass/*30%20`
+
+## natas30
+
+perl quote, escapes special characters to prevent sql injection.
+
+the _quote()_ method is vulnerable to array injection. If you pass an array into this method, it will be treated as parameters
+
+https://stackoverflow.com/questions/40273267/is-perl-function-dbh-quote-still-secure
+
+https://security.stackexchange.com/questions/175703/is-this-perl-database-connection-vulnerable-to-sql-injection
+
+https://metacpan.org/release/TIMB/DBI-1.637/view/DBI.pm
+
+In Perl, if you pass a list to a function, it is interpreted as separate arguments.
+
+the second parameter determines how to do quoting, this can introduce an SQL injection vulnerability.
+
+
+`args = { "username": "natas31", "password": ["'' or 1", 2] }`
+
+or `["'natas31' or 1=1-- ", 2]`

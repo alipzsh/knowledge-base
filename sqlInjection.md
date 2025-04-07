@@ -44,7 +44,7 @@ https://portswigger.net/web-security/sql-injection/cheat-sheet
 * in SQL use `--` to comment out the rest.
 * every thing should be encoded:
   (this was in mysql)
-  `uname=' OR 1=1 #`
+  `uname=' or 1=1;`
   `uname='+OR+1%3d1+%23&psw="sdfsdfsdf"&btnLogin=Login`
 
   * `'` is to close the expected username string.
@@ -575,3 +575,5 @@ login:foobar'&password:' OR username='admin
 
 if you enter `'` in a search field and get it back in the result, it has been escaped and
 isn't considered as a special character.
+
+perl, quote(), array injection [[natas#natas30]]

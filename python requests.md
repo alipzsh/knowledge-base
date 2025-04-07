@@ -18,6 +18,8 @@ r = requests.get(url, headers=headers)
 `requests.post(url, data={'content': content})`
 
 
+stuff in data will be URL encoded : `print(r.request.body)`
+
 URL encoding/ decoding:
 
 ```python

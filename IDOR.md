@@ -1,4 +1,3 @@
-# IDOR
 
 insecure direct object reference: directly referencing the private stuff.
 `https://example.com/messages?user_id=1231`
@@ -27,6 +26,20 @@ Different IDORs:
 * change the IDs in the sensitive requests and check if the information
   returned also changes
 
+## where to look
+
+look for IDORs in password reset, password change, and account recovery
+features
+
+look for functionalities that handle the sensitive information in the
+application. For example, look for functionalities that handle direct messages,
+personal information, and private content. Consider which application
+functionalities make use of this information and look for IDORs accordingly.
+
+## example
+
+* `GET /download-transcript/1.txt HTTP/2` so you might do `GET /download-transcript/2.txt HTTP/2`
+
 ## bypassing protection
 
 * encoded and hashed IDs:
@@ -48,17 +61,3 @@ Different IDORs:
 * try different request methods: the protection might not be the same.
 
 * try file types: maybe different authorization.
-
-## where to look
-
-look for IDORs in password reset, password change, and account recovery
-features
-
-look for functionalities that handle the sensitive information in the
-application. For example, look for functionalities that handle direct messages,
-personal information, and private content. Consider which application
-functionalities make use of this information and look for IDORs accordingly.
-
-## example
-
-* `GET /download-transcript/1.txt HTTP/2` so you might do `GET /download-transcript/2.txt HTTP/2`
