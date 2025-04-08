@@ -14,7 +14,7 @@
 
 ## [[bash IF statement]]
 
-# [[bash useful stuff]]
+# [[useful bash]]
 
 
 # 20

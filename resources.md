@@ -23,3 +23,7 @@ https://developer.aliyun.com/
 ## HW
 
 https://p.ost2.fyi/
+
+## algorithms
+
+https://stanford-cs161.github.io/winter2025/lectures/

@@ -8,63 +8,21 @@
         "type": "tabs",
         "children": [
           {
-            "id": "fa6f0680b2e3dde7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "vulnerabilities.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "vulnerabilities"
-            }
-          },
-          {
-            "id": "715d114a56b0c3d9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IDOR.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "IDOR"
-            }
-          },
-          {
-            "id": "10adefe4adba4cf8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "path_traversal.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "path_traversal"
-            }
-          },
-          {
-            "id": "4a6b8a8a77a202b2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "books.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "books"
-            }
-          },
-          {
             "id": "70f7b16a65759988",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "useful bash.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "useful bash"
+            }
+          },
+          {
+            "id": "9c790c1944067c94",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -78,7 +36,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -110,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "books",
+                "query": "resources",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -227,10 +185,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "70f7b16a65759988",
+  "active": "9c790c1944067c94",
   "lastOpenFiles": [
-    "books.md",
+    "useful bash.md",
+    "usefuLinux.md",
     "resources.md",
+    "books.md",
     "authentication.md",
     "path_traversal.md",
     "IDOR.md",
@@ -254,8 +214,6 @@
     "TLCL.md",
     "corebridge.md",
     "qemu.md",
-    "dorking.md",
-    "ssh.md",
     "Pasted image 20250312050300.png",
     "Pasted image 20250312050228.png",
     "Pasted image 20250312043007.png",
