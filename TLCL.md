@@ -422,6 +422,13 @@ fi
 
 * `if [ $? -eq 0 ]; then` checks the exit status of the previous command
 
+* `$$` contains the current process's ID.
+
+This is useful when you need to create temporary files for the script. If you
+have multiple instances of the same script or program running at the same
+time, each might need its own temporary files. In this case, you can create
+temporary files named /tmp/script_name_$$ for every one of them.
+
 * one liner: `if [ a == a ]; then echo "t"; else echo "f"; fi`
 
 # useful combinations
