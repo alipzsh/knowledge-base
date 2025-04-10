@@ -1,4 +1,3 @@
-# fileUpload
 when allowing users to upload files into a file system the web app should
 validate things like name, type, contents or size.
 

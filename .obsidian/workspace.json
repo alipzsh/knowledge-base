@@ -8,31 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "70f7b16a65759988",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "useful bash.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "useful bash"
-            }
-          },
-          {
             "id": "9c790c1944067c94",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "resources.md",
+                "file": "fileUpload.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "resources"
+              "title": "fileUpload"
             }
           },
           {
@@ -41,16 +27,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "books.md",
+                "file": "natas.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "books"
+              "title": "natas"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -82,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "books",
+                "query": "vulnerabili",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -108,7 +93,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 316.5
+    "width": 316.5,
+    "collapsed": true
   },
   "right": {
     "id": "20f060bf07009e92",
@@ -199,17 +185,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "78478ba90e3d43ad",
+  "active": "9c790c1944067c94",
   "lastOpenFiles": [
-    "TLCL.md",
-    "books.md",
+    "natas.md",
+    "fileUpload.md",
+    "vulnerabilities.md",
     "resources.md",
+    "books.md",
+    "TLCL.md",
     "useful bash.md",
     "usefuLinux.md",
     "authentication.md",
     "path_traversal.md",
     "IDOR.md",
-    "vulnerabilities.md",
     "sqlInjection.md",
     "xss.md",
     "SSRF.md",
@@ -222,12 +210,10 @@
     "TODO.md",
     "bug_bounty_recon.md",
     "python requests.md",
-    "natas.md",
     "corebridge.canvas",
     "AES-ECB-CPA-HTTP.md",
     "cmds.md",
     "corebridge.md",
-    "qemu.md",
     "Pasted image 20250312050300.png",
     "Pasted image 20250312050228.png",
     "Pasted image 20250312043007.png",

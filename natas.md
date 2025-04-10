@@ -492,3 +492,5 @@ the second parameter determines how to do quoting, this can introduce an SQL inj
 `args = { "username": "natas31", "password": ["'' or 1", 2] }`
 
 or `["'natas31' or 1=1-- ", 2]`
+
+## natas31

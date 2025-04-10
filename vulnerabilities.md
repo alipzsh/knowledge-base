@@ -7,6 +7,7 @@
 [[insecureDeserialization]]
 [[logic_flaw]]
 [[SSRF]]
+[[fileUpload]]
 xxe
 command_injection
 sqlInjection
