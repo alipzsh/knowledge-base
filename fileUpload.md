@@ -233,3 +233,5 @@ even if a file is on the server for milliseconds before it is removed, it can be
 ## Exploiting file upload vulnerabilities without remote code execution
 
 read on portswigger
+
+[[natas#natas31]]

