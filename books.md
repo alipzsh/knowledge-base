@@ -1,8 +1,13 @@
 # books
 
-# web application security
+test 
 
-ch 5, 7, 9
+# the Linux command line
+* 127
+* modifying the enviroment
+* part four: 423 (book's page)
+* sed
+* chap 14,15,16,17,18,19,23,32
 
 # networking
 * up to 4 finished
@@ -26,10 +31,3 @@ ch 5, 7, 9
 # Linux administrator's handbook
 
 read a bit before but not sure which parts, and not that important anyways.
-
-# the Linux command line
-* 127
-* modifying the enviroment
-* part four: 423 (book's page)
-* sed
-* chap 14,15,16,17,18,19,23,32
