@@ -534,3 +534,11 @@ also filename shouldn't be empty.
 
 in perl if you add a `|` at the end of a command, it will run it and shown the output.
 `POST /index.pl?ls%20.%20| HTTP/1.1`
+
+## 33
+
+if we build a custom Phar archive with specific serialized data then, try to open it with the phar:// stream wrapper, we could potentially get an execution.
+
+this is actually pretty interesting, for more info:
+
+https://axcheron.github.io/writeups/otw/natas/#natas-33-solution

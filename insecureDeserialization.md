@@ -319,3 +319,7 @@ https://securitycafe.ro/2017/11/03/tricking-java-serialization-for-a-treat/
 https://medium.com/abn-amro-red-team/java-deserialization-from-discovery-to-reverse-shell-on-limited-environments-2e7b4e14fbef
 https://www.elttam.com/blog/ruby-deserialization/
 https://devcraft.io/2021/01/07/universal-deserialisation-gadget-for-ruby-2-x-3-x.html
+
+examples:
+
+[[natas#33]]

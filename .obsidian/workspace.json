@@ -4,39 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "01403808f2c4b6f3",
+        "id": "3dc5cd22d131ef57",
         "type": "tabs",
         "children": [
           {
-            "id": "9c790c1944067c94",
+            "id": "387b717cbd97727d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "fileUpload.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "fileUpload"
-            }
-          },
-          {
-            "id": "78478ba90e3d43ad",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "natas.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "natas"
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -68,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "vulnerabili",
+                "query": "seria",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -94,8 +75,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 316.5,
-    "collapsed": true
+    "width": 316.5
   },
   "right": {
     "id": "20f060bf07009e92",
@@ -186,13 +166,21 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "78478ba90e3d43ad",
+  "active": "387b717cbd97727d",
   "lastOpenFiles": [
-    "fileUpload.md",
+    "API.md",
     "natas.md",
+    "insecureDeserialization.md",
+    "fileUpload.md",
+    "books.md",
+    "API analysis.md",
+    "methodology.md",
+    "bug_bounty_recon.md",
+    "API endpoints.md",
+    "API endpoints by HTTP verb.md",
+    "API endpoints shape.md",
     "vulnerabilities.md",
     "resources.md",
-    "books.md",
     "TLCL.md",
     "useful bash.md",
     "usefuLinux.md",
@@ -202,19 +190,11 @@
     "sqlInjection.md",
     "xss.md",
     "SSRF.md",
-    "insecureDeserialization.md",
     "BrokenAccessControl.md",
     "command_Injection.md",
     "xxe.md",
     "ssti.md",
-    "methodology.md",
-    "TODO.md",
-    "bug_bounty_recon.md",
-    "python requests.md",
     "corebridge.canvas",
-    "AES-ECB-CPA-HTTP.md",
-    "cmds.md",
-    "corebridge.md",
     "Pasted image 20250312050300.png",
     "Pasted image 20250312050228.png",
     "Pasted image 20250312043007.png",

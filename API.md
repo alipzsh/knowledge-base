@@ -14,3 +14,7 @@ well with the HTTP protocol, which is the foundation of the web.
 
 A REST API allows applications to communicate over HTTP by defining a set of rules for how
 to format requests and responses.
+
+[[API endpoints]]
+[[API endpoints by HTTP verb]]
+[[API endpoints shape]]

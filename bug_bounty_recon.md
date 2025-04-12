@@ -5,6 +5,7 @@
 [[scope discovery]]
 [[subdomain enumeration]]: host => subdomains
 [[gowitness]]: working subdomains => screenshots of them => interesting subdomains
+[[API analysis]]
 [[directory enumeration]]: interesting subdomains => content discovery
 [[port scanning]] more info on interesting subdomains
 

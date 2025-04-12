@@ -1,0 +1,1 @@
+An API endpoint is a specific URL (or URI) that your app or tool can send requests to in order to interact with a server — like to get, create, update, or delete data.
