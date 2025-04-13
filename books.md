@@ -1,6 +1,10 @@
 # books
 
-test 
+# web application security
+
+ch 5,7,9
+
+ch 10 upto but not DOM XSS
 
 # the Linux command line
 * 127

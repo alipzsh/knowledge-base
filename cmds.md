@@ -175,3 +175,17 @@ current timestamp:
 ```sh
 date +%s%3N
 ```
+
+fzf
+
+* `find . -type f | fzf` to search for file names
+
+```bash
+rg --no-heading --line-number "" | fzf --preview 'bat --style=numbers --color=always {1} --line-range {2}:+10' --bind 'enter:execute(vim {1} +{2})'
+```
+
+```bash
+fzf --bind 'enter:execute(vim $(echo {} | cut -d: -f1) +$(echo {} | cut -d: -f2))' < <(rg --no-heading --line-number "")
+```
+
+	* `rg --no-heading --line-number "" | fzf --exact` search for exact words
