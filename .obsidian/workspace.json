@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "4de7cde95d73a9ac",
+        "id": "3719eb86dd6bc71d",
         "type": "tabs",
         "children": [
           {
-            "id": "931e5470cfec67a0",
+            "id": "9c1f521ac103b01a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "XSS html tags.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "XSS html tags"
             }
           }
         ]
@@ -49,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "command injectio",
+                "query": "sqli",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -167,10 +171,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "931e5470cfec67a0",
+  "active": "9c1f521ac103b01a",
   "lastOpenFiles": [
-    "XSS_examples.md",
+    "Reflected XSS just custom tags allowed.md",
+    "HTML attributes.md",
     "xss.md",
+    "Reflected.md",
+    "XSS html tags.md",
+    "bypass xss filters.md",
+    "Reflected XSS into HTML context with most tags and attributes blocked.md",
+    "sqlInjection.md",
+    "XSS_examples.md",
     "Reflected DOM XSS.md",
     "Stored DOM XSS.md",
     "xss.md~",
@@ -190,13 +201,6 @@
     "API analysis.md",
     "methodology.md",
     "bug_bounty_recon.md",
-    "API endpoints.md",
-    "API endpoints by HTTP verb.md",
-    "API endpoints shape.md",
-    "vulnerabilities.md",
-    "resources.md",
-    "TLCL.md",
-    "useful bash.md",
     "corebridge.canvas",
     "Pasted image 20250312050300.png",
     "Pasted image 20250312050228.png",

