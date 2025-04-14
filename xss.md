@@ -1,6 +1,7 @@
 # XSS
 
-* instead of taking notes of all the payloads and all, add them to a automation and take note of the philosophy.
+* instead of taking notes of all the payloads and all, add them to a automation and take
+  note of the philosophy.
 
 taking advantage of web applications executing scripts on user's browsers.
 
@@ -125,64 +126,44 @@ EXAMINE:
 
 ## DOM-based cross-site scripting:
 
-Document object model, is the method browsers use to render a web page;
-  * which elements should be where
-  * elements have their own properties
-  * stuff are manipulated with JS.
-
-```js
-var search = document.getElementById('search').value;
-var results = document.getElementById('results');
-results.innerHTML = 'You searched for: ' + search;
-```
-
-when a website contains JavaScript that takes an attacker-controllable value,
-known as a *source*, and passes it into a dangerous function, known as a *sink*.
-
-the main source for DOM XSS is the URL (accessed by `window.location` obj),
-some of the others: `location.search document.referrer document.cookie`
-
 attackers attack the Dom when a page takes user input and alters the Dom based
 on that input.
 
-not all sources work with every sinks:
+it happens when a website contains JavaScript that takes an attacker-controllable value,
+known as a *source*, and passes it into a dangerous function, known as a *sink*.
 
-`innerHTML()` extracts the html contents of an element.
-and doesn't accept script; so use img, onload, onerror.
-when an application contains some client-side JavaScript that processes data
-from an untrusted source in an unsafe way.
+* the main source for DOM XSS is the URL.
+* DOM could be manipulated by [DOM Objects](DOM.md#_DOM_Objects).
+
+* not all sources work with every sinks:
 
 EXAMINE:
 
-#### test html sinks
+1. test html sinks
 
-place a random alphanumeric string in to the source.
+* place a random alphanumeric string in to the source.
+* use developer tools to inspect and find where the string appears.
+* refine your input based on the context of where your string appears in the DOM. e.g. close
+  the double quotes.
+* if your data gets URL encoded before being processed, then an XSS attacks is unlikely to
+  work.
 
-use developer tools to inspect and find where the string appears.
+2. test JavaScript execution sinks
 
-refine your input based on the context of where your string appears in the DOM.
-e.g. if your string is inside a double quoted attribute, use double quote in
-your string to try to break out of it.
+* your input doesn't appear in the DOM.
+* find cases in the page's JavaScript code where a *source* is referenced.
+* use the JavaScript debugger to add a breakpoint and follow hot the source is used.
 
-* if your data gets URL encoded before being process, then an XSS attacks is
-  unlikely to work.
+3. check if the source or it's values or a variable pointed to it are passed to a sink.
 
-#### test JavaScript execution sinks
+4. found a sink? hover over the variable to see it's value. refine the input to see if you
+   can do a successful attack.
 
-your input doesn't appear in the DOM.
+maybe? DOM XSS with different sources and sinks
 
-find cases in the page's JavaScript code where *source* is referenced.
+EX:
 
-use the JavaScript debugger to add a breakpoint and follow hot the source is used. 
-
-see if the source or it's values or a variable pointed to it are passed to a sink.
-
-found a sink? hover over the variable to see it's value. refine the input to
-see if you can do a successful attack.
-
-### DOM XS with different sources and sinks
-
-#### `document.write` sink using source `location.search`
+### sink: `document.write`, source: `location.search`
 
 `document.write('... <script>alert(document.domain)</script> ...');`
 
@@ -192,78 +173,80 @@ payload:
 
 result in the code:
 
-`<img src="/resources/images/tracker.gif?searchTerms=smn123" pv5p3atqt="">
-<script>alert('XSS by Vickie');</script>`
+1.
 
-* if you need to close the `<select>` tag, use `</select>`:
+```html
+<img src="/resources/images/tracker.gif?searchTerms=smn123"> <script>alert('XSS by Vickie');</script>
+```
 
-  `/product?productId=1&storeId=smn12</select><script>alert("q")</script>`
+2. something similar: `/product?productId=1&storeId=smn12</select><script>alert("q")</script>`
 
-#### `innerhtml` sink using source `location.search`
+### sink: `innerhtml`, source: `location.search`
 
-`innerhtml` doesn't accept `script` or `svg onload`, use `img` or `iframe`.
+`innerhtml` doesn't accept `<script>` or `<svg> onload`, use `<img>` or `<iframe>`.
 
-the script that uses `innerhtml`:
+source code:
 
-`function doSerachQuery(query) {
+```js
+function doSerachQuery(query) {
     document.getElementById('searchMessage').innerHTML = query;
-}`
+}
+```
 
 payload: `</span><img src=1 onerror=alert(document.domain)>`
 
-### Sources and sinks in third-party dependencies
+### jQuery anchor; sink: `href` attribute , source: `location.search`
 
-#### jQuery anchor `href` attribute sink using `location.search` source
+third party frameworks introduce new sources and sinks. [jQuery selectors](jQuery.md)
 
-third party frameworks introduce new sources and sinks:
-
-Selectors are used to find html elements based on their names and more; and
-allowing  you to manipulate elements; e.g. `$()`.
-
-`attr()` method sets or returns attributes and values of the selected elements.
-
-selects an element and returns it's attribute:
-`$(selector).attr(attribute)` -> `$("a").attr("href")`
+URL:
 
 `https://0a99001c0357321a81887acb00d8006d.web-security-academy.net/feedback?returnPath=/`
 
-and there is this code in the page which sets whatever is in `returnPath` in
-the `herf` of `backLink`:
-  
-`(function() {
-$('#backLink').attr("href",(new URLSearchParams(window.location.search)).get('returnUrl'));
-});`
+source code:
 
+```js
+(function() {
+$('#backLink').attr("href",(new URLSearchParams(window.location.search)).get('returnUrl'));
+});
+```
+
+sets whatever is in `returnPath` in the `herf` of `backLink`.
 `href` is used for redirection, so we use a payload with `javascript`.
 
 payload:
 
 `javascript:%20alert(document.cookie)` so `https://0a99001c0357321a81887acb00d8006d.web-security-academy.net/feedback?returnPath=javascript:%20alert(document.cookie)`
 
-result:
+result in the code:
 
 `<a id="backLink" href="javascript: alert(document.cookie)">Back</a>`
 
-#### jQuery `selector` sink using a `hashchange` event
+### jQuery `selector` sink using a `hashchange` event
 
-`$() selector function, can be used to inject malicious objects into the DOM. `
-
+`$()` selector function, can be used to inject malicious objects into the DOM.
 `hash` is user controllable and could be used to inject into the `$()`.
+
+source:
 
 `hashchange` event handler: on `hashchange`, performs the following function; uses
 a *selector* to find the given fragment, then scrolls to it.
 you should send the exploit to the victim so that it triggers a `hashchange` event, when it's loaded.
 
-`$(window).on('hashchange', function() {
+```js
+$(window).on('hashchange', function() {
   var element = $(location.hash);
-  element[0].scrollIntoView(); });`
+  element[0].scrollIntoView(); });
+```
+
+payload:
 
 trigger a `hashchange` event without user interaction:
 
 `<iframe src="https://vulnerable-website.com#" onload="this.src+='<img src=1 onerror=alert(1)>'">`
 changes the fragment on load, activating a `hashchange` event, then the selector adds it to the DOM. (see the function below
 
-#### AngularJS expression with angle brackets and double quotes HTML-encoded:
+### AngularJS expression with angle brackets and double quotes HTML-encoded:
 
 * if it has `ng-app` (directive)  somewhere: then it's using angular, so you
   can run js inside {{}}. so, sending {{1+1}}, returns 2.
@@ -275,10 +258,12 @@ changes the fragment on load, activating a `hashchange` event, then the selector
   * the `()` in the end, call the function we defined before it.
   * more on how this works `https://www.youtube.com/watch?v=QpQp2JLn6JA`
 
-`<script>
+```js
+<script>
     var searchTerms = '';
     document.write('<img src="/resources/images/tracker.gif?searchTerms='+encodeURIComponent(searchTerms)+'">');
-</script>`
+</script>
+```
 
 #### Reflected DOM XSS
 
@@ -911,6 +896,9 @@ EX:
 `<img onload=alert('the image has been loaded!') src="example.png">`
 
 ## `iframe`
+
+## `<select>``</select>`:
+
 
 # HTML attributes
 
