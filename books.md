@@ -2,6 +2,10 @@
 
 # web application security
 
+not as good a book as I thought, mostly surface level thing. bbb is a much better one. at this point I should revise and organize my notes.
+
+there are some more advanced stuff, but doesn't matter much now and I might just search them later.
+
 ch 5,7,9
 
 ch 10 upto but not DOM XSS
