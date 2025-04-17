@@ -1,6 +1,8 @@
 # curl
 
-* send a request: `curl <IP>`
+[[html| how to interpret html code to send a request]]
+
+* send a GET request: `curl <IP>`
 * `--header`: http header request
 * `-i`: to get headers alongside the response
 * `-k`: allow connections to ssl sites without certificates.
@@ -22,3 +24,9 @@ curl -X POST http://10.10.11.38:5000/upload \
 * `--path-as-is`: not to merge sequences like `../`
 * `-L`: follow redirection
 * `curl --socks5-hostname 127.0.0.1:8089 http://sightless.htb` to use socks proxy
+
+
+other useful stuff:
+`-F` file
+`-d` request body
+	* login credentials `"username=admin&password=pass&submit=login" "http://challenge.localhost:80/login`

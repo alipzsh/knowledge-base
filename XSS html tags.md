@@ -14,6 +14,7 @@ sends a GET request to the attacker's machine:
 ```
 
 * `<script>alert(document.domain)</script>`
+* it could be inside an input tag `<input><script>alert(1);</script></input>`
 
 ## `<img>`
 
@@ -32,3 +33,12 @@ what to do with this? XSS between HTML tags
 
 When the XSS context is text between HTML tags, you need to add new HTML tags to
 trigger execution of JavaScript. e.g. `<img>`, `<script>`
+
+## `svg`
+
+a containter to create and display graphics.
+
+* it's `<animate>` element could be used to set attributes:
+
+[[XSS_examples#Reflected XSS event handlers and `href` attributes blocked| `<svg><a><animate attributeName="href" values="javascript:alert()"></animate><text x=20 y=20>Click me</text></a></svg>`]]
+
