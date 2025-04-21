@@ -1,9 +1,12 @@
 # sqlInjection
 
+
 finding a functionality that at some point interacts with a database; then
 trying to get it to do other stuff than intended.
 
 # EXAMINE
+
+https://portswigger.net/web-security/sql-injection/cheat-sheet
 
 * send something like `'` to every filed to see if it an error pops.
 you might see database error or change in the logic of the query.
@@ -20,64 +23,83 @@ code injections.
 
 ## blind:
 
-can't extract info because the application doesn’t return SQL data or
-descriptive errors; so send sqli payloads and observe the behaviour.
+can't extract info because the application doesn't return SQL data or
+descriptive errors.
+
+Examine:
+
+send sqli payloads and observe the behaviour:
 
   * boolean based: injecting test conditions that return either true
-    or false; slowly inferring the structure of the databse.
-  * time based: focusing on response time difference of different
-    payloads by triggering a time delay, so that if the delay occurs
-    the query worked.
+    or false; slowly inferring the structure of the database.
 
-exfiltrate: store info somewhere on the local machine: `SELECT
-Password FROM Users WHERE Username='admin' INTO OUTFILE
-'/var/www/html/output.txt'`
-* then you can access the file: `https://example.com/output.txt`
+  * time based: focusing on response time difference of different payloads by triggering a
+    time delay. if the delay occurs means the query worked.
 
-https://portswigger.net/web-security/sql-injection/cheat-sheet
+Exploit:
+
+exfiltration:
+
+store info somewhere on the local machine:
+
+`SELECT Password FROM Users WHERE Username='admin' INTO OUTFILE '/var/www/html/output.txt'`
+
+then request the file: `https://example.com/output.txt`
+
+##  stored sqli (second order):
+
+sometimes the payload can be kept in the database
+  and called later.
+
 ## sql schemes
 
 ![sqlStructure](sqlStructure.png)
 ![sqlStructure1](sqlStructure1.png)
 
-* in SQL use `--` to comment out the rest.
-* every thing should be encoded:
-  (this was in mysql)
-  `uname=' or 1=1;`
-  `uname='+OR+1%3d1+%23&psw="sdfsdfsdf"&btnLogin=Login`
+# payloads
 
-  * `'` is to close the expected username string.
-  * `OR 1=1 #` is always true.
-  * password can be anything because it's escaped.
-  * turns into:
-  `SELECT * FROM users WHERE username = '' OR 1=1 # AND password = 'input_password';`
-  * expected `';--` to also work but it was probably filtered.
+* sql comments: `--`
 
-* abusing UPDATE statement (maybe in changing password page).
-* `WHERE eid = 'EID5002' #' and pass word= 'xyz'`: everything after `#` is a comment.
 
-* In SQL, multiple statements, separated by semicolon (;), can be
-  included in one statement string, but doesn't work in mysql.
-  `
+* `SELECT * FROM products WHERE category = 'Gifts' AND released = 1`
+
+result:
+
+`SELECT * FROM products WHERE category = ''+OR+1=1-- AND released = 1`
+
+will get every category. in sql.
+
+* In SQL, multiple statements, separated by semicolon (;) can be
+  included in one statement string.
+
+  ```sql
   SELECT Name, Salary, SSN
   FROM employee
   WHERE eid= 'a'; DROP DATABASE dbtest;
-  `
+  ```
+* encode stuff.
+* common mysql payload: `uname=' or 1=1;` and perhaps `#`.
 
-* second order (stored) sqli: sometimes the payload can be kept in the database
-  and called later.
+  * `'`  to close the expected string.
+  * `OR 1=1 #` is always true.
+  * password can be anything because it's escaped.
 
-* preventions:
+  result:
+  `SELECT * FROM users WHERE username = '' OR 1=1 # AND password = 'input_password';`
+
+* abusing UPDATE statement.
+  `WHERE eid = 'EID5002' #' and pass word= 'xyz'`: everything after `#` is a comment.
+
+
+# defenses used against sql
+
   * prepared statements: so that the malicious part doesn't compile and
     treated as an string rather than an executable.
   * allow list
   * sanitize and escape user input
 
-
-## example
-
-* `SELECT * FROM products WHERE category = 'Gifts' AND released = 1` -> `SELECT * FROM products WHERE category = ''+OR+1=1-- AND released = 1`
-  to get every category. in sql.
+# are we going to do this based on types, context to or attack types (meaning all types are
+almost the same in the attack.
 
 # UNION attack
 
@@ -85,18 +107,19 @@ if an application is vulnerable to SQL injection, and the results are returned
 within the application's responses, you can use the `UNION` keyword to retrieve
 *data from other tables*.
 
-execute one or more additional SELECT queries and *append* the results to the
+execute one or more additional `SELECT` queries and *append* the results to the
 original query.
 
 `SELECT a, b FROM table1 UNION SELECT c, d FROM table2`
 returns a single result set with two columns, containing a,b,c,d columns.
 
-  * individual queries must return the same number of columns.
+  * every individual query must return the same number of columns.
   * data types in each column must be compatible between the individual queries.
 
-so you should test for:
+Examine:
 
   * How many columns are being returned from the original query.
+
   * Which columns returned from the original query are of a suitable data type
     to hold the results from the injected query
 
@@ -105,9 +128,10 @@ so you should test for:
 
 
 in UNION, the data types in each column must be the same between original and
-injected queries, so we use `NULL`. if we are getting error (500) response,
-it means there are more columns of data in the original query, so we have to
-add more NULL columns to our injected one.
+injected queries, so we use `NULL` if/because we don't know the type.
+
+a 500 response code shows there are more columns of data in the original query. so, add more
+`NULL` columns.
 
 ![UNION](shots/sqlUNION.png)
 
@@ -495,6 +519,7 @@ print(re.text)
 `
 
 ## routed
+
 a really interesting part of the solution: `-3' UNION SELECT SLEEP(6),1 --`
 it seems it used `-3` to falsify the first query.
 
