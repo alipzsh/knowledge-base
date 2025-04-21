@@ -1,28 +1,27 @@
 # sqlInjection
-* finding a functionality that at some point interacts with a database; then
-  trying to get it to do other stuff than intended.
 
-send something like `'` to every filed to see if it an error pops.
+finding a functionality that at some point interacts with a database; then
+trying to get it to do other stuff than intended.
 
-## test for sqli:
+# EXAMINE
 
-use `'` (indicating the end of the query) to check for anomalies. if
-the app isn't protected it might trigger database errors or change
-the logic of the query.
+* send something like `'` to every filed to see if it an error pops.
+you might see database error or change in the logic of the query.
 
-fuzzing: submitting sqli payloads and monitoring the response.
-looking for clues that the injected code can be executed.
+* fuzzing: send multiple sqli payloads and  monitor the responses for possible
+code injections.
 
-types:
+# types:
 
-classic:
-  * error based: triggers error in the database to collect info `CONVERT((SELECT Password
-    FROM Users WHERE Username="admin"), DATE);`
+## classic:
+
+  * error based: triggers error in the database to collect info `CONVERT((SELECT Password FROM Users WHERE Username="admin"), DATE);`
   * UNION based: concatenate anther query to the web app response.
 
-blind: can't extract info because the application doesn’t return SQL
-data or descriptive errors; so send sqli payloads and observe the
-behaviour.
+## blind:
+
+can't extract info because the application doesn’t return SQL data or
+descriptive errors; so send sqli payloads and observe the behaviour.
 
   * boolean based: injecting test conditions that return either true
     or false; slowly inferring the structure of the databse.
@@ -38,8 +37,8 @@ Password FROM Users WHERE Username='admin' INTO OUTFILE
 https://portswigger.net/web-security/sql-injection/cheat-sheet
 ## sql schemes
 
-![sqlStructure](shots/sqlStructure.png)
-![sqlStructure1](shots/sqlStructure1.png)
+![sqlStructure](sqlStructure.png)
+![sqlStructure1](sqlStructure1.png)
 
 * in SQL use `--` to comment out the rest.
 * every thing should be encoded:
