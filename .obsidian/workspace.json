@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "93e29d8550e02dce",
+        "id": "1caf276d82cfca22",
         "type": "tabs",
         "children": [
           {
-            "id": "ca215806c3d504e9",
+            "id": "e198de4c16e18456",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -19,6 +19,20 @@
               },
               "icon": "lucide-file",
               "title": "sqlInjection"
+            }
+          },
+          {
+            "id": "89b81250fa8d5b5a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "blind SQLi.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "blind SQLi"
             }
           }
         ]
@@ -53,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "sql",
+                "query": "obfus",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,11 +88,13 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 316.5
+    "width": 316.5,
+    "collapsed": true
   },
   "right": {
     "id": "20f060bf07009e92",
@@ -169,10 +185,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9348044f143e41a4",
+  "active": "e198de4c16e18456",
   "lastOpenFiles": [
-    "lamp.md",
+    "blind SQLi.md",
     "sqlInjection.md",
+    "UNION based SQLi.md",
+    "sqlInjection.md~",
+    "js.md",
+    "sqli examples.md",
+    "lamp.md",
     "curl.md",
     "API analysis.md",
     "XSS_examples.md",
@@ -192,11 +213,6 @@
     "Reflected DOM XSS.md",
     "html.md",
     "Stored DOM XSS.md",
-    "gobuster.md",
-    "jQuery.md",
-    "js.md",
-    "HTML attributes.md",
-    "fileUpload.md",
     "xss.md~",
     "XSS_examples.md~",
     "xss.md#vimwiki_upd#",
@@ -212,7 +228,6 @@
     "Pasted image 20250312043007.png",
     "Pasted image 20250312042720.png",
     "Pasted image 20250312042027.png",
-    "service enum",
     "Pasted image 20250305021051.png",
     "Screenshot from 2025-02-18 12-14-33.png"
   ]
