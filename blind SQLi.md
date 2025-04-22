@@ -1,5 +1,8 @@
-can't extract info because the application doesn't return SQL data or
-descriptive errors.
+# blind SQLi
+
+
+can't extract info directly because the application's http responses don't return the result
+of SQL quires or database errors.
 
 yet they could be exploited to get unauthorized data.
 
@@ -7,17 +10,21 @@ Examine:
 
 send SQLi payloads and observe the behavior:
 
-  * boolean based: injecting test conditions that return either true or false;
-  slowly inferring the structure of the database.
+  * boolean based:
 
-  * time based: focusing on response time difference of different payloads by
-  triggering a time delay. if the delay occurs means the query worked.
-	
+  injecting test conditions that return either true or false;slowly inferring the
+  structure of the database.
+
+  * time based:
+
+  focusing on response time difference of different payloads by triggering a time delay.
+  if the delay occurs means the query worked.
+
   - trigger an out of band network interaction
 
 Exploit:
 
-exfiltration:
+## exfiltration:
 
 store info somewhere on the local machine:
 
@@ -25,39 +32,41 @@ store info somewhere on the local machine:
 
 then request the file: `https://example.com/output.txt`
 
-
-it's http responses do not contain the results of the relevant SQL query or the
-details of db errors.
-
 ## exploit by triggering conditional responses
 
-when application uses *tracking cookies* the application uses a SQL query to
-determine if this is a known user:
+EX:
+
+if an application uses tracking cookies there will be an SQL query to identify possible
+    known users:
 
 `SELECT TrackingId FROM TrackedUsers WHERE TrackingId = 'u5YD3PapBcR4lN3e7Tj4'`
 
-the results aren't returned to the user. but the application behaves
-differently depending on the returned data. e.g. it might show a welcome back
-message.
+the application behaves differently depending on the returned data. e.g. it might show a
+welcome back message.
 
-How to:
+payload:
 
-Using and `AND` condition, if it's true, the expected action would happen (a
-welcome message will be displayed), other wise, it's not true.
+Using an `AND` condition, if it's true, the expected action would happen (a welcome message
+will be displayed), other wise, it's not true:
+
+1.
 
 `TrackingId=EGsveqHgcMpxwCB8' AND '1'='1;` this returns a welcome back message
 `TrackingId=EGsveqHgcMpxwCB8' AND '1'='2;` this doesn't
+
+2.
 
 `xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 'm`
 
 this return a welcome back message indicating that the first character of
 password is greater than `m`.
 
-use `' AND (SELECT 'a' FROM users LIMIT 1) = 'a'--` to determine if the `users`
-table exists. the rest will always be true, (a=a).
+3.
 
-`LIMIT 1` because it cannot compare a set of results (multiple rows) to
-a single value.
+use `' AND (SELECT 'a' FROM users LIMIT 1) = 'a'--` to determine if the `users` table
+exists. the rest will always be true, (a=a).
+
+`LIMIT 1` because it cannot compare a set of results (multiple rows) to a single value (a).
 
 ## bruteforce
 
@@ -65,13 +74,13 @@ Using SUBSTRING:
 
 `SELECT SUBSTRING(password,{index},1) FROM users WHERE USERNAME='administrator') = '{c}' --`
 
-you should check every index, one by one for the new character, not the appended value.
+you should check every index, one by one for the new character.
 
 ## Error-based SQL injection
 
-use error messages to either extract or infer sensitive data from the database.
-The possibilities depend on the configuration of the database and the types of
-errors you're able to trigger.
+use error messages to either extract or infer sensitive data from the database. The
+possibilities depend on the configuration of the database and the types of errors you're
+able to trigger.
 
 ### Exploiting blind SQL injection by triggering conditional errors
 

@@ -1,6 +1,5 @@
 # sqlInjection
 
-
 finding a functionality that at some point interacts with a database; then
 trying to get it to do other stuff than intended.
 
@@ -9,7 +8,8 @@ trying to get it to do other stuff than intended.
 https://portswigger.net/web-security/sql-injection/cheat-sheet
 
 send these, and look for errors, differences or other anomalies in the response:
-* `'` 
+
+* `'`
 - payloads that could trigger a delay.
 - boolean conditions: `OR 1=2` or `OR 1=1`
 - payloads to trigger out-of-band network interactions.

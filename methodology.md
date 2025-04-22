@@ -1,5 +1,8 @@
 # methodology
 
+* maybe one of the best ways to think/implement methodologies is by coding it. somehow it
+  seems alot more obvious.
+
 * look at the target and think what type of bug makes sense given the application's
   functionality.
 
@@ -8,6 +11,7 @@
 
 we used a combination of public records and network scripts to dis‐
 cover undocumented API endpoints.
+
 ## first looks
 
 Glance over everything, learn new techs, understand what is happening, but don't get too
@@ -20,11 +24,9 @@ use burp and look more.
 not too popular
 not too advanced/ big
 
-
-
 # [[bug_bounty_recon]]
 
-## take notes of 
+## take notes of
 
 technology used:
 
