@@ -22,28 +22,25 @@ so you will first identify an entry point to the database, then how you could ex
 
 maybe most different on the feedback method.
 
-## classic:
-
-
 if an application is vulnerable to SQL injection, and the results are returned
 within the application's responses.
 
-1. error based: triggers error in the database to collect info:
+## [[SQLi Error Based]]
 
-  - `CONVERT((SELECT Password FROM Users WHERE Username="admin"), DATE);`
-  
-  * getting hidden data:
-    * sql comments: `--` => `''+OR+1=1--` [[sqli examples#sqli in WHERE clause| in WHERE clause to get hidden data]].
-	
-  * changing application logic:
-    * mysql payload: `uname=' or 1=1;` or perhaps `#` to [[sqli examples#allowing login bypass | login bypass]].
-	
-2. [[UNION based SQLi]] : concatenate queries to get data from other tables in the databse.
+triggers error in the database to collect info: `''+OR+1=1--`
+## [[SQLi UNION]]
 
+concatenate queries to get data from other tables in the database.
 
-3. stacked queries
+## [[SQLi Blind]]
 
-* In SQL, multiple statements, separated by semicolon (;) can be
+##  stored sqli (second order):
+
+sometimes the payload might be kept in the database and called later.
+
+## stacked queries
+
+In SQL, multiple statements, separated by semicolon (;) can be
   included in one statement string.
 
 ```sql
@@ -51,15 +48,6 @@ within the application's responses.
   FROM employee
   WHERE eid= 'a'; DROP DATABASE dbtest;
 ```
-  
-* encode stuff
-
-## [[blind SQLi]]
-
-##  stored sqli (second order):
-
-sometimes the payload might be kept in the database and called later.
-
 
 # get more info of the database
 
@@ -67,7 +55,7 @@ infer the database version and type based on the payloads that work.
 
 https://portswigger.net/web-security/sql-injection/cheat-sheet
 
-[[UNION based SQLi#get *table information* using UNION based attacks| get table information using UNION based attacks]]
+[[SQLi UNION#get *table information* using UNION based attacks| get table information using UNION based attacks]]
 # defenses used against SQLi
 
   * prepared statements: so that the malicious part doesn't compile and
