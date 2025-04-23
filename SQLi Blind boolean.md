@@ -1,18 +1,17 @@
+if an application uses tracking cookies there will be an SQL query to
+identify possible known users:
 
-EX:
-
-if an application uses tracking cookies there will be an SQL query to identify
-possible known users:
+code:
 
 `SELECT TrackingId FROM TrackedUsers WHERE TrackingId = 'u5YD3PapBcR4lN3e7Tj4'`
 
-the application behaves differently depending on the returned data. e.g. it might show a
-welcome back message.
+the application behaves differently depending on the returned data. e.g. it
+might show a welcome back message.
 
 payload:
 
-Using an `AND` condition, if it's true, the expected action would happen (a welcome message
-will be displayed), other wise, it's not true:
+Using an `AND` condition, if it's true, the expected action would happen (a
+welcome message will be displayed), other wise, it's not true:
 
 1.
 
@@ -23,8 +22,8 @@ will be displayed), other wise, it's not true:
 
 `xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 'm`
 
-this return a welcome back message indicating that the first character of
-password is greater than `m`.
+returns a welcome back message indicating that the first character of password
+is greater than `m`.
 
 3.
 
