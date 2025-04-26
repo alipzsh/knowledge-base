@@ -29,8 +29,8 @@ IP address.
                    `AS`
 ### ASN
 
-collections of networks assigned to a company; use `https://www.bgp.he.net/`.
-(sometimes, not finding anything?)
+collections of networks assigned to a company; use .
+(sometimes, not finding anything?)`https://www.bgp.he.net/`
 
 bgphe.net copy > bgp.sh (to clean the ASNs) > amass intel (to get domains)
 

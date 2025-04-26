@@ -13,3 +13,7 @@ if tmux ls &>/dev/null; then
 else
     echo "no tmux session"
 ```
+
+- instead of tr:
+
+tab seperated into comma seperated: `paste -sd, bgp`
