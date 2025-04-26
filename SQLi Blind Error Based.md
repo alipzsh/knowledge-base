@@ -12,7 +12,7 @@ modify the query to cause a database error, infer stuff depending on whether a S
 
 `CASE` evaluates to `a`, no error.
 
-2. 
+2.
 `xyz' AND (SELECT CASE WHEN (1=2) THEN 1/0 ELSE 'a' END)='a`
 `xyz' AND (SELECT CASE WHEN (1=1) THEN 1/0 ELSE 'a' END)='a`
 

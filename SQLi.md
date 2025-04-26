@@ -25,6 +25,7 @@ within the application's responses.
 ## [[SQLi Error Based]]
 
 triggers error in the database to collect info: `''+OR+1=1--`
+
 ## [[SQLi UNION]]
 
 concatenate queries to get data from other tables in the database.
@@ -47,6 +48,8 @@ In SQL, multiple statements, separated by semicolon (;) can be
   FROM employee
   WHERE eid= 'a'; DROP DATABASE dbtest;
 ```
+
+in sqlite if the code uses `executescript()`, multiple statements via ; are allowed.
 
 # [[bypass blocks]]
 

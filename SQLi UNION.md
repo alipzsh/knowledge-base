@@ -6,15 +6,21 @@ original query:
 
 EX:
 
-`SELECT a, b FROM table1 UNION SELECT c, d FROM table2`
+1. `SELECT a, b FROM table1 UNION SELECT c, d FROM table2`
 
 returns a single result set with two columns, containing a,b,c,d columns.
 
   * every individual query must return the same number of columns.
   * data types in each column must be compatible between the individual queries.
 
+2.
+
+source: `SELECT username FROM users WHERE username LIKE "{input}"`
+payload: `' UNION SELECT password FROM users WHERE username='admin`
+
 EXAMINE:
-## find returned column count 
+
+## find returned column count
 
 use `ORDER BY` or `UNION SELECT NULL --`. [[SQLi UNION Column Count| details]]
 
