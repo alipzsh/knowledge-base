@@ -78,3 +78,26 @@ encoding.
 `Trailor` lists the headers that will be sent after the end of chunked messages, like MD5.
 
 `location` redirect URL
+
+EX:
+
+HTTP/2 404 Not Found
+Date: Sat, 26 Apr 2025 23:18:49 GMT
+Content-Type: text/html; charset=iso-8859-1
+Content-Length: 196
+X-Cache: MISS
+Access-Control-Allow-Origin: 
+Access-Control-Allow-Credentials: true
+
+- The server is **alive** and **responding**.
+    
+- You **didn’t hit a WAF** (no fancy "Access Denied" page).
+    
+- **Resource just doesn't exist** (normal 404, not a security block).
+    
+- Because `X-Cache: MISS`, it wasn't cached — it genuinely checked and didn't find the resource.
+
+
+- Cache Control: The max-age=0 means the client should not use a cached version of the resource. This is useful for ensuring that fresh data is always served, but if not properly implemented, caching could leak sensitive information if responses aren’t correctly protected.
+
+- ETag Header: This header allows the server to check if a resource has changed since the client’s last request. If used improperly, ETags could lead to cache poisoning or information leakage. If the ETag is tied to user-specific information, it might allow an attacker to infer private data based on mismatched or predictable ETags.

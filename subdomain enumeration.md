@@ -17,6 +17,9 @@ Subdomain enumeration is dependent on DNS, as subdomains are registered in DNS r
 
 to do it in active mode:
 
+`assets=$(cut -d',' -f1 assets.csv | tail -n +2 | sed 's/^\*\.\(.*\)/\1/' | paste -sd,)`
+
+`amass enum -active -d $assets ${asns:+-asn $asns} ${cidrs:+-cidr $cidrs} -o enum_bgp -nocolor`
 `amass enum -active -d <domain> -o <output> -nocolor`
 
 different options:
@@ -44,4 +47,4 @@ then use curl and `httpx` to check which ones and are UP.
 
 ##### then you could clean more:
 
-EX: to get 200 or 300s: `cat * | grep -E '(2[0-9]{2}|3[0-9]{2}) | cut -d " " -f 1'
+EX: to get 200 or 300s: `cat * | grep -E '(2[0-9]{2}|3[0-9]{2})' | cut -d " " -f 1'

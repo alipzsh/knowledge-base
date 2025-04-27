@@ -40,6 +40,12 @@ try other stuff with amass.
 ASN (IP space owned by an organization) → IP Range (addresses owned) → CIDR (compact
 representation of range).
 
+### AMASS INTEL
+
+`amass intel -asn $asns -cidr $cidrs`
+
+to get the root domains in ASNs and IP ranges
+
 ### certificate parsing
 
 find host names that use the same certificate `https://crt.sh/?q=facebook.com&output=json`

@@ -13,8 +13,6 @@ I can't get them from my headless server. but can from the local:
 `cat report | grep -Eo 'target=http[s]?://[^ ]* status-code=200'` to get 200.
 # issues
 
-## gowitness
-
 to try to fix errors, make it simple:
   * `gowitness scan single --url "http://google.com" --screenshot-fullpage --write-stdout`
   * check if you could do this on the network without issue.

@@ -15,5 +15,10 @@ else
 ```
 
 - instead of tr:
-
 tab seperated into comma seperated: `paste -sd, bgp`
+ 
+- `${asns:+-asn $asns}`
+conditionally add a string (in this case, -asn $asns) to the command if the variable asns is non-empty.
+
+- `tail -n +2` means:
+"Start printing from line 3 onward."
