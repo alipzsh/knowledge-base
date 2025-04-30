@@ -1,14 +1,14 @@
-
+[[xss]]
+[[SQLi]]
 [[IDOR]]
 [[path_traversal]]
 [[authentication]]
-[[xss]]
 [[BrokenAccessControl]]
 [[insecureDeserialization]]
 [[logic_flaw]]
 [[SSRF]]
 [[fileUpload]]
+[[fileInclusion]]
 xxe
 command_injection
-sqlInjection
 ssti

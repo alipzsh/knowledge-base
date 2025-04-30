@@ -3,8 +3,9 @@
 [[html| how to interpret html code to send a request]]
 
 * send a GET request: `curl <IP>`
-* `--header`: http header request
+* `--header`: to add http header request
 * `-i`: to get headers alongside the response
+- `-I`: shows only the request's headers
 * `-k`: allow connections to ssl sites without certificates.
 * `-s`: silent mode, not to show progress or error messages.
 * `--max-time 5`: set the maximum time in seconds that you allow the whole operation to

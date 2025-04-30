@@ -42,7 +42,7 @@ different options:
 
 then use curl and `httpx` to check which ones and are UP.
 
-* `httpx -list subdomains -timeout 10 -status-code -silent"`
+* `httpx -list unique_subs -timeout 10 -status-code -silent -o unique_subs_httpx -no-color`
 * `httprobe` could be good to try.
 
 ##### then you could clean more:

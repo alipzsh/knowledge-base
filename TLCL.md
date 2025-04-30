@@ -382,54 +382,7 @@ done
 
 to get a list of positional parameters, use `"$@"`: if used with double quotes, it will separate each double quoted string, if not, each will be considered a separate positional argument separated by space.
 
-# Flow Control with `if`
 
-to evaluate the exit status of a command, like grep:
-
-`if true; then <...> else <...> fi`
-
-
-* test:
-  test expression
-  [ expression ]
-
-`if [ $(grep -c "Baeldung" /projects) -eq 1 ]`
-
-  returns: 0,1
-
-* file expressions: to evaluate the status of files.
-
-```bash
-if [ -x "$FILE" ]; then
-  echo "$FILE is executable/searchable."
-elif [] ;then
-else
-
-fi
-  ```
-  
-* string expressions
-
-* integer expressions
-
-```bash
-  if [ $((INT % 2)) -eq 0 ]; then
-    echo "INT is even."
-  else
-    echo "INT is odd."
-  fi
-```
-
-* `if [ $? -eq 0 ]; then` checks the exit status of the previous command
-
-* `$$` contains the current process's ID.
-
-This is useful when you need to create temporary files for the script. If you
-have multiple instances of the same script or program running at the same
-time, each might need its own temporary files. In this case, you can create
-temporary files named /tmp/script_name_$$ for every one of them.
-
-* one liner: `if [ a == a ]; then echo "t"; else echo "f"; fi`
 
 # useful combinations
 
@@ -552,6 +505,11 @@ at least one of these.
 
 `sed -n '/^[0-9]/s:/README.md::p'`
 `s:/README.md::` Removes `/README.md` from matching lines.
+
+(?<=...) is called a positive lookbehind in regular expressions.
+What it does:
+
+It ensures that a specific pattern comes before your match — but it doesn't include that pattern in the actual match result.
 
 ## awk
 

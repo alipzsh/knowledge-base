@@ -8,119 +8,63 @@
         "type": "tabs",
         "children": [
           {
-            "id": "fd2b4debe24e7800",
+            "id": "bd7e84d1fe1d395b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "bug_bounty_recon.md",
+                "file": "ferrero.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "bug_bounty_recon"
+              "title": "ferrero"
             }
           },
           {
-            "id": "df696f7529416164",
+            "id": "edf359916d469726",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "gowitness.md",
+                "file": "vulnerabilities.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "gowitness"
+              "title": "vulnerabilities"
             }
           },
           {
-            "id": "c9da2fe5598d3b3b",
+            "id": "506957cc29a63cbe",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "subdomain enumeration.md",
+                "file": "IDOR.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "subdomain enumeration"
+              "title": "IDOR"
             }
           },
           {
-            "id": "3b569ddb314ce497",
+            "id": "766f31c12afee5e3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "http.md",
+                "file": "path_traversal.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "http"
-            }
-          },
-          {
-            "id": "86c9684a1b9896f3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "bypass xss filters.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "bypass xss filters"
-            }
-          },
-          {
-            "id": "9c7cd056f8aa7d72",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "useful bash.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "useful bash"
-            }
-          },
-          {
-            "id": "e7f231e68b0bac03",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "TLCL.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "TLCL"
-            }
-          },
-          {
-            "id": "6f02dbea89c5a7b7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "bash IF statement.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "bash IF statement"
+              "title": "path_traversal"
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -152,8 +96,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "if statement",
-                "matchingCase": true,
+                "query": "inclusion",
+                "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -173,7 +117,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -269,35 +214,36 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6f02dbea89c5a7b7",
+  "active": "edf359916d469726",
   "lastOpenFiles": [
-    "TLCL.md",
-    "useful bash.md",
-    "bypass xss filters.md",
-    "http.md",
-    "gowitness.md",
+    "path_traversal.md",
+    "IDOR.md",
+    "vulnerabilities.md",
+    "authentication.md",
+    "BrokenAccessControl.md",
+    "fileUpload.md",
+    "fileInclusion.md",
+    "SSRF.md",
+    "logic_flaw.md",
+    "ferrero.md",
+    "methodology.md",
     "bug_bounty_recon.md",
+    "API analysis.md",
     "subdomain enumeration.md",
-    "scope discovery.md",
-    "cmds.md",
-    "SQLi.md",
-    "SQLi Error Based.md",
-    "bypass blocks.md",
-    "obfuscating attacks.md",
-    "SQLi Routed.md",
-    "SQLi Blind Time Delays.md",
-    "SQLi Blind.md",
-    "SQLi Blind Error Based.md",
-    "SQLi Blind boolean.md",
-    "SQLi UNION.md",
-    "Untitled 1.md",
-    "SQLi UNION Column Count.md",
-    "SQLi UNION Compatible Column.md",
-    "sqlInjection.md~",
-    "js.md",
-    "sqli examples.md",
-    "lamp.md",
+    "crawl.md",
+    "crawling/spidering.md",
+    "crawling",
+    "gobuster.md",
+    "TLCL.md",
+    "grep.md",
+    "chemistry.md",
     "curl.md",
+    "http.md",
+    "directory enumeration.md",
+    "gowitness.md",
+    "bash IF statement.md",
+    "useful bash.md",
+    "sqlInjection.md~",
     "xss.md~",
     "XSS_examples.md~",
     "xss.md#vimwiki_upd#",
@@ -306,7 +252,6 @@
     "bypass xss filters.md~",
     "folder/READM1E.py.md~",
     "folder",
-    "XSS html tags.md~",
     "corebridge.canvas",
     "Pasted image 20250312050300.png",
     "Pasted image 20250312050228.png",

@@ -4,35 +4,12 @@
 
 [[scope discovery]]
 [[subdomain enumeration]]: host => subdomains
+[[crawl]]
 [[gowitness]]: working subdomains => screenshots of them => interesting subdomains
-[[API analysis]]
 [[directory enumeration]]: interesting subdomains => content discovery
 [[port scanning]] more info on interesting subdomains
 
-## crawling/spidering
-
-on the whole or maybe on an interesting subdomains spider for more info and parameters that
-pass data.
-
-something like this: `domians | httpx | katana`
-
-
-an example of the whole process:
-
-```
-cat subs.txt | httpx-toolkit -o urls.txt  
-  
-cat urls.txt | waybackurls > wayback_urls  
-  
-cat urls.txt | katana -o katana_urls  
-  
-cat urls.txt | gauplus > gauplus_urls
-
-cat wayback_urls katana_urls gauplua_urls | sort -u | uro | urless > filtered_endpoints.txt
-
-```
-
-then you can filter it even more for specific stuff: `cat filtered_endpoints.txt | grep /api/`
+[[API analysis]]
 
 # next:
 

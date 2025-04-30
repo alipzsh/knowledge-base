@@ -50,3 +50,9 @@ significant number of layers (hence likely to have a lower ratio of secu‐ rity
 mechanisms to layers). If you can isolate and determine what functionality meets
 this criteria, it should be prioritized over the rest when looking for
 vulnerabilities; it is more likely to be exploitable.
+
+## automate chained requests
+
+export multiple requests in burp as xml.
+use python to parse them.
+use python to manipulate and send requests.
