@@ -127,11 +127,6 @@ nmap
 * `-oA`: output to file
 * `-v`: increased verbosity, more info
 
-# `diff [file1] [file2]`; compare files
-
-  * `-u`: unified format
-  * `-c`: context format
-  * `-y`: compares side by side
 
 `sort [file1] [file2] | uniqe -u`
 
