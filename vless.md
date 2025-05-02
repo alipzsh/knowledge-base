@@ -8,24 +8,16 @@ just copy the default configs from nekoray.
 
 # TODO
 
+## needed functionalities
 
-1. add a delay test for each config, and maybe remove things that don't work?
- 
-2. statistics based on the protocols (reality or otherwise, ws or grpc), so
- that you won't waste time on them later.
+test the subscription:
+	1. keep the ones that work
+	2. sort based on delay
+	3. save the working ones somewhere
+	4. will need to test them later, so load and test them so:
+		1. don't test them immediately after parsing and save them/ load them first?
+	5. keep the static parts separate, so when testing, you could use multiple ports in parallel, also easier save and load.
+		
 
-3. later on, think of how you could update stuff and not repeat the whole process (should keep track of stuff)
-	
-4. should I just save it as a list or before splliting it (curl "link" | base64 -d) then diff it?
-
-5. how to make testing faster? use multiple ports? to do them in parallel and perhaps a much better way to store them is not to store the static parts?
-
-6. I will also need to test the working ones every once in a while.
-
-7. save the hash of stuff that wouldn't work? save the hash of everything? to check for update?
-
-8. sort based on delay
-
-9. someway to keep track of stuff, remove them or otherwise if they didn't work.
-
-10. later on, update stuff.
+update a subscription:
+	1. only parse/ test new configurations, not the ones that are already tested (removed or not)
