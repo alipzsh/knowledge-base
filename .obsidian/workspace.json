@@ -138,7 +138,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "vless",
+                "query": "file:python",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -164,7 +164,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 316.5
+    "width": 316.5,
+    "collapsed": true
   },
   "right": {
     "id": "20f060bf07009e92",
@@ -256,8 +257,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "fc2d1b1f87a25d83",
+  "active": "1dce960bd953b8e0",
   "lastOpenFiles": [
+    "python requests.md",
     "vless.md",
     "Untitled 1",
     "Untitled",
@@ -286,7 +288,6 @@
     "curl.md",
     "http.md",
     "directory enumeration.md",
-    "gowitness.md",
     "sqlInjection.md~",
     "xss.md~",
     "XSS_examples.md~",
