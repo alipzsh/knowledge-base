@@ -11,13 +11,22 @@ just copy the default configs from nekoray.
 ## needed functionalities
 
 test the subscription:
-	1. keep the ones that work
+	1. how to save outbounds without repeated names.
 	2. sort based on delay
-	3. save the working ones somewhere
-	4. will need to test them later, so load and test them so:
-		1. don't test them immediately after parsing and save them/ load them first?
-	5. keep the static parts separate, so when testing, you could use multiple ports in parallel, also easier save and load.
-		
+	3. use multiple ports on parallel.
+	4. remove old tested configs
 
-update a subscription:
-	1. only parse/ test new configurations, not the ones that are already tested (removed or not)
+#TODO: sort based on dealy, add IPs. maybe don't save them in
+                    # seperate files? save them in a list? also save a time, so you
+                    # know the newer ones.
+                    # also you can't just save based on the index, it could be repeated
+
+
+#TODO: add multiple modes of working: 
+			1. input sublink
+			2. directly getting a link to test
+			3. getting a list of working subs. (ordered based on delay and last tested)
+			4. testing the previously working subs again.
+
+
+- to make it more efficient; while testing, I will pipe the configuration to stdin. also I will have to do this when retesting configurations anyways because I will only keep outbound. (but even if I didn't, there would be much less working configurations to read anyways.)
