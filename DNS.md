@@ -8,7 +8,7 @@ what it does:
   * load distribution: among replicated servers, each with different IP
     address. a set of IP addresses is associated with one alias
     hostname.
-    
+
     clients get the whole set in rotated order and usually use the first
     one.
 

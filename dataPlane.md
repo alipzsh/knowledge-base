@@ -305,7 +305,7 @@ destination address is delivered to all hosts on the same subnet.
  the client can renew it's lease on the IP address.
 
 
-* NAT: 
+* NAT:
  * e.g: 10.0.0.0/24 subnet address, used by devices within the network
         10.0.0.0/8  reserved for a private network or a realm with
         private addresses

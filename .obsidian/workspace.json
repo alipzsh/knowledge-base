@@ -4,21 +4,98 @@
     "type": "split",
     "children": [
       {
-        "id": "c1e70fef48e77ec3",
+        "id": "852fce8e9c7ced38",
         "type": "tabs",
         "children": [
           {
-            "id": "1dce960bd953b8e0",
+            "id": "a6bbf8122ffde7ea",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "vless.md",
+                "file": "vulnerabilities.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "vless"
+              "title": "vulnerabilities"
+            }
+          },
+          {
+            "id": "c503ee4cf3232dfe",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "xss.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "xss"
+            }
+          },
+          {
+            "id": "ca51baf98a00a403",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "stored XSS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "stored XSS"
+            }
+          },
+          {
+            "id": "f54eff3f2455584d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Reflected XSS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Reflected XSS"
+            }
+          },
+          {
+            "id": "41bd03ae53447697",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DOM-based XSS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DOM-based XSS"
+            }
+          }
+        ],
+        "currentTab": 2
+      },
+      {
+        "id": "d3e8c5bdc659a59c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "33b90a8e0f8eca0f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "automation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "automation"
             }
           }
         ]
@@ -53,7 +130,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:python",
+                "query": "file: vulnerabili",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,8 +151,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -172,44 +248,44 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1dce960bd953b8e0",
+  "active": "33b90a8e0f8eca0f",
   "lastOpenFiles": [
-    "path_traversal.md",
+    "stored XSS.md",
+    "automation.md",
+    "DOM-based XSS.md",
+    "xss.md",
+    "Reflected XSS.md",
+    "exploit XSS.md",
+    "XSS html tags.md",
+    "vulnerabilities.md",
+    "BrokenAccessControl.md",
+    "authentication.md",
+    "transport_layer.md",
+    "dataPlane.md",
+    "DNS.md",
+    "books.md",
+    "ip.md",
+    "dataPlane.md~",
+    "ssh.md",
+    "v2ray.md",
     "vless.md",
+    "path_traversal.md",
     "IDOR.md",
     "python requests.md",
     "Untitled 1",
     "Untitled",
     "cmds.md",
     "TLCL.md",
-    "vulnerabilities.md",
-    "authentication.md",
-    "BrokenAccessControl.md",
     "fileUpload.md",
     "fileInclusion.md",
     "SSRF.md",
-    "logic_flaw.md",
-    "ferrero.md",
-    "methodology.md",
-    "bug_bounty_recon.md",
-    "API analysis.md",
-    "subdomain enumeration.md",
-    "crawl.md",
-    "crawling/spidering.md",
     "crawling",
-    "gobuster.md",
-    "grep.md",
-    "chemistry.md",
-    "curl.md",
-    "http.md",
-    "directory enumeration.md",
     "sqlInjection.md~",
     "xss.md~",
     "XSS_examples.md~",
     "xss.md#vimwiki_upd#",
     "taking advantage.md~",
     "4913",
-    "bypass xss filters.md~",
     "corebridge.canvas",
     "Pasted image 20250312050300.png",
     "Pasted image 20250312050228.png",
