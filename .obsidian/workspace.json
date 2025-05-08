@@ -4,101 +4,53 @@
     "type": "split",
     "children": [
       {
-        "id": "852fce8e9c7ced38",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "a6bbf8122ffde7ea",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "vulnerabilities.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "vulnerabilities"
-            }
-          },
-          {
-            "id": "c503ee4cf3232dfe",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "xss.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "xss"
-            }
-          },
-          {
-            "id": "ca51baf98a00a403",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "stored XSS.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "stored XSS"
-            }
-          },
-          {
-            "id": "f54eff3f2455584d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Reflected XSS.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Reflected XSS"
-            }
-          },
-          {
-            "id": "41bd03ae53447697",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DOM-based XSS.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "DOM-based XSS"
-            }
-          }
-        ],
-        "currentTab": 2
-      },
-      {
         "id": "d3e8c5bdc659a59c",
         "type": "tabs",
         "children": [
           {
-            "id": "33b90a8e0f8eca0f",
+            "id": "87428b7c0fbb4791",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "automation.md",
+                "file": "to get the job.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "automation"
+              "title": "to get the job"
+            }
+          },
+          {
+            "id": "7698305a59fbaa81",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dot-files, scripts, backup.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "dot-files, scripts, backup"
+            }
+          },
+          {
+            "id": "ba043ce78d1e745c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lxc.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "lxc"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -130,7 +82,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file: vulnerabili",
+                "query": "lxc",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -151,7 +103,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -248,13 +201,16 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "33b90a8e0f8eca0f",
+  "active": "ba043ce78d1e745c",
   "lastOpenFiles": [
-    "stored XSS.md",
-    "automation.md",
+    "dot-files, scripts, backup.md",
     "DOM-based XSS.md",
-    "xss.md",
     "Reflected XSS.md",
+    "stored XSS.md",
+    "xss.md",
+    "to get the job.md",
+    "automation.md",
+    "automation.md~",
     "exploit XSS.md",
     "XSS html tags.md",
     "vulnerabilities.md",
@@ -277,15 +233,12 @@
     "cmds.md",
     "TLCL.md",
     "fileUpload.md",
-    "fileInclusion.md",
-    "SSRF.md",
     "crawling",
     "sqlInjection.md~",
     "xss.md~",
     "XSS_examples.md~",
     "xss.md#vimwiki_upd#",
     "taking advantage.md~",
-    "4913",
     "corebridge.canvas",
     "Pasted image 20250312050300.png",
     "Pasted image 20250312050228.png",

@@ -1,17 +1,21 @@
 # lxc
 `
 apt install lxc
-lxc-create -n myContainer -t ubuntu  # more options, check the website
+lxc-create -n myContainer -t ubuntu  # for more options, check the website
 lxc-start -d -n myContainer
 lxc-attach -n myContainer
 exit
 `
 -d: detach
 
-`lsc-ls --fancy` to check the status
+`sudo lxc-ls --fancy` to check the status
 
 access it through host: /var/lib/lxc
 
+
+- remove a container: 
+	- stop if running: `lxc-stop -n <container_name>`
+	- ``sudo lxc-destroy -n test mycontainer`
 # ufw configuration
 
 sudo ufw allow in on lxcbr0
