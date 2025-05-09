@@ -1,5 +1,6 @@
 - bootstrap scripts for new system setup
 - Configuration template for machine-specific settings so you could have slightly different stuff on different machines.
+- I am going to use Git a lot, learn how to unfuck things, getting to the previous changes.
 
 ## methods of backing up dotfiles
 
@@ -8,7 +9,7 @@
 
 this seems good. but how is it different from other stuff.
 
-also add your scripts to `~/bin` or `~/.loal/bin` 
+also add your scripts to `~/bin` or `~/.loal/bin`
 
 - use symlinks
 # where to put scripts

@@ -277,13 +277,12 @@ assigning multiple values
 `for i in "${animals[@]}"; do echo $i; done` each element in one line
 `echo ${#a[@]}`  # number of array elements
 `echo ${#a[100]}`  # length of element 100
-`for i in "${!foo[@]}"; do echo $i; done` returns the indexes in an array that
-actually have a value
-`foo+=(d e f)` append, it should be inside `()`
 
-``
-a_sorted=($(for i in "${a[@]}"; do echo $i; done | sort))
-`` 
+`for i in "${!foo[@]}"; do echo $i; done` returns the keys in an array that actually have a value
+`${foo[@]}` get the values.
+
+`foo+=(d e f)` append, it should be inside `()`
+`a_sorted=($(for i in "${a[@]}"; do echo $i; done | sort))`
 
 sorts the array
 
