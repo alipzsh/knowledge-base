@@ -1,3 +1,10 @@
+automation methods:
+
+fuzzing and payload injection:
+
+- have a list of all the payloads
+- use headless browsers: selenium, puppeteer or playwright (specially for DOMs)
+- optionally use ffuf, nuclei
 # XSS
 
 - look for points of data entry:

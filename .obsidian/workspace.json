@@ -20,8 +20,51 @@
               "icon": "lucide-file",
               "title": "dot-files, scripts, backup"
             }
+          },
+          {
+            "id": "ccd169cb1faad6a6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "automation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "automation"
+            }
+          },
+          {
+            "id": "03f0dfc43a9417c6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "useful python stuff.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "useful python stuff"
+            }
+          },
+          {
+            "id": "a4ee0f2dde3238bf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "python.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "python"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -53,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "dot",
+                "query": "file: python",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -79,8 +122,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 316.5,
-    "collapsed": true
+    "width": 316.5
   },
   "right": {
     "id": "20f060bf07009e92",
@@ -172,16 +214,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b8f0bef156283bbf",
+  "active": "03f0dfc43a9417c6",
   "lastOpenFiles": [
-    "to get the job.md",
+    "python.md",
+    "useful python stuff.md",
+    "automation.md",
     "dot-files, scripts, backup.md",
+    "dataPlane.md",
+    "to get the job.md",
     "lxc.md",
     "DOM-based XSS.md",
     "Reflected XSS.md",
     "stored XSS.md",
     "xss.md",
-    "automation.md",
     "automation.md~",
     "exploit XSS.md",
     "XSS html tags.md",
@@ -189,7 +234,6 @@
     "BrokenAccessControl.md",
     "authentication.md",
     "transport_layer.md",
-    "dataPlane.md",
     "DNS.md",
     "books.md",
     "ip.md",
@@ -202,8 +246,6 @@
     "python requests.md",
     "Untitled 1",
     "Untitled",
-    "cmds.md",
-    "TLCL.md",
     "crawling",
     "sqlInjection.md~",
     "xss.md~",

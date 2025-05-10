@@ -23,3 +23,5 @@ encoded = base64.b64encode(result.stdout).decode("utf-8")
 
 
 a set of characters: `charset = string.ascii_lowercase`
+
+- use beautifulsoup to get stuff like this: `soup.find_all('form')`
