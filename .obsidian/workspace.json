@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "curl proxy",
+                "query": "todo",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -79,8 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 316.5,
-    "collapsed": true
+    "width": 316.5
   },
   "right": {
     "id": "20f060bf07009e92",
@@ -174,9 +173,10 @@
   },
   "active": "29f72e3949dc0d80",
   "lastOpenFiles": [
-    "automation.md",
-    "TODO.md",
     "curl.md",
+    "TODO.md",
+    "TLCL.md",
+    "automation.md",
     "python.md",
     "useful python stuff.md",
     "Untitled",
@@ -202,7 +202,6 @@
     "ssh.md",
     "v2ray.md",
     "vless.md",
-    "path_traversal.md",
     "Untitled 1",
     "crawling",
     "sqlInjection.md~",

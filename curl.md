@@ -25,6 +25,15 @@ curl -X POST http://10.10.11.38:5000/upload \
 * `--path-as-is`: not to merge sequences like `../`
 * `-L`: follow redirection
 * `curl --socks5-hostname 127.0.0.1:8089 http://sightless.htb` to use socks proxy
+
+if things don't work, be sure the proxy ports bindings are correct.
+- also `-x` for http proxy:
+
+```bash
+curl -x http://localhost:8089 ipinfo.io
+```
+
+
 * `-b`: request cookies
 
 * http basic authentication: `curl -u username=password -b title=data URL`
