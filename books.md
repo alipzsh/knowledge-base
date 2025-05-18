@@ -38,4 +38,6 @@ ch 10 upto but not DOM XSS
 
 # Linux administrator's handbook
 
-read a bit before but not sure which parts, and not that important anyways.
+is actually an amazing book that I have read a bit before but not much and got bored. I was at the very beggining of what I'm doing now, eventhough I was using linux as desktop.
+
+but now that I have read TLCL and done some security/sysadmin stuff and have more questions, I can get it a olot more.
