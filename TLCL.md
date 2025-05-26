@@ -170,16 +170,17 @@ while commands; do commands; done
     `break;` terminated the loop
     `continue` the remainder to be skipped and resumes the next iteration
 
-read files:
-`
-#!/bin/bash
-while read distro version release; do
-    printf "Distro: %s\tVersion: %s\tReleased: %s\n" \
-    "$distro" \
-    "$version" \
-    "$release"
-done < distros.txt
-`
+### bash read files:
+
+- use IFS to set delimiter, default is " ".
+
+- The shell allows one or more variable assignments to take place immediately
+before a command. These assignments alter the environment for the command that
+follows.
+
+```sh
+IFS=":" read user pw uid gid name home shell <<< $(grep "proxy" /etc/passwd); echo $user $pw $uid
+```
 
 `[[ -d "$dir_name" ]] && cd "$dir_name" && rm *` test if the directory exists,
 then remove the contests.

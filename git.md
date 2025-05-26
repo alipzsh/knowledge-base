@@ -38,6 +38,8 @@ git push -u <alias|ssh url> master
   if there are some changes, you could commit or stash them: `git stash`
   if you want to get the stashed stuff back: `git stash pop`
 
+- the alias can be origin or something else
+
 # to add and change a branch
 
 not the right way, but I created a branch in gui, then changed the default into it, git

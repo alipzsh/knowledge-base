@@ -3,8 +3,8 @@
   "showViewHeader": true,
   "nativeMenus": false,
   "cssTheme": "Material Gruvbox",
-  "interfaceFontFamily": "JetBrains Mono",
-  "textFontFamily": "JetBrains Mono",
-  "monospaceFontFamily": "JetBrains Mono",
-  "baseFontSize": 16
+  "interfaceFontFamily": "Iosevka Term SS15,JetBrains Mono",
+  "textFontFamily": "Iosevka Term SS15,JetBrains Mono",
+  "monospaceFontFamily": "Iosevka Term SS15,JetBrains Mono",
+  "baseFontSize": 17
 }
