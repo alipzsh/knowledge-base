@@ -1,6 +1,24 @@
 # lab
 
+## methods of installing vms
+
+- `virt-manager` from the host connected to the server.
+- `virt-install` command line
+- `qemu-system`
+
+## methods of auto installing os
+
+- using kickstart to install an OS
+- prebuilt cloud images
+	- you need cloud-init to setup username and password
+	
+
+--> run your configurations scripts --> clone the image
+
+[[qemu]]
+
 ## How to SSH into another computer?
+
   * use `sudo vi /etc/ssh/sshd_config`:
   
   	* uncomment and change `port 22` to some thing else.

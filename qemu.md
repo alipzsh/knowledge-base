@@ -1,4 +1,7 @@
+
+[[Linux storage]]
 # qemu
+
 `
 apt-get install --no-install-recommends qemu-system-x86
 
@@ -23,23 +26,59 @@ user = "$USER"
 group = "libvirt"
 `
 
-* not sure if qemu could be used to setup an iso and then start it
-  through gui. qemu's GUI is much better to use.
-
-  not necessary at the moment but virt-install seems interesting in that case.
-
-  on the other hand I can connect `virt-manager` through ssh which is a
-  much smoother experience than x11 forwarding.
-  without GUI, the ram usage is lower.
-
 * `virsh <start, shutdown, suspend> <vmName>`
 
-* a VM didn't work in anyway, which was the problem with that one.
+- using virt-install:
 
-  others work fine but I have to wait for them to load all the way.
+file="ISO/debian-trixie-DI-alpha1-amd64-netinst.iso"
 
-  it's not worth it to try things on qemu even though it's more pro, but
-  the one I tried didn't work on it.
+NAME=$(basename $file | cut -d- -f1)
+
+virt-install \
+  --connect qemu+ssh://dell@ubuntu:4646/system \
+  --name $NAME \
+  --memory 2048 \
+  --vcpus 1 \
+  --disk size=50 \
+  --cdrom /home/dell/$file \
+  --osinfo linux2022 \
+  --accelerate \
+  --hvm \
+
+
+to import a prebuilt disk
+
+virt-install \
+  --connect qemu+ssh://dell@ubuntu:4646/system \
+  --name $NAME \
+  --memory 1048 \
+  --vcpus 1 \
+  --disk /home/dell/$file \
+  --osinfo linux2022 \
+  --hvm \
+  --import
+
+
+An install method must be specified
+(--location URL, --cdrom CD/ISO, --pxe, --import, --boot hd|cdrom|...)
+for more info: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-guest_virtual_machine_installation_overview-creating_guests_with_virt_install#sect-Guest_virtual_machine_installation_overview-virt_install-network_installation 
+
+### using vboxmanage
+
+start and shutdown a vm:
+
+`
+vboxmanage list vms
+"myvm" {e4b0c92c-4301-4a7d-8af8-fe02fed00451}
+vboxmanage startvm myvm --type headless
+vboxmanage controlvm myvm poweroff
+`
+
+pause and resume:
+
+`
+vboxmanage controlvm mercury pause
+  `
 
 # cloning and snapshots
 
@@ -50,3 +89,10 @@ group = "libvirt"
 # resize the image:
 
 `qemu-img resize vm.qcow2 +10G`
+
+# Bridged network with a static IP address
+Bridged networking can also be used to configure the guest to use a static IP address. To configure a bridged network with a static IP address for the guest virtual machine, use the following options:
+Copy to Clipboard
+
+--network br0 \
+--extra-args "ip=192.168.1.2::192.168.1.1:255.255.255.0:test.example.com:eth0:none"

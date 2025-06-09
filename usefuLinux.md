@@ -1,40 +1,14 @@
 # usefuLinux
 
-## qemu
-
-virsh {start, suspend, resume, shutdown?, destroy}
-# virtualbox
-
-* get virtual box vm ip:
-  `
-  vboxmanage list hostonlyifs
-  vboxmanage list runningvms
-  vboxmanage showvminfo --details <uuid from previous command> | fgrep mac
-  vboxmanage dhcpserver findlease --interface vboxnet0 --mac-address=<>
-  `
-  `vboxmanage dhcpserver findlease --network natnetwork
-  --mac-address=08002783e8bb
-  `
-
-  or `# nmap -sn 192.168.4.1-254`
-
-* start and shutdown a vm:
-  `
-  vboxmanage list vms
-  "myvm" {e4b0c92c-4301-4a7d-8af8-fe02fed00451}
-  vboxmanage startvm myvm --type headless
-  vboxmanage controlvm myvm poweroff
-  `
-* pause and resume:
-  `
-  vboxmanage controlvm mercury pause
-  `
 
 # vim
 
 search and replace: `%s/<search-phrase>/<replace-phrase>`
 * whole file: `:%s/search_pattern/replace_pattern/g`
-* multi line: `:start_line,end_lines/search_pattern/replace_pattern/g`
+* multi line: `:{start_line},{end_line}s/search_pattern/replace_pattern/g`
+
+	* ```vi:.,$s/foo/bar/``` ., current line,  $ last line
+
 * confirm: `:%s/search_pattern/replace_pattern/gc`
 * case insensitive: `:%s/search_pattern/replace_pattern/gi`
 * in v mode: `:'<,'>s/foo/bar/g`
