@@ -1,16 +1,30 @@
 # lab
 
-## methods of installing vms
+## methods of installing/managing vms
 
-- `virt-manager` from the host connected to the server.
 - `virt-install` command line
-- `qemu-system`
+- `qemu-system` lower level
+- `virt-manager` from the host connected to the server.
 
-## methods of auto installing os
+## methods of auto deploying an ISO
 
-- using kickstart to install an OS
-- prebuilt cloud images
-	- you need cloud-init to setup username and password
+1. unattended installation from ISO: kickstart to install an OS
+
+2. prebuilt cloud images
+
+- cloud-init to setup username and password on the first boot
+- virt-customize: something like cloud init, but more.
+
+```sh
+$ virt-customize -a MY-CLOUD-IMAGE.qcow2 \
+    --root-password password:SUPER-SECRET-PASSWORD \
+    --uninstall cloud-init
+```
+
+`virt-sysprep` to clean customization
+
+	
+`guestfish`: to directly modify images offlie (e.g. files)
 	
 
 --> run your configurations scripts --> clone the image

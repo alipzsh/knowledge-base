@@ -91,8 +91,7 @@
               "title": "bridge"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -186,12 +185,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "qemu.md",
+                "file": "lab.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from qemu"
+              "title": "Outgoing links from lab"
             }
           },
           {
@@ -215,13 +214,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "qemu.md",
+                "file": "lab.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of qemu"
+              "title": "Outline of lab"
             }
           }
         ],
@@ -243,10 +242,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "420c9ba6b9c5404f",
+  "active": "89265801b13eb882",
   "lastOpenFiles": [
-    "lab.md",
     "qemu.md",
+    "lab.md",
     "usefuLinux.md",
     "Linux storage.md",
     "ssh.md",
