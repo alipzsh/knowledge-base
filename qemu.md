@@ -59,6 +59,9 @@ virt-install \
   --import
 
 
+sudo virt-install --install fedora29 --unattended
+
+
 An install method must be specified
 (--location URL, --cdrom CD/ISO, --pxe, --import, --boot hd|cdrom|...)
 for more info: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-guest_virtual_machine_installation_overview-creating_guests_with_virt_install#sect-Guest_virtual_machine_installation_overview-virt_install-network_installation 

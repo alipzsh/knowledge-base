@@ -8,6 +8,11 @@
 
 ## methods of auto deploying an ISO
 
+you could either clone an image or use the image as base and build on top of it
+(thin image, faster, less reason for lxc) which you could also turn into a flat image later.
+
+  Flatten the thin image before moving: `qemu-img convert -O qcow2 noble-thin.qcow2 noble-full.qcow2`
+
 1. unattended installation from ISO: kickstart to install an OS
 
 2. prebuilt cloud images
@@ -21,6 +26,7 @@ $ virt-customize -a MY-CLOUD-IMAGE.qcow2 \
     --uninstall cloud-init
 ```
 
+
 `virt-sysprep` to clean customization
 
 	
@@ -31,21 +37,7 @@ $ virt-customize -a MY-CLOUD-IMAGE.qcow2 \
 
 [[qemu]]
 
-## How to SSH into another computer?
 
-  * use `sudo vi /etc/ssh/sshd_config`:
-  
-  	* uncomment and change `port 22` to some thing else.
-  	* uncomment and change `PasswordAuthentication` to `no`.
-  	* uncomment and change `PermitRootLogin` to `no`.
-  	* reload everything: `sudo systemctl reload ssh`.
-  
-  * use `ssh -p port_number user@host_ip`. if your user name matches the host `ssh host_ip`.
-  
-  * use ssh keys:
-  `
-  ssh-keygen -t rsa
-  ssh-copy-id remote_host
   `
 
 ## How to connect with openvpn?
