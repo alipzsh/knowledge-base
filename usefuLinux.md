@@ -31,34 +31,6 @@ use proxy:
   discord: `discord --proxy-server="socks5://127.0.0.1:2080"`
   chrome: `google-chrome --proxy-server=localhost:2081`
 
-## what to backup
-
-* scp films, music
-* backup.sh: commit .dot, notes, projects, to GitHub
-
-1. day.md
-2. ssh
-3. zet
-4. books
-5. Documents/backup:
-	install.md
-	wall
-	aahhh.odt
-6. bookmarks/passwords
-
-
-* if wanna be more sure, .dot
-
-1. projects
-2. notes
-3. dotfiles
-
-### to backup DEll
-
-* turn on penvm
-* backup (using backup.sh on local) then clone attack VMs
-* every other thing should be in .dot, so run backup.sh
-
 ## mirrors
 
 in ubuntu: /etc/apt/sources.list.d, and use https://launchpad.net/ubuntu/+archivemirrors

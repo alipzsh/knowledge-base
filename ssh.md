@@ -36,7 +36,10 @@
 5. Client uses its private key to decrypt and respond correctly.
 6. If successful, server grants access.
 
-## generate ssh keys
+## ssh-keygen
+
+- -N "": no passphrase
+- -C "": no comment
 
 * you can create multiple keys for personal and work:
   ssh-keygen -t rsa -C "name@personal_email.com"
@@ -66,25 +69,3 @@ works on v2ray
 
 `https://stackoverflow.com/questions/19161960/connect-with-ssh-through-a-proxy`
 `https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Proxies_and_Jump_Hosts`
-
-
-### Example Scenarios:
-
-1. **One Client, One Server**
-    
-    - Client A has its own private key (`~/.ssh/id_rsa`).
-        
-    - The public key (`id_rsa.pub`) is added to the server’s `~/.ssh/authorized_keys`.
-        
-    - Only Client A can log in.
-        
-2. **Multiple Clients, One Server**
-    
-    - Client A and Client B each have **separate private keys**.
-        
-    - Both of their **public keys** are added to the server’s `authorized_keys`.
-        
-    - Either can log in using their respective private keys.
-3. **One Private Key, Multiple Servers**
-    
-    - A single private key on the client can authenticate with multiple servers if its **public key** is copied to each server.

@@ -22,3 +22,20 @@ conditionally add a string (in this case, -asn $asns) to the command if the vari
 
 - `tail -n +2` means:
 "Start printing from line 3 onward."
+
+- auto answer prompts:
+  - `printf '%s\n' y n n y y n...` 
+  - `printf 'y\n' | ssh-keygen -t ed25519 -f "$NAME" -N ""`
+  - `yes | ssh-keygen -t ed25519 -f "$NAME" -N ""`
+  - `ssh-keygen -t ed25519 -f "$NAME" -N "" <<< y`
+
+- some kind of exeption handling
+	- trap
+	- functions return certain stuff; and do according to them:
+	
+	```sh
+	create_image() {
+	  || return 1
+	}
+	create_image || { cleanup; exit 1; }
+	```

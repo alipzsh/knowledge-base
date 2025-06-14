@@ -3,6 +3,8 @@
 # qemu
 
 `
+## initial setup
+
 apt-get install --no-install-recommends qemu-system-x86
 
 sudo adduser $USER libvirt
@@ -24,49 +26,8 @@ or to fix it perhaps the right way, edit `/etc/libvirt/qemu.conf`:
 `
 user = "$USER"
 group = "libvirt"
-`
 
-* `virsh <start, shutdown, suspend> <vmName>`
-
-- using virt-install:
-
-file="ISO/debian-trixie-DI-alpha1-amd64-netinst.iso"
-
-NAME=$(basename $file | cut -d- -f1)
-
-virt-install \
-  --connect qemu+ssh://dell@ubuntu:4646/system \
-  --name $NAME \
-  --memory 2048 \
-  --vcpus 1 \
-  --disk size=50 \
-  --cdrom /home/dell/$file \
-  --osinfo linux2022 \
-  --accelerate \
-  --hvm \
-
-
-to import a prebuilt disk
-
-virt-install \
-  --connect qemu+ssh://dell@ubuntu:4646/system \
-  --name $NAME \
-  --memory 1048 \
-  --vcpus 1 \
-  --disk /home/dell/$file \
-  --osinfo linux2022 \
-  --hvm \
-  --import
-
-
-sudo virt-install --install fedora29 --unattended
-
-
-An install method must be specified
-(--location URL, --cdrom CD/ISO, --pxe, --import, --boot hd|cdrom|...)
-for more info: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-guest_virtual_machine_installation_overview-creating_guests_with_virt_install#sect-Guest_virtual_machine_installation_overview-virt_install-network_installation 
-
-### using vboxmanage
+## using vboxmanage
 
 start and shutdown a vm:
 
@@ -99,3 +60,91 @@ Copy to Clipboard
 
 --network br0 \
 --extra-args "ip=192.168.1.2::192.168.1.1:255.255.255.0:test.example.com:eth0:none"
+
+## methods of auto deploying an ISO
+
+
+1. unattended installation from ISO: kickstart to install an OS
+
+2. prebuilt cloud images
+
+- cloud-init to setup username and password on the first boot
+	- you can setup password, but networking issues, so you will have to use cloud-init I assume, virt-* won't work.
+	- a workaround that works on debian:     --cloud-init disable=on,root-password-generate=off \
+		yet, there will be issues and it's best to use one without/with it.
+- virt-customize: something like cloud init, but more.
+
+```sh
+$ virt-customize -a MY-CLOUD-IMAGE.qcow2 \
+    --root-password password:SUPER-SECRET-PASSWORD \
+    --uninstall cloud-init
+```
+
+`virt-sysprep` to clean customization
+
+	
+`guestfish`: to directly modify images offlie (e.g. files)
+	
+
+--> run your configurations scripts --> clone the image
+
+#### thin images
+
+
+- info on backing https://libvirt.org/kbase/backing_chains.html
+- snapshut, backing store and comming:
+  https://dustymabe.com/2015/01/11/qemu-img-backing-files-a-poor-mans-snapshotrollback/
+
+- use `qemu-system-x86_64 -enable-kvm -m 1024 noble-095747.0611.qcow2 -nographic`
+which is kinda equivalent to using `virt-install --import`
+
+- some of the stuff won't work if triggered over ssh, like `--noautoconsole`
+- doing it over ssh by "ssh -t dell "~/vm_create.sh '$unique_name'"" causes issues, it won't be tracked in virsh list -all.
+
+
+- to make the thin image trackable on virt:
+
+```sh
+virsh define f17vm2-with-b.xml
+virsh start f17vm2-with-b --console
+```
+## virt-install
+
+interesting flags:
+
+--unattended
+--print-xml
+
+for more info: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-guest_virtual_machine_installation_overview-creating_guests_with_virt_install#sect-Guest_virtual_machine_installation_overview-virt_install-network_installation 
+
+## virsh
+
+`virsh <start, shutdown, suspend> <vmName>`
+`start --console`
+`console <vm_name>` connect to an already running vm
+
+```sh
+virsh attach-interface --domain myvm \
+  --type network --source default \
+  --model virtio --config --live
+```
+
+```sh
+virsh detach-interface myvm \
+  --type network \
+  --mac 52:54:00:xx:xx:xx \
+  --live --config
+```
+
+```sh
+virt-customize -a MY-CLOUD-IMAGE.qcow2 \
+    --root-password password:SUPER-SECRET-PASSWORD \
+    --uninstall cloud-init
+```
+
+to see list of assigned network: `virsh domiflist noble-072812.0612`
+
+### erros
+
+`virt-customize: error: libguestfs error: guestfs_launch failed.` means the vm is running, it should be stopped.
+

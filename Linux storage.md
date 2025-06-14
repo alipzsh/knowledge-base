@@ -4,6 +4,33 @@
 
 - `df -h` to see filesysmtem size, used and available space
 - `vgdisplay` to see unallocated space in the volume group
+- `du -h|-s` storage space usage by file
+
+- `mount`
+  - list of currently mounted files
+  - mount file systems
+
+- monitor logs in real-time
+  - `tail -f /var/log/syslog`
+  - `journalctl -f`
+
+- `dd` to copy blocks of data.
+  - `dd if=input_file of=output_file [[bs=block_size [count=blocks]]`
+  - `dd if=/dev/cdrom of=ubuntu.iso`
+
+## creating new filesystem
+
+first create partitions
+
+- `parted /dev/sdd`
+  - `print` see the partition table.
+  - `rm 1` delete the first partition
+  - `mkpart` create a new partition
+  - quit
+
+create filesystems
+
+`mkfd -t ext4 -L EXT4_Disk{volume label} /dev/sdd1`
 
 ## managing partitions
 

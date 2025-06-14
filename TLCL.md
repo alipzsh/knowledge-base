@@ -529,6 +529,7 @@ echo "body"    >> file              # appens to the file
 `printf "%s\n" "$match"` if match is multi-lined this will print it preserving new lines.
 
 `ls`
+- `-h`: human readable
 * `-a`: show hidden files.
 * `-ld`: more details of directories.
 * `-d *`: everything, if dir, just their names
