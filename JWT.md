@@ -9,6 +9,6 @@ dot separated parts of JWT:
 
 # attack
 
-exploiting the flawed JWT handling in the application.
-
 sending a malicious JWT to the server to bypass authentication and access control.
+
+exploiting the flawed JWT handling in the application; e.g. signature verification and then whether it haven't been forged.
