@@ -56,3 +56,12 @@ vulnerabilities; it is more likely to be exploitable.
 export multiple requests in burp as xml.
 use python to parse them.
 use python to manipulate and send requests.
+
+
+---
+
+methodology tells you where to test, what to test.
+
+# ideas
+
+- look for bugs where things aren't how they should be, e.g. "something has a different usage somewhere".
