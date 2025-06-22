@@ -18,7 +18,7 @@ specially for stuff that aren't in the ASCII table, like other languages: `\uxxx
 
 # URL encode
 
-to move data through the network: `a –> %61`
+to move data through the network: `%{HEX}`: `a –> %61`
 
 # in combination
 
