@@ -20,7 +20,7 @@ specially for stuff that aren't in the ASCII table, like other languages: `\uxxx
 
 to move data through the network: a –> %61
 
-# combination
+# in combination
 
 a –> &#x61 –> %26%23x61
 
@@ -28,3 +28,6 @@ a –> &#x61 –> %26%23x61
 2. URL encode to move in the network
 
 you could URL encode x61 too, but the browser doesn't.
+
+- Unicode are decoded in js
+- html attributes are decoded automatically
