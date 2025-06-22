@@ -26,8 +26,8 @@ a –> &#x61 –> %26%23x61
 
 1. html encode
 2. URL encode to move in the network
-
+\u0061li
 you could URL encode x61 too, but the browser doesn't.
 
-- Unicode are decoded in js
-- html attributes are decoded automatically
+- Unicode are decoded in js:  \u0061li --> ali
+- html attributes are decoded automatically: <a href="
