@@ -8,13 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ed221ae14309411e",
+            "id": "10c5a5978ff2d045",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "encoding.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "encoding"
             }
           }
         ]
@@ -49,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "encoding",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -110,12 +114,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "lab.md",
+                "file": "encoding.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from lab"
+              "title": "Outgoing links from encoding"
             }
           },
           {
@@ -167,13 +171,16 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ed221ae14309411e",
+  "active": "10c5a5978ff2d045",
   "lastOpenFiles": [
+    "Apache_maven.md",
+    "encoding.md",
+    "Untitled",
+    "http.md",
     "methodology.md",
     "OAuth.md",
     "JWT.md",
     "lab.md",
-    "Untitled",
     "76/README.md",
     "qemu.md",
     "bridge.md",
@@ -194,9 +201,6 @@
     "privilege_Escalation.md",
     "sightless.md",
     "automate node management.md",
-    "TODO.md",
-    "TODO_setup_backup automation.md",
-    "books.md",
     "automation.md~",
     "dataPlane.md~",
     "Untitled 1",
