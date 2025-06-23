@@ -35,30 +35,34 @@ EX:
 
 ## into html tags:
 
-* terminate the attribute value, close the tag, and introduce a new one 
-	`"><script>alert(document.domain)</script>`
+if you can close:
+
+1. both attribute and the tag --> [[#out of tags]]
+2. the attribute --> use event handlers
+3. neither attribute nor tag --> the attribute might be vulnerable, e.g.:
+    • `<a href="{}"></a>`
+    • `src` in `<iframe>`
+
+
 * if `<>` encoded: add a new attribute that creates a scriptable context:
 	`" autofocus onfocus=alert(document.domain) x="`
 *  with angle brackets encoded: `"onmouseover="alert(1)`
 * [[XSS_examples#Reflected XSS in canonical link tag| canonical link tag]]
-		
-* javascript context:
-	* close the script tag and add new html tags:
-	`</script><img src=1 onerror=alert(document.domain)>`
+
+## javascript context:
+
+1. close the `<script>` --> [[#out of tags]]
+
+2. break the context, fix the rest: e.g. `'-alert()-'` in `..&userid=name"-alert()-""..`
 	
-	* if the context is inside a quoted string literal break out of a string and execute js directly and repair the rest. example payloads:
+	closes the `"`, add `alert`, closes the ending `"`, the `-` is mathematical minus.
 
-	```js
-		'-alert(document.domain)-'
-		';alert(document.domain)//	
-	```
+EX:
 
-	* [[XSS_examples#Reflected XSS into a JavaScript string with angle brackets HTML encoded| angle brackets encoded]]
-	* [[XSS_examples#Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped| single quotes escaped]]
-	- [[XSS_examples#Reflected XSS in a javascript URL with some characters blocked| some characters blocked]]
-	- [[XSS_examples#Reflected XSS into a JavaScript template literals, with `<>'" ` unicode escaped| '"<> and backtick escaped, js template literals]]
-
-
-
+* [[XSS_examples#Reflected XSS into a JavaScript string with angle brackets HTML encoded| angle brackets encoded]]
+* [[XSS_examples#Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped| single quotes escaped]]
+- [[XSS_examples#Reflected XSS in a javascript URL with some characters blocked| some characters blocked]]
+- [[XSS_examples#Reflected XSS into a JavaScript template literals, with `<>'" ` unicode escaped| '"<> and backtick escaped, js template literals]]
+	
 footnote:
   • get event handlers: `Object.keys(window).filter(k => !k.indexOf('on'))`
