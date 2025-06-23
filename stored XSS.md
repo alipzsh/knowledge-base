@@ -25,15 +25,4 @@ EX:
 
     Determine if the observed value is stored in different request or simply reflected.
 
-3. test for a vulnerability:
-  * look for an, appropriate payload based on the context of the reflected stored data.
-
-[[XSS contexts]]
-
-EX:
-
-* `<input><script>alert(1);</script></input`
-
-html tag attribute context:
-* [[XSS_examples#Stored XSS into anchor `href` attribute with double quotes HTML-encoded| `javascript:alert(1)`]]
-- [[XSS_examples#Stored XSS into onclick event with angle brackets and double quotes HTML-encoded and single quotes and backslash escaped| into onclick event with <>" htmlencoded and '\ escaped]]
+  3. look for an, appropriate payload based on the [[XSS contexts]]
