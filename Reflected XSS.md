@@ -1,6 +1,6 @@
 # reflected:
 
-app receives an http request and includes the data in it's *immediate* response.
+immediate reflection of user's data (from http request to the response).
 
 processed in the server, returned to the user without being stored in the
 database.

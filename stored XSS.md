@@ -1,31 +1,27 @@
 # stored
 
-app receives data, stores it in the database and and unsafely includes it in
-it's *later* HTTP response.
+delayed reflection of user data.
+data is stored, reflected in later HTTP response.
 
 EX:
 
-1. if this payload is embedded in a comment, victim just have to visit the page.
-
+1. if this payload is embedded in a comment, title:
 `<script>alert('hacked');</script>`
 
-or it could be in a request:
+2. or it could be in a request:
 `postId=3&comment=This+post+was+extremely+helpful.&name=Carlos+Montoya&email=carlos%40normal-user.net`
 
-2. if there is an XSS payload in the title of a video or article in the front page of the site, it would effect people visiting it.
+## EXAMINE
 
-EXAMINE:
-
-1. test all relevant *entry points* and all *exit points*
+1. test all relevant *entry points* and all *exit points*, e.g.:
   * Entry points:
     * Parameters or other data within the URL query string and message body.
     * The URL file path.
     * HTTP request headers
-    * out-of-band routes via which an attacker can deliver data into the application:
-      * emails into a webmail app
+    * out-of-band routes
 
   * exit points:
-    * all possible HTTP responses (to any kind of application user in any situation)
+    * all possible HTTP responses (to any kind/role of application user in any situation)
     * audit logs (visible to some application user)
 
 2. locate the links between entry and exit points.
@@ -35,8 +31,7 @@ EXAMINE:
     Determine if the observed value is stored in different request or simply reflected.
 
 3. test for a vulnerability:
-  * determine the context within the response where the stored data appears and test
- * look for an, appropriate payload.
+ * look for an, appropriate payload based on the context of the reflected stored data.
 
   with the same methodology as reflected XSS.
 
