@@ -20,10 +20,10 @@ XSS attacks can obtain any type of data present in the current web application.
 
 # XSS types:
 
-* [[stored XSS]]: the malicious script is first stored in the website's database, then executed. (in
-  database)
 * [[Reflected XSS]]: the malicious script originates from the current HTTP request reflected by a
   server. (in request and reflected by server)
+* [[stored XSS]]: the malicious script is first stored in the website's database, then executed. (in
+  database)
 * [[DOM-based XSS]]: the vulnerability exists in client-side code (the browser) and is executed
   there. (stored and executed in the browser)
 
