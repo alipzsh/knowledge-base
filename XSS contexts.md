@@ -18,11 +18,12 @@ EX:
 - use a `<script` tags
 - open a tag + event handler, e.g. `<img/src/onerror=alert(origin)>`
 - `<a>` tag  + js scheme, e.g. `<a href=javascripot:alert(origin)>test</a>`
-    • and it's HTML encoded variations (get's decoded because it's inside an html
+    • plus it's HTML encoded variations (get's decoded because it's inside an html
       attribute).
-    • also combined with character reference. : --> &colon;
-    • and Unicode encoded variations only inside js URI.
-    • <a href={htmlencoded}avascripot{character reference}{Unicoded}lert(origin)>test</a>
+    • combined with character reference. : --> &colon;
+    • plus Unicode encoded variations only inside js URI.
+    `<a href={htmlencoded}avascripot{character reference}{Unicoded}lert(origin)>test</a>`
+	
 - non-executable tags
 
 EX:
@@ -32,9 +33,6 @@ EX:
 [[XSS_examples#Reflected XSS event handlers and `href` attributes blocked| SVG and <animate> allowed]]
 [[XSS_examples#Reflected XSS with some SVG markup allowed| SVG markup allowed]]
 
-
-footnote:
-  • get event handlers: `Object.keys(window).filter(k => !k.indexOf('on'))`
 ## into html tags:
 
 * terminate the attribute value, close the tag, and introduce a new one 
@@ -59,3 +57,8 @@ footnote:
 	* [[XSS_examples#Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped| single quotes escaped]]
 	- [[XSS_examples#Reflected XSS in a javascript URL with some characters blocked| some characters blocked]]
 	- [[XSS_examples#Reflected XSS into a JavaScript template literals, with `<>'" ` unicode escaped| '"<> and backtick escaped, js template literals]]
+
+
+
+footnote:
+  • get event handlers: `Object.keys(window).filter(k => !k.indexOf('on'))`
