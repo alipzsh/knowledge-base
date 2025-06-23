@@ -29,4 +29,6 @@ to move data through the network: `%{HEX}`: `a –> %61`
 you could URL encode x61 too, but the browser doesn't.
 
 - Unicode are decoded in js:  \u0061li --> ali
-- html attributes are decoded automatically: `<a href="&#x61" ...` --> `... href="a" ...`
+- html attributes are decoded automatically in the browser: `<a href="&#x61" ...` --> `... href="a" ...`
+
+to see them you should see the source code of the page, it won't be shown in the dev tools.
