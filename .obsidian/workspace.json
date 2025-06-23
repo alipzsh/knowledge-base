@@ -50,7 +50,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -144,12 +144,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "xss.md",
+                "file": "Reflected XSS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from xss"
+              "title": "Outgoing links from Reflected XSS"
             }
           },
           {
@@ -201,10 +201,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "5397e0e753af2211",
+  "active": "7deecff9fd2b6913",
   "lastOpenFiles": [
-    "Reflected XSS.md",
     "xss.md",
+    "Reflected XSS.md",
     "stored XSS.md",
     "XSS_examples.md",
     "DOM based manipulation.md",

@@ -1,22 +1,9 @@
 # XSS
 
-based on context
-
-taking advantage of web applications executing scripts on user's browsers.
+taking advantage of web application executing scripts on user's browsers.
 
 finding the functionalities where user changes some part of the applications
 code that is then executed (dynamic scripts) and changing it.
-
-allows an attacker to:
-
-  * compromise the interactions that users have with a vulnerable application
-  * circumvent the same origin policy
-  * masquerade as a victim user, to carry out any actions that the user is
- able to perform
-
-Occur as a result of improperly sanitized user input being embedded in the UI/ DOM.
-
-XSS attacks can obtain any type of data present in the current web application.
 
 # XSS types:
 
