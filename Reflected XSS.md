@@ -20,7 +20,7 @@ EXPLOIT:
 * send a malicious link and somehow send it to the victim (via email, or ad for example)
 * placing links on a website controlled by attacker.
 
-EXAMINE:
+## EXAMINE
 
 1. look for every entry point/ input opportunity within http requests:
   * message body

@@ -33,7 +33,7 @@ EX:
 3. test for a vulnerability:
  * look for an, appropriate payload based on the context of the reflected stored data.
 
-  with the same methodology as reflected XSS.
+with the same methodology as reflected XSS.
 
 XSS_contexts
 

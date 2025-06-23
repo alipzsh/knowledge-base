@@ -64,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -158,12 +158,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "stored XSS.md",
+                "file": "DOM-based XSS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from stored XSS"
+              "title": "Outgoing links from DOM-based XSS"
             }
           },
           {
@@ -254,12 +254,12 @@
       }
     ]
   },
-  "active": "11579d67c1a39204",
+  "active": "f8803b99811a45bf",
   "lastOpenFiles": [
-    "xss.md",
-    "Reflected XSS.md",
-    "DOM-based XSS.md",
     "stored XSS.md",
+    "Reflected XSS.md",
+    "xss.md",
+    "DOM-based XSS.md",
     "Reflected DOM XSS.md",
     "encoding.md",
     "XSS_examples.md",
