@@ -64,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -157,12 +157,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "XSS contexts.md",
+                "file": "xss.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from XSS contexts"
+              "title": "Outgoing links from xss"
             }
           },
           {
@@ -214,11 +214,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "86ae81fac3e4913d",
+  "active": "5397e0e753af2211",
   "lastOpenFiles": [
+    "XSS contexts.md",
     "DOM-based XSS.md",
     "xss.md",
-    "XSS contexts.md",
     "Reflected XSS.md",
     "stored XSS.md",
     "Reflected DOM XSS.md",
