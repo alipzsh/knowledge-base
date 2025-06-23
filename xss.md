@@ -14,9 +14,7 @@ code that is then executed (dynamic scripts) and changing it.
 * [[DOM-based XSS]]: the vulnerability exists in client-side code (the browser) and is executed
   there. (stored and executed in the browser)
 
-# based on context:
-
-
+XSS context
 
 [[exploit XSS]]
 [[XSS html tags]]

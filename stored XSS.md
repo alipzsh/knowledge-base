@@ -35,6 +35,8 @@ EX:
 
   with the same methodology as reflected XSS.
 
+XSS_contexts
+
 EX:
 
 * `<input><script>alert(1);</script></input`
