@@ -1,33 +1,11 @@
-# reflected:
-
-immediate reflection of user's data (from http request to the response).
-
-processed in the server, returned to the user without being stored in the
-database.
 
 EX:
 
-1. the page relies on the user input to construct the page, e.g. on displaying
-search results.
+* `<input><script>alert(1);</script></input`
 
-`https://example.com/search?q=<script>alert('hacked');</script>`
-
-2. `https://insecure-website.com/status?message=All+is+well`
-results `<p>Status: All is well.</p>`
-
-EXPLOIT:
-
-* send a malicious link and somehow send it to the victim (via email, or ad for example)
-* placing links on a website controlled by attacker.
-
-## EXAMINE
-
-1. look for every entry point/ input opportunity within http requests:
-  * entry: message body, URL, headers
-
-1. submit random values and look for reflection
-
-2. look for a payload based on the context
+html tag attribute context:
+* [[XSS_examples#Stored XSS into anchor `href` attribute with double quotes HTML-encoded| `javascript:alert(1)`]]
+- [[XSS_examples#Stored XSS into onclick event with angle brackets and double quotes HTML-encoded and single quotes and backslash escaped| into onclick event with <>" htmlencoded and '\ escaped]]
 
 EX:
 

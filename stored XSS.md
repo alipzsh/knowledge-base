@@ -28,7 +28,7 @@ EX:
 3. test for a vulnerability:
   * look for an, appropriate payload based on the context of the reflected stored data.
 
-XSS_contexts
+[[XSS contexts]]
 
 EX:
 
