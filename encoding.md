@@ -30,5 +30,6 @@ you could URL encode x61 too, but the browser doesn't.
 
 - Unicode are decoded in js:  \u0061li --> ali
 - html attributes are decoded automatically in the browser: `<a href="&#x61" ...` --> `... href="a" ...`
+- character reference get decoded automatically (at least in html attribute).
 
 to see them you should see the source code of the page, it won't be shown in the dev tools.
