@@ -14,7 +14,5 @@ search results. `https://example.com/search?q=<script>alert('hacked');</script>`
 
 1. look for every entry point/ input opportunity within http requests:
   * entry: message body, URL, headers
-
 1. submit random values and look for reflection
-
 2. look for a payload based on the [[XSS contexts]]

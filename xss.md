@@ -7,12 +7,14 @@ code that is then executed (dynamic scripts) and changing it.
 
 # XSS types:
 
-* [[Reflected XSS]]: the malicious script originates from the current HTTP request reflected by a
-  server. (in request and reflected by server)
-* [[stored XSS]]: the malicious script is first stored in the website's database, then executed. (in
-  database)
+* [[Reflected XSS]]
+* [[stored XSS]]
 * [[DOM-based XSS]]: the vulnerability exists in client-side code (the browser) and is executed
   there. (stored and executed in the browser)
+
+• if input is reflected in the source code, it's not DOM.
+• if not reflected in the source code, it's built with DOM.
+
 
 XSS context
 
