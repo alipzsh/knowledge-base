@@ -14,12 +14,7 @@ EX:
 ## EXAMINE
 
 1. test all relevant *entry points* and all *exit points*, e.g.:
-  * Entry points:
-    * Parameters or other data within the URL query string and message body.
-    * The URL file path.
-    * HTTP request headers
-    * out-of-band routes
-
+  * entry: message body, URL, headers
   * exit points:
     * all possible HTTP responses (to any kind/role of application user in any situation)
     * audit logs (visible to some application user)
@@ -31,9 +26,7 @@ EX:
     Determine if the observed value is stored in different request or simply reflected.
 
 3. test for a vulnerability:
- * look for an, appropriate payload based on the context of the reflected stored data.
-
-with the same methodology as reflected XSS.
+  * look for an, appropriate payload based on the context of the reflected stored data.
 
 XSS_contexts
 

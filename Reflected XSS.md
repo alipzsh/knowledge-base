@@ -23,27 +23,14 @@ EXPLOIT:
 ## EXAMINE
 
 1. look for every entry point/ input opportunity within http requests:
-  * message body
-  * headers
-  * URL :
-    * fragments
-    * parameters
-    * query string
-    * file path
-  * you might be able to edit the *request* parameters, even if there there isn't an input
-    method on the website.
+  * entry: message body, URL, headers
 
-2. submit random values:
-  * determine if it's reflected in the response
-  * it should be short and only alphanumeric to survive input validations
+1. submit random values and look for reflection
 
-1. determine the reflection context (where is it reflected):
-  * between html tags
-  * within a quoted tag attribute
-  * a JavaScript string
-  or ...
+2. look for a payload based on the context
 
-4. insert a payload:
+
+3. insert a payload:
   * send a combination of characters `abc ' " } < > ; // # - ()` to see how they are
     handled.
   * try html tags, look in the documentation for available attributes.
