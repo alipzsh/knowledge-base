@@ -1,32 +1,15 @@
 # Reflected DOM XSS
 
-a type of DOM that goes to the server and back.
+- sources can also get data from the website (not just browser).
 
-pure DOM XSS is an entirely client-side issue, payload inserted into the page.
-reflected XSS is a server-side issue, payload reflected into the HTML.
+attack vector is is reflected into the DOM.
 
-sources can also get data from the website (not just browser).
-
-website reflect URL parameters in serve's HTML responses (happens in normal XSS)
-
-RDXSS: attack vector is client side, interacts with the server then is inserted
-into the DOM:
-  
-  * server processes the request
-  * echoes the data into the response
-  * the data might be placed into a *JavaScript string literal* or a *data item
-	  in the DOM*
+  * the data might be placed into a *JavaScript string literal* or a *data item in the DOM*
   * a script writes the data into a *sink*
 
-* `eval()` function evaluates JavaScript code represented as a string and
-  returns its completion value.
-
-  `'var searchResultsObj = ' + this.responseText`
-
-EXAMINE:
+## EXAMINE:
 
 1. see the requests made to the server after submitting the input.
-
 2. the response could be different based on the server's actions.
 
 EX:

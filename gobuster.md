@@ -1,9 +1,3 @@
-## fuzzing
-
-* fuzzing, is a kind of brute forcing like directory enumeration which is
-  a kind of directory brute forcing, which is done by making and sending
-  requests to the target (again the same?).
-
 ### dir
 
   `gobuster dir -u <http://ip:port/> -w <wordListDir>`

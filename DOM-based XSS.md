@@ -1,50 +1,34 @@
 # DOM-based cross-site scripting
 
-attackers attack the Dom when a page takes user input and alters the Dom based
-on that input.
+the Dom is altered based on user's input.
 
-it happens when a website contains JavaScript that takes an attacker-controllable value,
-known as a *source*, and passes it into a dangerous function, known as a *sink* (writes it to a sink).
+JavaScript takes an attacker-controllable value, aka *source* and passes it into a
+potentially dangerous function, aka a [sink](sink).
 
-* the main source for DOM XSS is the URL.
-* DOM could be manipulated by [DOM Objects](DOM.md#_DOM_Objects).
+the vulnerability exists in client-side code (the browser) and is executed there. (stored
+and executed in the browser)
 
-* not all sources work with every sinks:
+## EXAMINE:
 
-EXAMINE:
+1. find a sink
 
-1. test html sinks
+  - find *source* in the JavaScript code.
+  - understand how the source is used and if it's passed to a sink.
 
-* place a random alphanumeric string in to the source.
-* use developer tools to inspect and find where the string appears.
-* refine your input based on the context of where your string appears in the DOM. e.g. close
-  the double quotes.
-* if your data gets URL encoded before being processed, then an XSS attacks is unlikely to
-  work.
+  [is it dangerous sink?](sink#find-dangerous-sinks)
 
-2. test JavaScript execution sinks
-
-* your input doesn't appear in the DOM.
-* find cases in the page's JavaScript code where a *source* is referenced.
-* use the JavaScript debugger to add a breakpoint and follow hot the source is used.
-
-3. check if the source or it's values or a variable pointed to it are passed to a sink.
-
-4. found a sink? hover over the variable to see it's value. refine the input to see if you
-   can do a successful attack.
-
-maybe? DOM XSS with different sources and sinks
+2. hover over the variable to see it's value. use payloads based on [XSS context](XSS contexts.md).
 
 EX:
 
-* [[XSS_examples#sink: `document.write`, source: `location.search`]]
+- [[XSS_examples#sink: `document.write`, source: `location.search`]]
+- [[XSS_examples#sink `innerhtml`, source `location.search`]]
+- [[XSS_examples#jQuery sink: `selector` using a `hashchange` event |jQuery sink: `selector` using a `hashchange` event]]
+- [[XSS_examples#jQuery anchor sink `href` attribute]]
+- [[XSS_examples#AngularJS expression with angle brackets and double quotes HTML-encoded|AngularJS expression with angle brackets and double quotes HTML-encoded]]
 
-* [[XSS_examples#sink `innerhtml`, source `location.search`]]
-
-* [[XSS_examples#jQuery sink: `selector` using a `hashchange` event |jQuery sink: `selector` using a `hashchange` event]]
-
-* [[XSS_examples#jQuery anchor sink `href` attribute]]
-
-* [[XSS_examples#AngularJS expression with angle brackets and double quotes HTML-encoded|AngularJS expression with angle brackets and double quotes HTML-encoded]]
 #### [[Reflected DOM XSS]]
+
+a type of DOM that goes to the server and back.
+
 #### [[Stored DOM XSS]]

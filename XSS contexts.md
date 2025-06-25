@@ -1,4 +1,3 @@
-
 # HTML context
 
 ## out of tags
@@ -6,12 +5,12 @@
 - use a `<script` tag
 - open a tag + event handler, e.g. `<img/src/onerror=alert(origin)>`
 - `<a>` tag  + js scheme, e.g. `<a href=javascripot:alert(origin)>test</a>`
-    • plus it's HTML encoded variations (get's decoded because it's inside an html
+    - plus it's HTML encoded variations (get's decoded because it's inside an html
       attribute).
-    • combined with character reference. : --> &colon;
-    • plus Unicode encoded variations only inside js URI.
+    - combined with character reference. : --> &colon;
+    - plus Unicode encoded variations only inside js URI.
     `<a href={htmlencoded}avascripot{character reference}{Unicoded}lert(origin)>test</a>`
-	
+
 - non-executable tags
 
 EX:
@@ -45,7 +44,7 @@ EX:
 
 1. close the `<script>` --> [[#out of tags]]
 2. break the context, fix the rest: e.g. `'-alert()-'` in `..&userid=name"-alert()-""..`
-	
+
 	closes the `"`, add `alert`, closes the ending `"`, the `-` is mathematical minus.
 
 EX:
@@ -54,6 +53,7 @@ EX:
 [[XSS_examples#Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped| single quotes escaped]]
 [[XSS_examples#Reflected XSS in a javascript URL with some characters blocked| some characters blocked]]
 [[XSS_examples#Reflected XSS into a JavaScript template literals, with `<>'" ` unicode escaped| '"<> and backtick escaped, js template literals]]
-	
 
-• get event handlers: `Object.keys(window).filter(k => !k.indexOf('on'))`
+
+- get event handlers: `Object.keys(window).filter(k => !k.indexOf('on'))`
+

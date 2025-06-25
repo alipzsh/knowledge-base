@@ -49,8 +49,7 @@
               "title": "XSS contexts"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -200,11 +199,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ed441eda25e43138",
+  "active": "10c5a5978ff2d045",
   "lastOpenFiles": [
+    "xss.md",
     "XSS contexts.md",
     "XSS_examples.md",
-    "xss.md",
     "Reflected XSS.md",
     "DOM-based XSS.md",
     "stored XSS.md",

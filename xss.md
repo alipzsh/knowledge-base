@@ -19,19 +19,17 @@ code that is then executed (dynamic scripts) and changing it.
 
 * [[Reflected XSS]]
 * [[stored XSS]]
-* [[DOM-based XSS]]: the vulnerability exists in client-side code (the browser) and is executed
-  there. (stored and executed in the browser)
+* [[DOM-based XSS]]
 
+on adding a payload 403? it's a WAF --> [[bypass xss filters]]
 
-XSS context
-
+[fuzz](fuzz)
+[[XSS context]]
 [[exploit XSS]]
 [[XSS html tags]]
-[[bypass xss filters]]
 [[HTML attributes]]
 [[DOM based manipulation]]: a little more on XSS
 
-[single quotes escaped](XSS_examples#Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped)
 # BLIND XSS:
 
 try making the victim’s browser generate a request to a server you own:
