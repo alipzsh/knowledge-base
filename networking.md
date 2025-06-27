@@ -12,8 +12,14 @@
     address. "/24" is the subnet mask.
     [subnet](./subnet.png)
 
-* `arp` resolves MAC to IP, kinda similar to DNS.
-* `arp -a` shows the arp table, which maps IPs to their corresponding IPs.
+[[ip]]
+[[bridge]]
+
+- `arp` resolves MAC to IP, kinda similar to DNS.
+- `arp -a` shows the arp table, which maps IPs to their corresponding IPs.
+- `ss -tpun` to get info on ports
+- `netstat -tpun`
+
 
 * subnet mask determines the allowed range of IPs in the network; e.g. `255.255.255.0`
   allows `192.168.1.1-192.168.1.254`

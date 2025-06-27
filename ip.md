@@ -1,6 +1,14 @@
 # ip
 
-set up IPs for devices to be on the same network:
+# useful commands
+
+`ip a <addr>`
+
+- `<NO-CARRIER,BROADCAST,MULTICAST,UP>)` show the interface is enabled by you or the system.
+- But the `state (DOWN)` means no carrier.
+
+# set up IPs for devices to be on the same network
+
 `ip addr add 10.10.2.5/24 dev <>` the first 24 bits are the network and the last 8 are host address
 `ip addr add 10.10.2.10/24 dev <>` the second computer
 

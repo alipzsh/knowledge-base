@@ -11,9 +11,12 @@ most common sinks:
 
 ## find dangerous sinks:
 
-  - `url = window.location.href;`
-  if the value is passed to a variable but not used in a dangerous way or is out of the
-  js function, it's not dangerous.
+it's a dangerous sink if it get's user input
 
-  - `window.location = redirectParam;`
-  in this case you should find the value that is being passed.
+- `url = window.location.href;`
+if the value is passed to a variable but not used in a dangerous way or is out of the
+js function, it's not dangerous.
+
+- `window.location = redirectParam;`
+in this case you should find the value that is being passed, if it's user controllable,
+that's a hit.

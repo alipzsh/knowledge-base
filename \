@@ -1,0 +1,40 @@
+# discovery
+
+does it even exist?, how to know that we should look for it?
+
+## read the source code, look for *event listeners*.
+
+- e.g. search `addEventListener("me` and visually find it
+- read the code, look for dangerous sinks. look into called functions, can you bypass conditions.
+- can you control the input? (use the debugger)
+- and look for:
+  - variable.source
+  - variable.data // controllable by attacker
+  - variable.origin
+- add breakpoints
+- trigger it with `window.postMessage("stuff")`
+- look into DOM invader hoping for a response
+- you should then be able to send the payload as POC from another origin, to show that it's
+  exploitable (use Dom invader POC).
+
+## use extensions
+
+what if we can't visually find it? or even if you did how could you invoke it?
+
+DOM invader will capture sent messages. so we wouldn't have to look manually for so many
+eventlisteners and triggering them.
+
+- browse the pages, wait for it to capture messages
+
+# source code reading 
+
+
+# note
+
+- in a post message you can request to a page from any origin, the developer should check
+  `if (e.origin === location.origin)`. and we can't forge `e.origin`.
+
+EX:
+
+`window.location = t.goto;`
+then `window.postMessage('{"goto":"javascript:alert(origin)"}', "*"})`

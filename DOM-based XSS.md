@@ -10,14 +10,16 @@ and executed in the browser)
 
 ## EXAMINE:
 
-1. find a sink
+1. Find a sink
 
   - find *source* in the JavaScript code.
   - understand how the source is used and if it's passed to a sink.
 
-  [is it dangerous sink?](sink#find-dangerous-sinks)
+  [is it dangerous sink?](sink#find-dangerous-sinks); use the debugger to add break point
+  and the console to trigger it. you can run that part of the source code in you own lab to
+  compare it to the website. then you can workout if it's vulnerable.
 
-2. hover over the variable to see it's value. use payloads based on [XSS context](XSS contexts.md).
+3. hover over the variable to see it's value. use payloads based on [XSS context](XSS contexts.md).
 
 EX:
 

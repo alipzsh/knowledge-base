@@ -7,6 +7,8 @@
 
 [[qemu]]
 [[qemu#methods of auto deploying an ISO]]
+[[bridge]]
+[[ip]]
 
 ## How to connect with openvpn?
 

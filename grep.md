@@ -17,6 +17,7 @@ corresponds to the first version number found in the changelog.
 * `-l` list of the files containing matches
 * `-h` no file name
 * `-n` line number
+* `-q` silent, only exit code
 
 
 

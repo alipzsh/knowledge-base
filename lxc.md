@@ -15,7 +15,8 @@ access it through host: /var/lib/lxc
 
 - remove a container: 
 	- stop if running: `lxc-stop -n <container_name>`
-	- ``sudo lxc-destroy -n test mycontainer`
+	- `sudo lxc-destroy -n test mycontainer`
+
 # ufw configuration
 
 sudo ufw allow in on lxcbr0
