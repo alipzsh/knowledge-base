@@ -1,14 +1,15 @@
-# discovery
-
 WAF doesn't work on Post message
-
 [[narrow_recon]]
+
+# discovery
 
 does it even exist?, how to know that we should look for it?
 
-## read the source code, look for *event listeners*.
+## manually
 
-- e.g. search `addEventListener("me` and visually find it
+read the source code, look for *event listeners*.
+
+- e.g. search `addEventListener("me` (the ones that are listening on message) and visually find it
 - read the code, look for dangerous sinks. look into called functions, can you bypass conditions.
 - can you control the input? (use the debugger)
 - and look for:
@@ -65,7 +66,8 @@ valuable.
 
 - in a post message you can request to a page from any origin, the developer should check
   `if (e.origin === location.origin)`.
-- and we can't forge `e.origin` or `e.origin` so if these are being checked, it won't work.
+-  `e.origin` and `source.origin` are the protections, we can't forge them, so if these are being checked, it won't work.
+- `e.data` is the attacker controllable data.
 
 EX:
 
