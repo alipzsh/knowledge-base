@@ -1,66 +1,67 @@
+05 05-06
 # phase zero
 
 - work with the website like a *normal* user
-- build a mindmap for the app
-- don't get into the rabbit hole of testing without browsing the webstie
-- figure as much functionality as possible.
-- it's huge opportunity to access the paid plans
+- create a mind map of functionalities (don't get into the rabbit hole of testing
+  without first browsing the website) that you are going to use later on to test your
+  check list.
+- accessing the paid plans will give you considerable opportunity
 
 # answer these questions
 
 ## what is the application used for
 
-- overall business logic
-- the failure of confidentiality; understand what is important for the
-  aplication/ team (something dangerous else where else might not be
-  important here, e.g. email address leak)
-- the failure of integrity the integrity of which stuff is important for
-  the team.
+- it's overall business logic
+- the failure of confidentiality; understand what is important for the team (something
+  dangerous else where else might not be important here, e.g. email address leak)
+- the failure of integrity; the integrity of the stuff that are important for the team.
 
 ## does the application have a special threat model
 
-e.g.
+EX:
+
 - getting 50% off in a internet taxi app.
-- changing stuff without permission.
 - adding users more than limit on a invite only application.
 
 ## how does the application pass data
 
-- UI + backend
+you should be able to know how the data is being transmitted and the
+differences between them (e.g. capcut; [react](react) REST API)
+
+
+- UI + back-end
 - simple web app + jQuery
 - single page web application + rest API / graphQL
 - web-socket communication
-- a comination of some of the above
+- a combination of some of the above
 
 ## how are users handled
 
-- what are authentication shcemes
+- what are the authentication schemes
 - cookies, JWT, toke, ...
 - 2FA implementation
 - account delegations (giving your account to others)
 - are there other users levels
 - is there any authentication transfer
 
-## previous security vulnearbilities
+## previous security vulnerabilities
 
-apps could have specific weaknesses
-look into public reports
+Apps could have specific weaknesses --> look into public reports
 
 ## is it using third parties
 
-- why is it being used? saving data?
-- if the third party has it's own bugbounty, skip it, it's a whole other
-  program.
-- if the third party is not well known, wrok on it too.
+- why is it being used? Saving data?
+- if the third party has it's own bug bounty, skip it, it's a whole other program.
+- if the third party is not well known, work on it too.
 
 ## read API documentation
 
-if available, read, implement.
-it's hard but could work out.
+If available, read, implement.
+It's hard but gives you much deeper insight.
 
-## eye catchings to work on
+# eye catchings to work on
 
-first work on these
+First work on these
 
 - authentication class
   - oauth (all providers)
@@ -71,10 +72,19 @@ first work on these
 - links or HTML inputs
 - application specific sections
 - sensitive APIs
+- deep links
 
 # increase the attack surface
 
-# fuzz
+- side applications: mobile, pc
+- hidden surfaces:
+  - hidden parameters, path, files, etc.
+  - paid, forgotten, custom features
+  - stage instances (application-dev), might be out of scope but gives you insight on future
+    features.
+- [passive crawling](passive crawling) (all the time)
+  - something interesting? find and read the JS.
+  - also use dev tools networking to monitor stuff.
+- active crawling (less useful)
 
-
-[[narrow_recon_handson]]
+# [fuzz](fuzz)

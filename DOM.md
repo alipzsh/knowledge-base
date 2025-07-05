@@ -11,7 +11,11 @@ var results = document.getElementById('results');
 results.innerHTML = 'You searched for: ' + search;
 ```
 
-# DOM Objects
+- the Elements tab in Chrome DevTools shows the live DOM after the page’s JavaScript has run
+  and modified the HTML, while View Page Source shows the original HTML as received from the
+  server.
+
+# some DOM Objects
 
 `window.location`: to access the URL.
 `location.search`

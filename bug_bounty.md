@@ -10,10 +10,10 @@
 
 a -> b -> c -> postmessage
 
-determining the most effective typs of attack, based on where you
-reached (e.g reflection(XSS, SSTI), URL(SSRF), uploader (XSS, RCE), postmessage, ID(IDOR))
+Determining the most effective types of attack, based on where you reached (e.g
+reflection(XSS, SSTI), URL(SSRF), uploader (XSS, RCE), postmessage, ID(IDOR))
 
-testing things on their appropriate vulnerabilities.
+Testing things on their appropriate vulnerabilities.
 
 # vulnerability analysis
 

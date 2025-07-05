@@ -10,7 +10,7 @@
 * `head -n 1`: prints only the first line of the output, which
 corresponds to the first version number found in the changelog.
 * `-v`: !
-* `-P`: regex stuff
+* `-P`: Perl regex
 * extract text in quotes:
   `grep -oP "'.*?'" <file>`
 * `-F`: no regex
@@ -19,7 +19,9 @@ corresponds to the first version number found in the changelog.
 * `-n` line number
 * `-q` silent, only exit code
 
+## regex
 
+- `'pid=\K[0-9]+'`: `\K` resets the match — it means “don’t include anything before me in the output.”
 
 
 EX:

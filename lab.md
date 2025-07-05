@@ -10,6 +10,19 @@
 [[bridge]]
 [[ip]]
 
+## Move stuff between nodes
+
+Run a python server.
+
+`wget -r http://your-server:8000/desktop/`
+
+```
+curl -O http://your-server:8000/desktop.tar.gz
+tar -xzf desktop.tar.gz
+```
+
+And perhaps do it on installing using `virt-install` or something.
+
 ## How to connect with openvpn?
 
 * use `scp` to move configuration files: `scp -P port_number file_name host_ip:/remote/directory`

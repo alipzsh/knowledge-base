@@ -2,7 +2,7 @@
 
 ## out of tags
 
-### use a `<script` tag
+### use a `<script>` tag
 ### open a tag + event handler
 
 e.g. `<img/src/onerror=alert(origin)>`
