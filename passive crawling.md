@@ -16,7 +16,7 @@ use keywords and operators ; google, bing, etc, to get:
 
 you will get some paths, that could have functions behind them,
 `../certificate/:username/:data`, take note of those, then exclude them to get to other
-results by removing the noise.  `-certificate`
+results by removing the noise.  `-certificate` or `-www` to work on a specific sub.
 
 improve your dorks step by step
 
@@ -48,17 +48,8 @@ Read [it](it)'s API document
   to get `original` column, and to remove identical hashes (based on
   their column).
 
+tools: wayback URLs, gau
 
-## katana
-
-Most useful in automation.
-
-- Good for website that the source code is almost similar to the DOM.
-- Not suitable for everything, e.g. apps written in [react](react); DOM.
-- Change it based on configuration, e.g. reduce the thread if WAF/CDN.
-
-## javascript
-
-A JS code to run in the console and get URls after loading the DOM.
-
-Consider each result; search for it in inspect, then read the related code.
+echo "https://alibaba.com/" | waybackurls > wayback
+echo "https://alibaba.com/" | gau --threads 1 --subs --o gau
+cat gau wayback | sort -u | uro > sorted_uro

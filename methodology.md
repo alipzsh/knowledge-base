@@ -2,6 +2,7 @@
 
 Methodology is where to test, what to test.
 
+- the types of vulnerabilities you should focus on will vary on different application.
 - to abstract irrelevant details, understand/ manipulate every part of the code (fiddle around with
   it) so that you can find the most important ones.
 - learn enough of new things to be able to have a basic setup of them --> then fiddle and explore.

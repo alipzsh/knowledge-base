@@ -62,3 +62,25 @@ EX:
 
 - get event handlers: `Object.keys(window).filter(k => !k.indexOf('on'))`
 
+# an Example
+
+- ignore (abstract away- or atleast don't waste much time on) reflections that are way too
+  obvious (everything reflects) and you can't break out.
+- if you found a reflection while fuzzing for parameters, get it out and continiue with the
+  rest.
+
+then send ", if encoded, send the encoded to see if it get's decoded. if not, got to the
+next param by removing it, another one might get reflected.  do the above again.  e.g. you
+could also try ?s=something<encodedstuff>test, and see if test gets out of the tag (which
+then you should continue based on js contexts).
+
+while doing this so many things could happen, you should resolve them
+step by step.
+
+EX:
+
+- if the tag gets removed: you can try other ones, or add one inside it:
+<im<img>g>: the idea is that it might remove the first image.
+- if you are already inside a tag, try adding an attribute.
+
+06 06, last 5 mins.

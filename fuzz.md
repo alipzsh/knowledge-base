@@ -27,34 +27,26 @@ parameters, headers
 - ...
 [06:05]
 
-## fuzzing for
+## parameters
 
-### parameters
+### [magic parameters](magic parameters)
+- fuzz on both GET and POST requests
+- parameters could be related conditionally, if one doesn't exist, it gets another:
 
-- some parameters are obvious in the code: /?s=something
+  ```
+  if s; then
+  ...
+  else
+     search_product
+  ```
+
+- there are hidden parameters on every page.
+- use the same ones on different pages, they might act differently on the other pages.
+- the page doesn't even load, it means a parameter is messing something and it might result
+  in a vulnerability.
+- 403, forbidden => a parameter is messing something, find it, (use sqlmap to find out why
+  this is happening).
 
 
-## XSS
-
-At leas in XSS, we are looking for characters that will render the same in browser, so that
-they will bypass protections that will look for certain strings, even though they aren't actually the same.
-
-### JavaScript scheme
-
-To confuse WAF
-
-Originally taken from js for hackers book.
-
-e.g. it's filtering `javascript:`
-
-`javascript\n:` after browser rendering will be the same as `javascript:`
-
-You should fuzz to reach `\n`, then in your payload, you will use the URL encoded of them.
-equivalent.
-
-1. `{FUZZ}java{FUZZ}script{FUZZ}:` it could be anywhere.
-
-### html tags
-
-1. `<img src onerror={FUZZ}alert(origin)>`
-2. `<img{FUZZ}src\onerror=alert(origin)>`, what else instead of " "
+## [fuzz JavaScript scheme](fuzz JS schemes)
+## [fuzz html tags](fuzz html tags)

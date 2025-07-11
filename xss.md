@@ -15,13 +15,20 @@ Do [[narrow_recon]] look for:
 
 - on adding a payload 403? It's a WAF --> [[bypass xss filters]]
 
-[fuzz](fuzz)
+# fuzz
+
+At least in XSS, we are looking for characters that will render the same in browser, so that
+they will bypass protections that will look for certain strings, even though they aren't actually the same.
+
+[fuzz JavaScript scheme](fuzz JS schemes)
+[fuzz html tags](fuzz html tags)
+
+# more
+
 [[exploit XSS]]
 [[XSS html tags]]
 [[HTML attributes]]
 [[DOM based manipulation]]: a little more on XSS
-
-# some more notes
 
 - no matter the content type on the network, it could be vulnerable to xss.
   - so it could be in JSON content type.

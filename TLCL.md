@@ -84,6 +84,7 @@ new setting, run sysctl -p.
 
 # parameter expansion, command substitution
 
+
 `$a` becomes whatever the variable contains
 
 `${a}_file` not to confuse the shell
@@ -95,6 +96,9 @@ new setting, run sysctl -p.
 `echo ${foo:?"parameter is empty"}` if empty, the quoted will be sent to standard error.
 `echo ${foo:+"substitute value if set"}` if NOT empty, the quoted will be shown (not assigned).
 
+`ssh dell "mkdir -p bk/$name"`; double quotes, variable expansion on local.
+`ssh dell 'mkdir -p bk/$name'`; single quotes, expansion on host, not on local.
+`BACKUP_DIR='dell:HOME/bk/'(uname -n)''`; $HOME on server, $(uname) on local.
 
 `touch`: set or update the access, change and modify times of files or creating
 an empty file if it doesn't exist.

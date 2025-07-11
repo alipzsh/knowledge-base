@@ -3,9 +3,8 @@
 
 - work with the website like a *normal* user
 - create a mind map of functionalities (don't get into the rabbit hole of testing
-  without first browsing the website) that you are going to use later on to test your
-  check list.
-- accessing the paid plans will give you considerable opportunity
+  without first browsing the website) that you are later going to test your checklist on.
+- accessing the paid plans will give you more opportunities.
 
 # answer these questions
 
@@ -28,7 +27,6 @@ EX:
 you should be able to know how the data is being transmitted and the
 differences between them (e.g. capcut; [react](react) REST API)
 
-
 - UI + back-end
 - simple web app + jQuery
 - single page web application + rest API / graphQL
@@ -38,7 +36,7 @@ differences between them (e.g. capcut; [react](react) REST API)
 ## how are users handled
 
 - what are the authentication schemes
-- cookies, JWT, toke, ...
+- cookies, JWT, token, ...
 - 2FA implementation
 - account delegations (giving your account to others)
 - are there other users levels
@@ -82,9 +80,15 @@ First work on these
   - paid, forgotten, custom features
   - stage instances (application-dev), might be out of scope but gives you insight on future
     features.
-- [passive crawling](passive crawling) (all the time)
+
+## [passive crawling](passive crawling) (all the time)
   - something interesting? find and read the JS.
   - also use dev tools networking to monitor stuff.
-- active crawling (less useful)
 
-# [fuzz](fuzz)
+## [active crawling](active crawling) (less useful)
+
+[[crawl]]
+
+- while hunting manually, don't filter duplicates (using tools like uro)
+
+## [fuzz](fuzz)
