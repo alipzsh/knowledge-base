@@ -10,4 +10,3 @@ You should fuzz to reach `\n`, then in your payload, you will use the URL encode
 equivalent.
 
 1. `{FUZZ}java{FUZZ}script{FUZZ}:` it could be anywhere.
-

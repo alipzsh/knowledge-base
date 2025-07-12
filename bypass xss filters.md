@@ -2,7 +2,18 @@
 
 # [bypass WAF](bypass WAF)
 
-# more notes
+
+a temporary example:
+
+- send ", if encoded, send the encoded to see if it get's decoded. if not, got to the next
+  param by removing it, another one might get reflected.  do the above again.  e.g. you
+  could also try ?s=something<encodedstuff>test, and see if test gets out of the tag (which
+  then you should continue based on js contexts).
+
+  while doing this so many things could happen, you should resolve them
+  step by step.
+
+# attention
 
 - change after rule-set is a killer.
 
@@ -10,7 +21,10 @@
   checker functions, it could turn into a vulnerability.
 
   `/share/?token=3a1bf72de2003adf79def7fed4db629e&placement=javascript`
-  then `javascript` will be placed `__PLACEMENT__:alert(origin) -> javascript:alert(origin)`
+
+- if the tag gets removed: you can try other ones, or add one inside it: <im<img>g>: the
+  idea is that it might remove the first image.  then `javascript` will be placed
+  `__PLACEMENT__:alert(origin) -> javascript:alert(origin)`
 
 ----
 
