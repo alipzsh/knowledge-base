@@ -16,6 +16,10 @@ EX:
 you should be able to know how the data is being transmitted and the
 differences between them (e.g. capcut; [react](react) REST API)
 
+you should know how the application is working, the architecture of the website,e.g.
+programming language, JS framework.  which then gives us more info of how the website is
+working, whether it has REST API or old school filenames e.g. `pixiv.net/upload.php`.
+
 - UI + back-end
 - simple web app + jQuery
 - single page web application + rest API / graphQL
