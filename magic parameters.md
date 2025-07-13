@@ -32,6 +32,8 @@ then try them like before, e.g. using x8 look for XSS.
 
 # attention
 
+- fuzz on different status codes not just 200; don't skip 3XX, 4XX, 5XX, even on 404 (but the one
+  that is created by the web app not the web server.)
 - query string parameters can be increased as long as the server handles the request => you
   can test more than one parameters in an HTTP request.
 - different structures require different methods of finding parameters:
@@ -44,5 +46,5 @@ then try them like before, e.g. using x8 look for XSS.
 - use the same ones on different pages, they might act differently on the other pages.
 - the page doesn't even load, it means a parameter is messing something and it might result
   in a vulnerability.
-- 403, forbidden => a parameter is messing something, find it, (use sqlmap to find out why
+- when applying a chunk --> if  403, forbidden => a parameter is messing something, find it, (use sqlmap to find out why
   this is happening).

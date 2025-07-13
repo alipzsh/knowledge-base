@@ -18,6 +18,10 @@ send malformed requests:  `<a href:{FUZZ}javascript:>`
 
 ### [magic parameters](magic parameters)
 
+## fuzz headers
+
+similar to parameters, using fuff or param miner, burp extension.
+
 ## [fuzz JavaScript scheme](fuzz JS schemes)
 ## [fuzz html tags](fuzz html tags)
 
