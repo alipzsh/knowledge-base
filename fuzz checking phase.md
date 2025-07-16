@@ -43,7 +43,10 @@ we should see a difference between the real and arbitrary files.
 
   - then how to find other extension types? try them first like this one by one.
 
+# when it's verified that your paths works, you can change the wordlist to a proper fuzzing
+  one.
+
 # attention
 
 - files should be on the same domain.
-- it might need to be repeated several times.
+- it might need to be repeated several times so that we'll be sure of the results.

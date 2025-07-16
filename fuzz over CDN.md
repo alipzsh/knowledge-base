@@ -1,0 +1,3 @@
+- thread down + delay
+- capture traffic, add appropriate headers
+- proxy the traffic (e.g. ffuf) through burp and HTTP2

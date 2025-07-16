@@ -17,7 +17,7 @@ you should be able to know how the data is being transmitted and the
 differences between them (e.g. capcut; [react](react) REST API)
 
 you should know how the application is working, the architecture of the website,e.g.
-programming language, JS framework.  which then gives us more info of how the website is
+programming language, JS framework. which then gives us more info of how the website is
 working, whether it has REST API or old school filenames e.g. `pixiv.net/upload.php`.
 
 - UI + back-end
@@ -25,6 +25,16 @@ working, whether it has REST API or old school filenames e.g. `pixiv.net/upload.
 - single page web application + rest API / graphQL
 - web-socket communication
 - a combination of some of the above
+
+## how parameters are being handeled
+
+intercept it -> if it returns status code, no JS in the response --> not JS
+
+- `.../?came_from=test.comhttps://.../acount` 302 --> test.comhttps://.../account/
+- `.../?came_from=javascripthttps://...a/acount` 302 --> https://... // get's removed
+because it's handled by HTTP status code
+
+
 
 # how are users handled
 

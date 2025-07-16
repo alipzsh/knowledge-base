@@ -1,3 +1,5 @@
+find interesting URLs to work on, based on [[magic parameters]].
+
 # phase zero
 
 05-06
@@ -13,3 +15,6 @@
 
 - don't get into the rabbit hole of testing without first browsing the website
 - while hunting manually, don't filter duplicates (using tools like uro)
+
+- Functionality included in the web application (e.g., comments, auth, notifications, etc.)
+- Authentication/session management systems

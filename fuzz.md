@@ -14,16 +14,29 @@ send malformed requests:  `<a href:{FUZZ}javascript:>`
 
 [06:05]
 
-## fuzz parameters
+## [fuzz by hand](fuzz by hand)
 
-### [magic parameters](magic parameters)
-
+## [magic parameters](magic parameters)
+## [fuzz files](fuzz files)
+## [fuzz endpoints](fuzz endpoints)
+## [fuzz inputs](fuzz inputs)
 ## [fuzz headers](fuzz headers)
 ## [fuzz JavaScript scheme](fuzz JS schemes)
 ## [fuzz html tags](fuzz html tags)
+## [fuzz checking phase](fuzz checking phase)
+## [fuzz over CDN](fuzz over CDN)
 
-# [fuzz checking phase](fuzz checking phase)
+# [wordlists](wordlists)
 
 # attention
 
-- make the least change possible while fuzzing.
+- make the least change possible while fuzzing. modify the existing value, bit by bit in
+  different places, don't insert a whole payload all of a sudden.
+
+  ```
+  /...test...js //relfection
+  /......jstest //error
+  ```
+
+- a 403 means WAAF (or whatever) is sensitive to that payload so it's blocking it, the file
+  might not even exist on the server.

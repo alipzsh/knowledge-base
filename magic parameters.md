@@ -20,9 +20,16 @@ find parameters:
 
 ## *similar* ones could be found on the application
 
-By seeing this `yahoo_home_ui` you might guess `yahoo_home_redirect`
+some params aren't visible, reflected or ... but you can infer them by noticing others.
+
+EX:
+- By seeing this `yahoo_home_ui` you might guess `yahoo_home_redirect`
+- the `use_local_engine` parameter is reflected in `engine` block. so if there is a
+  `frontend` block, we should check for a `use_local_frontend` param.
 
 ## completely *new* name
+
+fuzz for parameters that aren't visible, reflected or ....
 
 Use the top 25 parameter (based on a GitHub repo), pick one based on the vulnerability.
 then try them like before, e.g. using x8 look for XSS.
@@ -32,7 +39,7 @@ then try them like before, e.g. using x8 look for XSS.
 
 # attention
 
-- fuzz on different status codes not just 200; don't skip 3XX, 4XX, 5XX, even on 404 (but the one
+- fuzz on different status codes not just 200; don't skip 3XX, 4XX, 5XX, even on 40#4 (but the one
   that is created by the web app not the web server.)
 - query string parameters can be increased as long as the server handles the request => you
   can test more than one parameters in an HTTP request.
