@@ -9,4 +9,5 @@ most common sinks:
 
   and their variations.
 
+[[find sources and sinks]]
 [[vulnerable sinks]]

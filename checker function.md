@@ -1,6 +1,13 @@
 - checker-function --> valid regex --> 302
 - else --> a default value (front page maybe)
 
+- is the checker function in the DOM (client-side?)
+
+# if the checker function is in the DOM
+  - DOM (client-side) -> read the source -> vulnerable?
+# if it's server side
+  - [[fuzz inputs]]
+
 EX:
 
 `/came_from=https://.../acount{a}`

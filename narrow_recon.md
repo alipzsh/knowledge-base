@@ -8,11 +8,14 @@ find interesting URLs to work on, based on [[magic parameters]].
 
 # [answer these questions](answer these questions)
 # [Increase the attack surface](Increase the attack surface)
+  e.g. NextJS --> 302
 
 [Critical areas to test](Critical areas to test)
 
 # attention
 
+- to understand what is happening in the DOM, cut that part of code, use and manipulated it
+  in the console (give parameters to it and etc).
 - don't get into the rabbit hole of testing without first browsing the website
 - while hunting manually, don't filter duplicates (using tools like uro)
 

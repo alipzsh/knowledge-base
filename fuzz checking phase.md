@@ -1,6 +1,6 @@
 [[answer these questions#how-does-the-application-pass-data]]
 
-to make sure the output is reliable.
+to make sure the output is reliable, you haven't encountered WAF or rate limited etc.
 
 # find a hook
 

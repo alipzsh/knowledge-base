@@ -2,6 +2,7 @@
 
 Methodology is where to test, what to test.
 
+- determine a workflow of finding bugs.
 - the types of vulnerabilities you should focus on will vary on different application.
 - to abstract irrelevant details, understand/ manipulate every part of the code (fiddle
   around with
@@ -11,9 +12,8 @@ Methodology is where to test, what to test.
 - you should choose where you want to work on an app based on whether you think it's going
   to worth your time or not. E.g. Somewhere with lots of user posts is very messy or obvious
   stuff.
-
+- learn JS so that you are able to find where on the DOM a functionality is happening.
 - The hunting process: [[bug_bounty]]
-
 
 - domain
   --> wayback
@@ -29,7 +29,7 @@ Methodology is where to test, what to test.
   --> [[magic parameters]]
   --> extract the interesting ones
   --> work on URLs with the interesting ones
-  --> [[answer these questions#how-parameters-are-being-handeled]]:
+  --> [[parameters handling]]
 
   - JS: go for it and analyze the DOM --> could turn into DOM XSS
   - HTTP status code --> idor , if out of scope, keep and combine
@@ -40,11 +40,6 @@ Methodology is where to test, what to test.
   --> the ones that exits there are less interesting
   --> use x8 to find interesting params
   --> found one? maybe SQLi or XSS?
-
-- [[fuzz by hand]]
-  --> something out of usual
-  --> you encountered a [checker function](checker function)
-  --> [[fuzz inputs]]
 
 - if `.../?came_from=https://...@google.com/acount` 302
   --> `https://...` (whatever after the @ gets removed)
@@ -112,8 +107,31 @@ Methodology is where to test, what to test.
   ==> `/?lang=<a/href="javas%09cript:test">test</a>` -> OK
       - looking in the console => test is undefined -> JS is being executed
 
+- parameter
+  (e.g. ?redirecturi=num)
+  --> [[parameters handling]]
+  --> [[find sources and sinks]]
+  --> [[DOM-based XSS]]
+
+- a parameter
+  --> [[fuzz by hand]]
+  --> something out of usual
+  --> you encountered a [checker function](checker function)
+    - DOM (client-side) -> read the source
+    - server-side -> [[fuzz inputs]]
+  => DOM
+  --> [[find sources and sinks]]
+  <--> if it's a [[vulnerable sinks]]
+  <--> [[read the DOM]]
+    - in this stage you will find out what the vulnerability can be (e.g. XSS or etc)
+    - XSS -> only in absolute path (URL)
+    - redirection -> relative path (relative URL)
+  --> [[fuzz by hand]], try different inputs
+  --> [[fuzz JS schemes]]
+
 # attention
 
+- sometimes you could add a parameter to get into a JavaScript block.
 - you should figure out what to test on an endpoint based on the signs it gives you (e.g.
   errors).
 - ask yourself what would you do while reading write-ups.

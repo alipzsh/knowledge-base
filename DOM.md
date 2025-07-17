@@ -15,6 +15,12 @@ results.innerHTML = 'You searched for: ' + search;
   and modified the HTML, while View Page Source shows the original HTML as received from the
   server.
 
+
+# DOM repetition
+
+a function being called in time intervals
+e.g. get the input every 2s
+
 # some DOM Objects
 
 `window.location`: to access the URL.

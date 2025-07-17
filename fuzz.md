@@ -15,7 +15,6 @@ send malformed requests:  `<a href:{FUZZ}javascript:>`
 [06:05]
 
 ## [fuzz by hand](fuzz by hand)
-
 ## [magic parameters](magic parameters)
 ## [fuzz files](fuzz files)
 ## [fuzz endpoints](fuzz endpoints)

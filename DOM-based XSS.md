@@ -10,14 +10,9 @@ and executed in the browser)
 
 ## Discovery
 
-1. hunt for a sink
-
-  - find a *source* in the JavaScript code.
-  - understand how the source is used and if it's passed to a sink.
-
-  - figure out if it's a [[vulnerable sinks]].
-
-3. hover over the variable to see it's value. use payloads based on [XSS context](XSS contexts.md).
+### step 1: [[find sources and sinks]]
+### step 2: is it [[vulnerable sinks]]
+### step 3: hover over the variable to see it's value. use payloads based on [XSS context](XSS contexts.md).
 
 EX:
 
