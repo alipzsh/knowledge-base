@@ -1,5 +1,7 @@
 # HTML context
 
+<tag inside>outside</tag>
+
 ## [XSS out of tags](XSS out of tags)
 ## [into html tags](into html tags)
 ## [javascript context](javascript context)

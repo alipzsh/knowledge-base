@@ -1,5 +1,3 @@
-find interesting URLs to work on, based on [[magic parameters]].
-
 # phase zero
 
 05-06
@@ -14,8 +12,6 @@ find interesting URLs to work on, based on [[magic parameters]].
 
 # attention
 
-- to understand what is happening in the DOM, cut that part of code, use and manipulated it
-  in the console (give parameters to it and etc).
 - don't get into the rabbit hole of testing without first browsing the website
 - while hunting manually, don't filter duplicates (using tools like uro)
 

@@ -1,5 +1,14 @@
 # XSS
 
+there are XSS in all
+- `JSON` (DOM) --> it might update DOM --> go for the function in JS code --> [[DOM-based
+  XSS]]
+- `multipart/form-data` (either)
+- `x-www-form-urlencoded` (either)
+
+
+- look for XSS where ever there is a reflection:
+
 # how to look for XSS
 
 Do [[narrow_recon]] looking for:
@@ -13,7 +22,8 @@ Do [[narrow_recon]] looking for:
 # fuzz
 
 At least in XSS, we are looking for characters that will render the same in browser, so that
-they will bypass protections that will look for certain strings, even though they aren't actually the same.
+they will bypass protections that will look for certain strings, even though they aren't
+actually the same.
 
 [fuzz JavaScript scheme](fuzz JS schemes)
 [fuzz html tags](fuzz html tags)
@@ -35,5 +45,12 @@ they will bypass protections that will look for certain strings, even though the
 - if content type is JSON, it could only be DOM (it updates DOM).
 - if input is reflected in the source code, it's not DOM.
 - if not reflected in the source code, it could have been built with DOM.
+-
+  - `JSON`: api, when it's explicitly sent by JavaScript
+  - `x-www-form-urlencoded`: form data, default in forms
+  - `multipart/form-data`: files, when there are
+
+  are MIME types that define how data is formatted in HTTP requests. They tell the server
+  how to parse incoming data.
 
 [BLIND XSS](BLIND XSS)

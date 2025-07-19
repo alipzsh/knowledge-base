@@ -3,36 +3,31 @@
 Methodology is where to test, what to test.
 
 - determine a workflow of finding bugs.
-- the types of vulnerabilities you should focus on will vary on different application.
-- to abstract irrelevant details, understand/ manipulate every part of the code (fiddle
-  around with
-  a) so that you can find the most important ones.
 - learn enough of new things to be able to have a basic setup of them --> then fiddle and
   explore.
-- you should choose where you want to work on an app based on whether you think it's going
-  to worth your time or not. E.g. Somewhere with lots of user posts is very messy or obvious
-  stuff.
-- learn JS so that you are able to find where on the DOM a functionality is happening.
 - The hunting process: [[bug_bounty]]
 
+- reflection --> [[xss]]
+- reflection --> search and not in the source --> is made by DOM
+  e.g:
+  - in JSON content type --> reflected --> not in source --> made by DOM
+  - x-url-encoded --> reflected --> in source --> NOT DOM
+
 - domain
-  --> wayback
-  --> unfurl
-  --> sensitive key
-  --> reflection
-  --> manual fuzz (least change)
-  --> even if safe
-  --> similar parameters
-  --> XSS
-
-- get URLs in [[narrow_recon]]
+  --> [[narrow_recon]]
   --> [[magic parameters]]
-  --> extract the interesting ones
-  --> work on URLs with the interesting ones
-  --> [[parameters handling]]
+  --> unfurl: extract the interesting params (keys)
+  --> get URLs with those params
 
-  - JS: go for it and analyze the DOM --> could turn into DOM XSS
-  - HTTP status code --> idor , if out of scope, keep and combine
+  > reflection?
+    --> manual fuzz (least change)
+    --> even if safe
+    --> similar parameters
+    --> XSS
+
+  > [[parameters handling]]
+    - JS: go for it and analyze the DOM --> could turn into DOM XSS
+    - HTTP status code --> idor , if out of scope, keep and combine
 
 - [[fuzz checking phase]]
   --> [[fuzz files]]
@@ -59,6 +54,7 @@ Methodology is where to test, what to test.
       then we can check the ones that match what we were looking for (not redirected the
       main page but google.com).
 
+- fuzz file?
 - [[answer these questions]] what is the architecture?
   -->
       `/passport/web/account/info` //200 Data
@@ -73,7 +69,6 @@ Methodology is where to test, what to test.
       /folder1/folder2 -> 200
       ```
   --> info would be our hook, look into [[fuzz endpoints]]
-
 
 - `?errors=<img>`
   --> reflection
@@ -110,6 +105,7 @@ Methodology is where to test, what to test.
 - parameter
   (e.g. ?redirecturi=num)
   --> [[parameters handling]]
+  > DOM
   --> [[find sources and sinks]]
   --> [[DOM-based XSS]]
 
@@ -119,7 +115,7 @@ Methodology is where to test, what to test.
   --> you encountered a [checker function](checker function)
     - DOM (client-side) -> read the source
     - server-side -> [[fuzz inputs]]
-  => DOM
+  > DOM
   --> [[find sources and sinks]]
   <--> if it's a [[vulnerable sinks]]
   <--> [[read the DOM]]
@@ -131,10 +127,14 @@ Methodology is where to test, what to test.
 
 # attention
 
+- working on a request? google unknown headers.
 - sometimes you could add a parameter to get into a JavaScript block.
 - you should figure out what to test on an endpoint based on the signs it gives you (e.g.
   errors).
 - ask yourself what would you do while reading write-ups.
 - add interesting parameters from the write-ups to your wordlists.
 - more layers in a functionality --> lower ratio of security mechanisms to layers
-
+- you should choose where you want to work on an app based on whether you think it's going
+  to worth your time or not. e.g. Somewhere with lots of user posts is very messy or obvious
+  stuff.
+- the types of vulnerabilities you should focus on will vary on different application.

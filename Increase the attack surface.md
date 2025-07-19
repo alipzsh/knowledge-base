@@ -8,10 +8,5 @@
     features.
 
 ## [passive crawling](passive crawling)
-
-- something interesting? find and read the JS.
-- also use dev tools networking to monitor stuff.
-
 ## [active crawling](active crawling) (less useful)
-
 ## [fuzz](fuzz)

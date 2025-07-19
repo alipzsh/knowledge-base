@@ -1,4 +1,5 @@
 # JSON
+
 * cookies: piece of data a server sends to a browser. The browser may store,
 create, modify existing ones, and send them back to the same server.
 
@@ -91,3 +92,8 @@ exports.serialize = function(obj, ignoreNativeFunc, outputObj, cache, path) {
 
   var key;
 ```
+
+# attention
+- if content type is JSON, it could only be DOM (it updates DOM).
+
+- `application/json`: indicates that the content being sent or received is JSON data
