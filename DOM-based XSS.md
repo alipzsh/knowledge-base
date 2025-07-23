@@ -10,6 +10,9 @@ and executed in the browser)
 
 ## Discovery
 
+where is the sink.
+how the input is being passed to it.
+
 ### step 1: [[find sources and sinks]]
 ### step 2: is it [[vulnerable sinks]]
 ### step 3: hover over the variable to see it's value. use payloads based on [XSS context](XSS contexts.md).

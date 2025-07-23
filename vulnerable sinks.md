@@ -1,6 +1,9 @@
 # vulnerable sink
 
-it's a dangerous sink if it get's user input, but not necessarily vulnerable.
+## first, is it a dangerous sink?
+
+dangerous: if value is passed to a variable.
+vulnerable; if you can manipulate the value.
 
 use the debugger to add break point and the console to trigger it. you can run that part of
 the source code in you own lab/ compare it to the website to get more info on it's internal

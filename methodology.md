@@ -7,6 +7,15 @@ Methodology is where to test, what to test.
   explore.
 - The hunting process: [[bug_bounty]]
 
+- xss
+  --> trying payloads
+  --> observe app's behaviours in removing characters
+    - if you found it out, on the client-side, try that part of code in the console 04:03
+      (end).
+  --> [[bypass xss filters]]
+
+- WAF --> [[WAF confusion#html-encoding-to-bypass-the-waf]]
+
 - reflection --> [[xss]]
 - reflection --> search and not in the source --> is made by DOM
   e.g:

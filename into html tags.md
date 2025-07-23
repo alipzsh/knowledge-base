@@ -2,7 +2,7 @@ if you can close (get out of):
 
 1. both attribute and the tag --> [XSS out of tags](XSS out of tags)
 2. the attribute --> use event handlers
-3. neither attribute nor tag --> the attribute should be vulnerable, e.g.:
+3. neither attribute nor tag --> the attribute might be a vulnerable one, e.g.:
   - `<a href="{}"></a>`
   - `src` in `<iframe>`
 

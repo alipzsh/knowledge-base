@@ -1,5 +1,7 @@
 # fuzz
 
+to find alternative values in different contexts.
+
 A kind of brute forcing by making and sending requests to the target.
 
 fuzz to trigger unexpected behaviour; to get hidden resources: files, parameters, headers.

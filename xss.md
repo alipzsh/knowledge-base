@@ -11,7 +11,7 @@ there are XSS in all
 
 # how to look for XSS
 
-Do [[narrow_recon]] looking for:
+Discover XS in [[XSS contexts]]
 
 - input opportunity --> [[Reflected XSS]],[[stored XSS]] --> [[XSS contexts]]
 - sources -->  [[DOM-based XSS]]
@@ -37,6 +37,7 @@ actually the same.
 
 # attention
 
+- you don't need to URL encode when inserting in browser.
 - hunter --> XSS (self) --> exploit
 - if you found a reflection while using a chunk of parameters, take it out and continue with
   the rest.

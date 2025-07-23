@@ -2,7 +2,6 @@
 
 # [bypass WAF](bypass WAF)
 
-
 a temporary example:
 
 - send ", if encoded, send the encoded to see if it get's decoded. if not, got to the next

@@ -5,23 +5,25 @@ https://blog.isec.pl/waf-evasion-techniques
 https://labs.cognisys.group/posts/An-Intresting-XSS-Bypassing-WAF
 ```
 
-# known WAF: search for it on twitter.
-
-# unknown WAF
-
-## CDN or application based: build your own payload
-## JS protection
-
 # [WAF blocks in HTML tags](WAF blocks in HTML tags) (before JS execution)
 
 # [WAF blocks while JS execution](WAF blocks while JS execution)
 
-# extend your payload gradually
+- known WAF: search for it on twitter.
+- unknown WAF
+  - CDN or application based: build your own payload
+  - JS protection
 
-so that you can infer what is being issued by the WAF or ..., so you'd know what to
-change, fuzz or ....
+- extend your payload gradually
+
+  <x> -> <x onxxx -> <x onxxx= -> <x onerror=
+
+  - no noisy string
+  - infer what is being manipulated by WAF
 
 # example payloads
+
+04:06 for explanations
 
 - `<d3v/onmouseleave=[origin].some(confirm)>click`
 - `<input type="&#&#x3e"/onfocus="alert(origin)"/autofocus>`
