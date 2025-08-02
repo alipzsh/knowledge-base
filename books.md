@@ -2,10 +2,6 @@
 
 # web application security
 
-not as good a book as I thought, mostly surface level thing. bbb is a much better one. at this point I should revise and organize my notes.
-
-there are some more advanced stuff, but doesn't matter much now and I might just search them later.
-
 ch 5,7,9
 
 ch 10 upto but not DOM XSS
@@ -38,8 +34,10 @@ ch 10 upto but not DOM XSS
 
 # Linux administrator's handbook
 
-is actually an amazing book that I have read a bit before but not much and got bored. I was at the very beggining of what I'm doing now, eventhough I was using linux as desktop.
-
-but now that I have read TLCL and done some security/sysadmin stuff and have more questions, I can get it a olot more.
-
 - ch 23, read "facts" page 832
+
+# elequest JS
+
++ ch 1-11
+- Asynchronous Programming
+- Project: A Programming Language

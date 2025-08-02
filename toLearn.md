@@ -5,7 +5,6 @@ samsclass course:
 
 #### basic knowledge:
 
-* Splunk: did it.
 * [Information Security Professional](https://samsclass.info/125/125_F24.shtml)
 * [incident response](https://samsclass.info/152/152_S24.shtml): useful, perhaps because of 
 

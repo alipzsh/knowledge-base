@@ -17,6 +17,8 @@ different ways of showing stuff.
   showing characters that aren't in the ASCII table: > --> &gt;
 
 - html attributes are decoded automatically in the browser: <a href="&#x61" ... --> ... href="a" ...
+  (this is perhaps because characters with special meaning need to be encoded in the
+  document so they need to be escaped)
 - character references get decoded automatically (at least in html attribute)
 
 # Unicode

@@ -1,6 +1,6 @@
 it helps to find more info on interesting incidents.
 
-there is  a graph that shows the timeline of the found results.
+there is a graph that shows the timeline of the found results.
 
 `sampling`: set to 1:100, it will show only 1% of the results.
 
