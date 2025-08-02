@@ -287,17 +287,16 @@ how to use `phpggc`:
 ./phpggc/phpggc Symfony/RCE4 exec 'rm /home/carlos/morale.txt' | base64 -w0
 ```
 
-# for fuck sake, use `-w0` with base64 so it won't insert a new line and fuck everything.
+- `-w0` with base64 so it won't insert a new line
 
-#tip check the http header, specially cookies
+- check the http header, specially cookies
+- check the code using inspect element
 
-#tip check the code using inspect element
-
-#tip If you come across a base64 encoded parameter which does not seem to return anything
-more than a binary blob, always make sure to try some common encodings and decompression on
-it to see if there is something interesting actually there. The Burp Suite extension
-Hackvertor is a great tool to do this as it has many built-in encoding and compression
-algorithms.
+- If you come across a base64 encoded parameter which does not seem to return anything more
+  than a binary blob, always make sure to try some common encodings and decompression on it
+  to see if there is something interesting actually there. The Burp Suite extension
+  Hackvertor is a great tool to do this as it has many built-in encoding and compression
+  algorithms.
 
 #tip After two rounds of URL decoding and one round of Base64 decoding, I had what appeared
 to be a serialized Java payload. This was apparent from the magic number, which is `rO0` in
