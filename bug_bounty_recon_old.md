@@ -26,9 +26,6 @@ loop:
 there are differences in response stats codes of `httpx`, `curl`, `gowitness` and
 tunneled browser.
 
-which I'm assuming is because of the way gowitness and browser will interact with the
-server in multiple requests. I can see this in a consistent difference between using curl
-in a script versus in a one line terminal request.
 # how to bypass different status codes:
 
 * 200 range: the file or directory exists and accessible
@@ -47,14 +44,6 @@ in a script versus in a one line terminal request.
   CDN Load Balancing or Caching
   Fallback or Failover Configuration: primary IP became unavailable
   Use of Multiple IPs for Redundancy
-
-Then I'd suggest upping your game.
-
-E.g. use different wordlists than everyone else is using
-
-Sign up for API keys on the scanning tools you're using, so you get more urls than other hunters
-
-Search for origin IP of your target server so you can bypass their waf
 
 Etc
 
