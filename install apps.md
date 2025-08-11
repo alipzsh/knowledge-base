@@ -2,7 +2,7 @@
 
 - farsi fonts
 - winrar
-- office 2021 -> select pro or something
+- Microsoft office 2024 -> select 2024 -> select standard, pro or something -> single if just the four
 - chrome and firefox
 - IDM
 - KMplayer
