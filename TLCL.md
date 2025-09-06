@@ -322,6 +322,8 @@ received, the echo commands will execute.
 
 `tempfile=$(mktemp /tmp/foobar.$$.XXXXXXXXXX) creating temporary files`
 
+Useful signals: `EXIT, INT, TERM`
+
 ## asynchronous
 
 `

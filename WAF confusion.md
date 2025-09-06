@@ -8,6 +8,8 @@
 
 # html encoding to bypass the WAF
 
+Underhand how WAF is acting
+
 - `<img src onerror=alert(1)>` // 403
   `<img src>` // 200
   `<img src> onerror=alert(1)` // 200

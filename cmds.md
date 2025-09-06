@@ -183,4 +183,4 @@ rg --no-heading --line-number "" | fzf --preview 'bat --style=numbers --color=al
 fzf --bind 'enter:execute(vim $(echo {} | cut -d: -f1) +$(echo {} | cut -d: -f2))' < <(rg --no-heading --line-number "")
 ```
 
-	* `rg --no-heading --line-number "" | fzf --exact` search for exact words
+* `rg --no-heading --line-number "" | fzf --exact` search for exact words

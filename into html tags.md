@@ -6,6 +6,10 @@ if you can close (get out of):
   - `<a href="{}"></a>`
   - `src` in `<iframe>`
 
+
+- there should be HTML rendering for an html payload: this is why innerHTML is a sink but
+  innerTEXT is not.
+
 EX:
 
 - `<>` encoded --> add a new attribute that creates a scriptable context: `" autofocus onfocus=alert(document.domain) x="`

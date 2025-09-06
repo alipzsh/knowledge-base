@@ -1,8 +1,7 @@
 # XSS
 
 there are XSS in all
-- `JSON` (DOM) --> it might update DOM --> go for the function in JS code --> [[DOM-based
-  XSS]]
+- `JSON` (DOM) --> it might update DOM --> [[DOM-based XSS]]
 - `multipart/form-data` (either)
 - `x-www-form-urlencoded` (either)
 

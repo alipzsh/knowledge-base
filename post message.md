@@ -5,7 +5,10 @@ important properties:
 
 - e.source
 - e.origin
-- e.data (attacker controlled)
+- e.data (the only attacker controlled)
+
+- a post message is between browsers, but an HTTP post request is client ->
+  server
 
 [[using debugger]]
 
@@ -15,12 +18,21 @@ important properties:
 
 # how to know if it's not going to work
 
-1. Discover the Post Message
+1. after you Discovered the Post Message
 2. get a unique value/word from the post message Data in DOM invader
-4. search it in the whole source
-5. visually look into all the results
-6. one by one, put a breakpoint, send the data in the DOM invader, if it's stopped by it,
-  that's it, it's the vulnerable code.
+3. search it in the whole source
+4. visually look into all the results
+5. one by one, put a breakpoint, send the data in the DOM invader, if it's stopped by it,
+  that's it, it's our target function.
+6. check if it's actually vulnerable:
+  --> look into the conditions
+  if there are things like `e.source`, it's probably safe.
+
+- the vulnerability shouldn't have a requirement, the user shouldn't have to click
+somewhere
+
+
+05-03
 
 # attention
 

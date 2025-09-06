@@ -3,6 +3,8 @@
 `document.body.children` returns every elements in `body` element.
 `childNodes` returns texts too.
 
+[js APIs](js APIs)
+
 # selectors
 
 selectors are patterns used to select the element(s) you want to style.

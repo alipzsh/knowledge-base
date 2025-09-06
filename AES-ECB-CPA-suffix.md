@@ -17,7 +17,7 @@ while True:
     io.sendline(b'2')
     io.recvuntil(b"Length? ")
     io.sendline(str(j).encode())
-    
+
     enc = io.recvuntil(b"Choose an action?").decode().strip().split("Result: ")[-1].split("\n")[0] 
 
     for i in range(33, 127):

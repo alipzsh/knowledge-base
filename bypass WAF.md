@@ -49,6 +49,7 @@ after rule set.
 
 # attention
 
+- https://labs.cognisys.group/posts/An-Intresting-XSS-Bypassing-WAF/
 - you will need lots of fuzzing to figure out certain characters:
   - if by `<ifram>` you get 403 but `<%0aifram>` --> 200 --> then on the server it's turned
     into `<iframe>`

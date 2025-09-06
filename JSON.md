@@ -1,5 +1,7 @@
 # JSON
 
+a flask server that sends and echos json: [flask_json.py](flask_json.py)
+
 * cookies: piece of data a server sends to a browser. The browser may store,
 create, modify existing ones, and send them back to the same server.
 

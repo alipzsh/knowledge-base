@@ -13,6 +13,9 @@ results by removing the noise.  `-certificate` or `-www` to work on a specific s
 
 improve your dorks step by step
 
+- in general if you want to know how out of unique a path or resource you found
+is, search it in the DOM.
+
 ```
 site:
 inurl:& // URLs with parameters

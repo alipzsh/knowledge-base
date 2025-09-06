@@ -16,9 +16,9 @@ that is interpreted the same in the browser.
 ```js
 log=[];
 let anchor = document.createElement('a');
-for(let i=0; i<=0x10ffff;i++){
+for(let i=0; i<=0x10ffff;i++){                              // for all unicode characters
     anchor.href = `javascript${String.fromCodePoint(i)}:`;
-    if(anchor.protocol === 'javascript:') {
+    if(anchor.protocol === 'javascript:') {                 // check browser's rendering
     log.push(i);
     }
 }
@@ -35,7 +35,20 @@ you could also change the first part the scheme.
    will know if it's working.
    the function adds the working payloads to an array.
 
-  04:04 22
+   could be found in: 04:04 22
+
+```js
+<img src onerror=alert(origin)>
+
+const div = document.createElement('div');
+const result = [];
+const worked = p => result.push(p);
+for (let i=0; i<0x10ffff; ++i) {
+  div.innerHTML = `<img${String.fromCodePoint(i)}src${String.fromCodePoint(i)}onerror=worked(${i})>`;
+}
+document.body.appendChild(div);
+
+```
 
 ----
 
