@@ -1,4 +1,4 @@
-follow the least change, don't remove the default values or encode anything (at least at
+Follow the least change, don't remove the default values or encode anything (at least at
 first).
 
 
@@ -20,9 +20,15 @@ EX:
   - `.../?came_from=https://.../acounta` 302 --> https://.../acounta/
   - `.../?came_from=test.comhttps://...a/acount` 302 --> `test.comhttps://...`
   - `.../?came_from=https://...a/acount` 302 --> https://...
-  in the last instance we encountered a checker function for url validation.
+  in the last instance we encountered a checker function for URL validation.
+
+# methods
+
+if a string gets encoded
+--> next time, send an encoded version of the first one too, in the hope of it
+gets decoded.
 
 # attention
 
-- always use the least suspicious payloads at first, so you won't get caught by WAF or etc.
-  e.g `?redirect=javascript:test` not alert() --> look into devtools for reflection 08:03
+- always use the least suspicious payloads at first, so you won't get caught by WAAF or etc.
+  e.g `?redirect=javascript:test` not alert() --> look into dev tools for reflection 08:03

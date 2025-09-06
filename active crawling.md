@@ -12,3 +12,7 @@ Most useful in automation.
 
 A JS code to run in the console and get URls after loading the DOM.
 Consider each result; search for it in inspect, then read the related code.
+
+```js
+javascript:(function(){var s=document.getElementsByTagName("script"),r=/(?<=(\"|'|`))[a-zA-Z0-9_?=\/\-\#\.\!]*(?=(\"|'|`))/g,n=new Set;for(var i=0;i<s.length;i++){var t=s[i].src;t&&fetch(t).then(e=>e.text()).then(e=>{for(let o of e.matchAll(r))n.add(o[0])}).catch(e=>console.log("Error:",e))}var p=document.documentElement.outerHTML;for(const m of p.matchAll(r))n.add(m[0]);function w(){n.forEach(e=>document.write(e+"<br>"))}setTimeout(w,3e3)})();
+```
