@@ -27,4 +27,6 @@ use recollapse: `recollapse -p 2 -r 0x00,0x2F https://...@google.com/... | grep 
 1. create a list using Recollapse
 2. use the list in burp intruder (easier because all the headers and stuff are already
    there)
-   - URL encode the characters like `//@`
+   - URL encode the characters like `://@`
+
+#rc 07-04

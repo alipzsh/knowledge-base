@@ -4,9 +4,9 @@
   figure these out based on the language and the framework being used.
 2. take note of the patterns
   even if the obvious file is safe, the similar ones might not be.
-  1. find a hook -> login.php
-  2. fuzz -> [FUZZ]User.php -> test based on what it accepts
-    - notice the case
+  1. do the checking phase
+  2. fuzz for files with ffuf  -w ... -u -mc -fs
+  3. search DOM to find the more interesting files
 
 EX:
 

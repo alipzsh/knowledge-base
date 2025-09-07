@@ -8,12 +8,14 @@ hook: the file we are sure it exists.
 
 1. find files to test on:
   - search for the extension e.g. `.php` or even more obvious `.css`  - browse the app.
-3. curl the file `pixiv.net/upload.php`, take note of the status code (e.g 302).
-4. check the status code given another filename? e.g. `pixiv.net/test.php`
+2. curl the file `pixiv.net/upload.php`, take note of the status code (e.g 302).
+3. check the status code given another filename? e.g. `pixiv.net/test.php`
    - if it's the same --> this file is not a good checking basis.
    - otherwise if it returns another (like 404) --> the app behaves differently given a non
      existent file.
-5. find another file from anywhere on the webpage that doesn't give you 302.
+4. find another file from anywhere on the webpage that doesn't give you 302.
+
+- also use passive recon o find files
 
 at the end:
 
