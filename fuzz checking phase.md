@@ -22,12 +22,17 @@ at the end:
 - test.php   --> 404 // wrong files
 - 60         --> 302 // ha?
 
+this answers one of our early questions: how the application handles data
+(how different stuff are handled e.g. redirection)
+
 # verify the fuzzing using that hook.
 
 07:02
 
 we expect to find the file we are sure exists.
 we should see a difference between the real and arbitrary files.
+
+
 
 [wlist-maker.sh](wlist-maker.sh)
 
@@ -37,16 +42,17 @@ we should see a difference between the real and arbitrary files.
 
 - what if you get a repetitive error? like 302 size 0? (read below) then we will miss even
   the file that we are sure exists.
+  so the fuzz isn't appropriate (because we didn't get that burley exists).
 - only the .php extension returns expected results. when we inspect the headers, the real
   file, redirects us to some real path. but 60, redirects us to /60/ which is bs.  so we
   infer that it takes the files with .php extension.
 
-  - then how to find other extension types? try them first like this one by one.
 
 # when it's verified that your paths works, you can change the wordlist to a proper fuzzing
   one.
 
 # attention
 
+- be sure to use the correct path while checking the fuzz.
 - files should be on the same domain.
 - it might need to be repeated several times so that we'll be sure of the results.
