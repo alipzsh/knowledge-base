@@ -79,3 +79,11 @@ html attributes will be parsed into DOM properties:
   input.getAttribute('value') // returns "Name:"
   `
 the href DOM property is always a full URL, even if the attribute contains a relative URL or just a #hash
+
+
+# JS URL API
+
+`new (v())(e).hostname` = `new URL()`
+both extract the different parts of a valid URL.
+
+`new URL()` is a native JavaScript function and is safe.

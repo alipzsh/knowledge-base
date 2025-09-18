@@ -31,7 +31,7 @@ you could also change the first part the scheme.
 
 `<a href="&#12;javascript:alert()">Test</a>`
 
-1. load a tag with an attribute (like onerror) that calls a function if triggered, so you
+2. load a tag with an attribute (like onerror) that calls a function if triggered, so you
    will know if it's working.
    the function adds the working payloads to an array.
 
@@ -50,6 +50,16 @@ document.body.appendChild(div);
 
 ```
 
-----
+3. `{FUZZ}java{FUZZ}script{FUZZ}:` it could be anywhere.
 
-1. `{FUZZ}java{FUZZ}script{FUZZ}:` it could be anywhere.
+4.
+
+```js
+log=[];
+for(let i=0;i<=0x10ffff;i++){
+    res = H(`https://www.capcut.com${String.fromCodePoint(i)}attacker.com`)
+    if(res === true) {
+        log.push(i);
+    }
+}
+```

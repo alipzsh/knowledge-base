@@ -16,7 +16,6 @@
 
 # [[useful bash]]
 
-
 # 20
 
 `cat`:
@@ -145,9 +144,6 @@ an empty file if it doesn't exist.
 carriage return.
 
 `echo 'aaabbbccc' | tr -s abc` squeeze, delete repeated characters.
-
-* `sed -i 's/lazy/laxy/; s/jumped/jimped/' foo.txt` i, in place, changes the
-  document.
 
 `aspell -H check foo.txt` spell check without checking html tags.
 
@@ -494,6 +490,11 @@ at least one of these.
 
 `^\(?[0-9]{3}\)?`: match 3 times
 
+### [] vs ()
+
+- () --> block or group of character
+- [] --> character classes
+
 * sed: performs a command on each line
   * substitution: `s/search/replace/`, `1s/...`: the first line
     * g: search-and-replace globally to a line, not just to the first
@@ -507,6 +508,9 @@ at least one of these.
     won't be considered literals.  also the `s` command will be confused
     with extra `/`s.  's/([0-9]{2})/([0-9]{2})/([0-9]{4})$/\3-\1-\2/'
     's/\([0-9]\{2\}\)\/\([0-9]\{2\}\)\/\([0-9]\{4\}\)$/\3-\1-\2/'
+
+- `sed -i 's/lazy/laxy/; s/jumped/jimped/' foo.txt` i, in place, changes the
+  document.
 
 
 `sed -n '/^[0-9]/s:/README.md::p'`

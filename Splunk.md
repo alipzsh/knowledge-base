@@ -1,4 +1,4 @@
-all devices on your network register logs. the idea is to forward all those into a central repository.
+all devices on a network register logs. the idea is to forward all those into a central repository.
 
 search head: SQL queries to search through server
 indexer: server with storage, stores and searches through the data
@@ -19,7 +19,7 @@ sudo /opt/splunk/bin/splunk start
 
 * if after adding data, the source type is set to default, you can change it.
 * to add a new source type, click save as.
- 
+
 ![[Screenshot from 2025-02-18 12-14-33.png]]
 
 looking for rare values of fields makes more sense because more popular stuff are probably automated system programs.
@@ -29,6 +29,6 @@ EX: your data might just have product IDs, not product name or description.
 
 [[Splunk Search & Reporting]]
 [[botsv1]]
-
-[what do splunk fields mean](https://docs.splunk.com/Documentation/StreamApp/7.1.2/DeployStreamApp/FileTransfer#HTTP)
 [[Example queries]]
+
+[definition of differrent splunk fileds](https://docs.splunk.com/Documentation/StreamApp/7.1.2/DeployStreamApp/FileTransfer#HTTP)

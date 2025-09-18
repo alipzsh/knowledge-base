@@ -34,8 +34,6 @@ this answers one of our early questions: how the application handles data
 we expect to find the file we are sure exists.
 we should see a difference between the real and arbitrary files.
 
-
-
 [wlist-maker.sh](wlist-maker.sh)
 
 1. `wlist-maker upload` makes a list that contains the hook.
@@ -55,6 +53,13 @@ we should see a difference between the real and arbitrary files.
 
 # attention
 
+- if while verifying the hook:
+  curl --> 200
+  burp intruder --> works as expected (slow)
+  ffuf --> 403 or something
+  => it might need a header
+  --> add -H "User-Agent: curl/8.7.1"
+  --> or even try it with burp's curl link to see other info that could be added
 - be sure to use the correct path while checking the fuzz.
 - files should be on the same domain.
 - it might need to be repeated several times so that we'll be sure of the results.

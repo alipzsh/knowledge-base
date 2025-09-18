@@ -111,28 +111,103 @@ Methodology is where to test, what to test.
   ==> `/?lang=<a/href="javas%09cript:test">test</a>` -> OK
       - looking in the console => test is undefined -> JS is being executed
 
-- parameter
+- a parameter
   (e.g. ?redirecturi=num)
-  --> [[parameters handling]]
-  > DOM
+
+  Q1: is the parameter in the game?
+  --> [[fuzz by hand]]
+  least change
+  the most basic payloads
+  - e.g if it's a number, add some numbers
+  - e.g `javascript:test`:
+    - did you get an error in the console indicating test isn't defined? you
+      would if it was executed
+    - 403? => it was executed => try different payloads
+  --> observer the effects
+  e.g continue the login process, is the modified parameter still there?
+  --> if it is => it's doing something and it's being evaluated
+  Q4: why one payload might execute and the other not?
+  EX:
+    - `javacript:test` -> failed to execute
+    - the modified payload -> successfully executed
+
+  ==> you encountered a [checker function](checker function)
+  --> [[devtools]] --> [[fuzz by hand]]
+    - at this stage you will find out what the vulnerability can be (e.g. XSS or etc)
+      - XSS -> only in absolute path (URL)
+      e.g. if you can bypass the checks to get redirected to e.g. `https://google.com`
+      - redirection -> relative path (relative URL)
+      e.g `.../redirecturi?=javascript:test` -> in the code block
+      `w='https://URLjavascript:test'` and `H(w)=true`.
+  --> [[fuzz by hand]]
+  e.g
+    ```
+    https://URL.com.attacker.com
+    https://URL.com@attacker.com
+    https://URL.computer
+    ```
+    and try each in `H(w)`
+
+  1. go deeper and read `H()`
+  --> you could try [[fuzz JS schemes]]
+  Q5: would fuzz be useful?
+
+  Q6: is the sink even vulnerable?
+  - use [[devtools]], directly value the variable. if worked:
+
+  ==> if you can reach that function, you will get a bug
+
+  Q2: how is the parameter being handled?
+  [[parameters handling]]
+  --> use burp, look into the later request
+  e.g. after you pressed sign in, the credentials were sent with a POST request
+  e.g. find that user info were somehow POSTed
+  - look into it's headers; e.g. origin.
+  => by observing the request and the application's behaviour, we can infer
+  whether it was handled by http or JS.
+  e.g. after multiple requests we get redirected without a 302 code in the requests.
+
+  Q3: does the parameter work even if the condition is true?
+  e.g. will there be a redirection even if you are already logged in?
+
+  ==> if it's JavaScript handled; we infer that:
+
+  1. this is an interesting parameter;
+  2. there is a DOM source that takes the redirect-URL as input
+  3. there is a sink that takes us to that URL
+
+  EX1:
+  source -> token
+  sink   -> xhr request
+
+  EX2:
+  source -> username
+  sink   -> print in HTML
+
   --> [[find sources and sinks]]
   --> [[DOM-based XSS]]
+  --> [[XSS contexts]]
+  --> understand more of what's going on in the background
+  --> [[devtools]] --> [[fuzz by hand]]
 
-- a parameter
-  --> [[fuzz by hand]]
-  --> something out of usual
-  --> you encountered a [checker function](checker function)
-    - DOM (client-side) -> read the source
-    - server-side -> [[fuzz inputs]]
-  > DOM
-  --> [[find sources and sinks]]
-  <--> if it's a [[vulnerable sinks]]
-  <--> [[read the DOM]]
-    - in this stage you will find out what the vulnerability can be (e.g. XSS or etc)
-    - XSS -> only in absolute path (URL)
-    - redirection -> relative path (relative URL)
-  --> [[fuzz by hand]], try different inputs
-  --> [[fuzz JS schemes]]
+
+  ==> if it's http handled:
+  - try to find a reflection.
+  - bypass the checks
+
+- you notice
+  `test@yahoo.com` --> "long number"
+
+  1. It's being handled by JS
+
+  Q1: how the application passes data?
+  1. values are not plain-text
+  2. custom encoding or encryption
+     => because the value should be recoverable
+  3. a function in JS is doing all these
+
+
+  ----
 
 # attention
 

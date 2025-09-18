@@ -4,13 +4,17 @@
 
 a temporary example:
 
-- send ", if encoded, send the encoded to see if it get's decoded. if not, got to the next
-  param by removing it, another one might get reflected.  do the above again.  e.g. you
-  could also try ?s=something<encodedstuff>test, and see if test gets out of the tag (which
-  then you should continue based on js contexts).
+--> "
+--> got encoded?
+--> encode " and send it
+--> still no go?  => remove the parameter and try the next one
+--> repeat
 
-  while doing this so many things could happen, you should resolve them
-  step by step.
+e.g. you could also try ?s=something<encodedstuff>test, and see if test gets out
+of the tag (which then you should continue based on js contexts).
+
+- while doing this so many things could happen, you should resolve them step by
+  step.
 
 # attention
 

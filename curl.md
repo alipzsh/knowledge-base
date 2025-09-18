@@ -39,12 +39,13 @@ curl -x http://localhost:8089 ipinfo.io
 * http basic authentication: `curl -u username=password -b title=data URL`
 
 * login, save the cookies, then GET the page:
+
 ```sh
 curl -c cookies.txt -X POST -d "username=guest&password=password&submit=on" http://challenge.localhost:80/login
 curl -b cookies.txt http://challenge.localhost:80/
 
 ```
-	
+
 other useful stuff:
 `-F` file
 `-d` request body

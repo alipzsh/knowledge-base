@@ -31,7 +31,7 @@ send malformed requests:  `<a href:{FUZZ}javascript:>`
 
 # attention
 
-- make the least change possible while fuzzing. modify the existing value, bit by bit in
+- make the "least change" possible while fuzzing. modify the existing value, bit by bit in
   different places, don't insert a whole payload all of a sudden.
 
   ```

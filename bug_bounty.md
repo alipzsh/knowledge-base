@@ -1,5 +1,8 @@
 # choose a program
 
+
+[[methodology:step_by_step]]
+
 # wide recon
 
 - find a program that fits you

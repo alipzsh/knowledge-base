@@ -1,5 +1,5 @@
 
-* [[bash get first characters of a string]]
+* [[bash: get first characters of a string]]
 
 * Print n characters: `printf '=%.0s' {1..100}`
 
@@ -24,7 +24,7 @@ conditionally add a string (in this case, -asn $asns) to the command if the vari
 "Start printing from line 3 onward."
 
 - auto answer prompts:
-  - `printf '%s\n' y n n y y n...` 
+  - `printf '%s\n' y n n y y n...`
   - `printf 'y\n' | ssh-keygen -t ed25519 -f "$NAME" -N ""`
   - `yes | ssh-keygen -t ed25519 -f "$NAME" -N ""`
   - `ssh-keygen -t ed25519 -f "$NAME" -N "" <<< y`
@@ -32,7 +32,7 @@ conditionally add a string (in this case, -asn $asns) to the command if the vari
 - some kind of exeption handling
 	- trap
 	- functions return certain stuff; and do according to them:
-	
+
 	```sh
 	create_image() {
 	  || return 1

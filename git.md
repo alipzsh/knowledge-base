@@ -1,4 +1,12 @@
 # git
+
+
+## git add
+
+- `git add *.c`
+- git add {file name}
+
+
 * setup git:
   `
   git config --global user.name “[firstname lastname]”

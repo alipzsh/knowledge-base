@@ -9,7 +9,9 @@ listeners) --> might lead to XSS, ATO, CSRF
 
 find --> read --> test if it's vulnerable (it takes a message) --> Dom invader
 
-1. for instance search for `addeventlistener("me` (the ones that are listening
+EX:
+
+1. search for `addeventlistener("me` (the ones that are listening
    on a message) and visually find it --> for XSS, look for DOM sinks in the
    function
 2. read the code

@@ -14,3 +14,7 @@ similar to parameters, using fuff or the burp extension paramminer.
     - filter stuff considering which one gives you the least false negative.
     e.g. status-code 200 -> not good; size 406 -> good
   - gradually filter stuff
+
+# attention
+
+- https didn't give me anything, but http did.

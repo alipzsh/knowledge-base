@@ -1,6 +1,5 @@
 Archive.org
 
-
 gives you old instances of a website
 --> old data on the website that might still be there on the back-end
 
@@ -33,12 +32,10 @@ robots.txt.
 
 get the timestamp and use to get the exact snapshot.
 
-# wayback and gau
+# wayback and gau tools
 
 ```
 echo "https://alibaba.com/" | waybackurls > wayback
 gau {hostname} --threads 1 --subs --o gau
 cat gau wayback | sort -u | uro > sorted_uro
 ```
-
-

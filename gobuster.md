@@ -7,9 +7,9 @@
 `-x php,html,txt`: the string extensions we are expecting to find.
 (the result can be achieved by using other directory enumeration
 tools).
-  
+
 `-s <errorCodes>`
-  
+
 * try https too.
  `k`: skip tls (for https).
 
