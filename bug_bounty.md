@@ -9,7 +9,7 @@
 
 # [narrow_recon](narrow_recon)
 
-# threat modeling
+# [threat modeling](threat modeling.md)
 
 a -> b -> c -> postmessage
 

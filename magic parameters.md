@@ -69,3 +69,4 @@ then try them like before, e.g. using x8 look for XSS.
     - find it --> in a loop, split the parameter in half, try to find and
       exclude the problematic parameter (and possibly exploring the issue
       later).
+- the more unknown the parameter, the more interesting it is.

@@ -26,6 +26,12 @@ working, whether it has REST API or old school filenames e.g. `pixiv.net/upload.
 - web-socket communication
 - a combination of some of the above
 
+e.g
+`https://www.capcut.com/forget-password?aid=348188&code=623778¤t_page=&email=fyoumgk%40gmail.com&enter_from=&language=en&type=4&showType=password`
+
+is a client side link that sends an http request to the server -> any change
+should happen on the server not the client.
+
 ## [parameters handling](parameters handling)
 
 # how are users handled

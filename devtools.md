@@ -6,6 +6,8 @@ devtools --> understand --> trace --> try to bypass
 
 # tricks
 
+- after you found something interesting, to get the values in console, continue
+  function by function.
 - it could get difficult to read the JavaScript, after you found the block,
   add breakpoints and inspect.
 - stop the browser from sending the info and loading another page by clicking

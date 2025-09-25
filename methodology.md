@@ -114,6 +114,10 @@ Methodology is where to test, what to test.
 - a parameter
   (e.g. ?redirecturi=num)
 
+  assuming:
+            - the whole process should succeed
+            - parameter should be effective
+
   Q1: is the parameter in the game?
   --> [[fuzz by hand]]
   least change
@@ -126,7 +130,7 @@ Methodology is where to test, what to test.
   --> observer the effects
   e.g continue the login process, is the modified parameter still there?
   --> if it is => it's doing something and it's being evaluated
-  Q4: why one payload might execute and the other not?
+  Q4: why testing different payloads lead to different results?
   EX:
     - `javacript:test` -> failed to execute
     - the modified payload -> successfully executed
@@ -134,9 +138,11 @@ Methodology is where to test, what to test.
   ==> you encountered a [checker function](checker function)
   --> [[devtools]] --> [[fuzz by hand]]
     - at this stage you will find out what the vulnerability can be (e.g. XSS or etc)
+      input in DOM sinks:
       - XSS -> only in absolute path (URL)
-      e.g. if you can bypass the checks to get redirected to e.g. `https://google.com`
+      e.g. if you can bypass the checks to get redirected to lets say `https://google.com`
       - redirection -> relative path (relative URL)
+      because it will be added to a base name that's out of our control.
       e.g `.../redirecturi?=javascript:test` -> in the code block
       `w='https://URLjavascript:test'` and `H(w)=true`.
   --> [[fuzz by hand]]
@@ -158,8 +164,9 @@ Methodology is where to test, what to test.
   ==> if you can reach that function, you will get a bug
 
   Q2: how is the parameter being handled?
+
   [[parameters handling]]
-  --> use burp, look into the later request
+  --> use burp, look into the later requests
   e.g. after you pressed sign in, the credentials were sent with a POST request
   e.g. find that user info were somehow POSTed
   - look into it's headers; e.g. origin.
@@ -167,14 +174,10 @@ Methodology is where to test, what to test.
   whether it was handled by http or JS.
   e.g. after multiple requests we get redirected without a 302 code in the requests.
 
-  Q3: does the parameter work even if the condition is true?
-  e.g. will there be a redirection even if you are already logged in?
-
   ==> if it's JavaScript handled; we infer that:
 
-  1. this is an interesting parameter;
-  2. there is a DOM source that takes the redirect-URL as input
-  3. there is a sink that takes us to that URL
+  1. there is a DOM source that takes the redirect-URL as input
+  2. there is a sink that takes us to that URL
 
   EX1:
   source -> token
@@ -192,8 +195,9 @@ Methodology is where to test, what to test.
 
 
   ==> if it's http handled:
-  - try to find a reflection.
   - bypass the checks
+
+----
 
 - you notice
   `test@yahoo.com` --> "long number"
@@ -206,6 +210,112 @@ Methodology is where to test, what to test.
      => because the value should be recoverable
   3. a function in JS is doing all these
 
+
+# authentication test
+
+  - enter email:
+  test@gmail.com -> already exists -> fail
+  test@gmail.com%0a -> success; then in the server side, you will be redirected
+  to the victim's page.
+
+  - email gets encoded (an example of stuff being done in house -> a good
+    opportunity to test)
+  it's a good opportunity to fuzz -> to get unexpected behaviours
+
+
+  ==
+
+ forget password page
+
+  - send an email
+
+  Q1: is it rate limited?
+  Q2: where is the path to the function that's handling the POST request?
+  observe the post (always?) in burp.
+  Q3: are there any other parameters that you don't know where they came from?
+  type
+  next -> infer next (URL)
+  mix_mode
+  fixed_mix_mode
+  Q4: look in the reset password link (in the email)
+
+  e.g
+  `https://www.capcut.com/forget-password?aid=348188&code=623778¤t_page=&email=fyoumgk%40gmail.com&enter_from=&language=en&type=4&showType=password`
+  - be aware that it's a client side link that sends an http request to the
+    server -> any change should happen on the server not the client.
+    - how to know this? there is react on this route, network request + response
+      coming from the server, and the fact it’s about authentication.
+
+  - what does it contain?
+  e.g fiddle around with parameters, change them to get an error and more info.
+  - is there any repeated element?
+  e.g. it might start with the `forget-password` path.
+  a `code` section that perhaps identifies the user.
+  Q5: threat modelling (what kind of vulnerabilities to test?)
+  e.g `next` -> inspect the url
+  e.g (threat model) -> (test cases)
+    the `code` section is 6 digits -> brute force
+                                 -> what would happen if we use another email
+                                 with a valid code?
+                                   => test it with an email that belongs to us
+  Q6: where is the function that's handling `forget-password`?
+  search `forget-password` in DOM.
+  Q7: what happens when you click forgetpass -> confirm (send link to email)
+  button?
+  - intercept with burpsuite -> repeater
+  --> notice parameters and request body
+  e.g body:
+
+  ```json
+  mix_mode=1&email=637c6a7068626e456268646c692b666a68&type=31&next=https%3A%2F%2Fwww.capcut.com%2Fforget-password%3Fenter_from%3Dlog_out%26current_page%3Dwork_space&fixed_mix_mode=1
+  ```
+
+  --> link poisoning on next should be tested because it's used to build the reset password URL
+  sent to the user:
+  `https://www.capcut.com/forget-password?aid=348188&code=567477&current_page=landing_page&email=fyoungk%40gmail.   com&enter_from=page_header&language=en&type=4&showType=password`
+  -->  [[fuzz by hand.md]] least change, modify for e.g. `next`
+  `...capcut.com...` -> `...acapcut.com...`
+  --> observe
+  - we notice that even though we changed the URL, we get an email invalid error
+  test -> insert your server's address, see if anything comes
+  Q8: how are the order of the checker functions and other functionalities
+  (e.g sending recovery email, rate limits)?
+  * there could also be rate limit before either
+  we won't be able to use some tools like recollapse if it's before 1.
+  EX: in this case
+  1. *checks* the URL
+  2. sends the forget pass email
+
+  --> burp intruder -> 1-1000 at the end of the body -> custom concurrent 2-3
+  * we want to test the [ratelimit](ratelimit.md) behind the checkerfunction => we should do the
+  payload that we somehow get stuck in it
+  --> in this case we notice there is a rate limit behind 1
+
+  Q9: what to fuzz by hand?
+  - in this case we should bypass [URL_validation](URL_validation.md)
+    `https://www.capcut.com@www.capcut.com/forget-password?aid=348188&code=567477&current_page=landing_page&email=fyoungk%40gmail.com&enter_from=page_header&language=en&type=4&showType=password`
+
+    - .com.attacker.com
+    - .com@attacker.com
+    - .computer
+
+  08:06 26
+
+  --> so we notice that it checks for the valid host (not the fixed validating
+  method) => it's either regex or URL parsing
+
+# how to know whether there is a reverse proxy
+
+reverse proxies manage different path's differently
+
+to find them.
+
+e.g /passport/.../.../.../
+
+--> start from the last path, add a character (e.g a)
+--> we expect to get permission denied --> handled by reverse proxy (internal
+API)
+--> if we get not found --> handled by client side (react / vue)
 
   ----
 
