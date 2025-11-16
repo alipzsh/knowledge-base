@@ -1,9 +1,9 @@
 
 ### [[pwn.college_web_security]]
-### crypto
 
-getting the hash of each block is also an interesting way to get an idea of
-whats going on.
+### [intercepting_communication](intercepting_communication.md)
+
+### crypto
 
 [[AES-ECB-CPA]]
 [[AES-ECB-CPA-HTTP]]

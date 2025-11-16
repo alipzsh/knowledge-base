@@ -10,10 +10,9 @@ exit
 
 -d: detach
 
-`sudo lxc-ls --fancy` to check the status
+`lxc-ls -f` to check the status
 
 access it through host: /var/lib/lxc
-
 
 - remove a container:
   - stop if running: `lxc-stop -n <container_name>`
@@ -26,5 +25,8 @@ sudo ufw allow in on lxcbr0
 sudo ufw allow out on lxcbr0
 ```
 
-but it still doesn't work?
-`sudo ufw default allow forward`
+and perhaps `sudo ufw default allow forward`
+
+
+* you might need to configure the network [bridge](bridge)
+* you can configure each container in `/var/lib/lxc/<name>/config`

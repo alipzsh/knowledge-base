@@ -20,8 +20,6 @@ sudo /opt/splunk/bin/splunk start
 * if after adding data, the source type is set to default, you can change it.
 * to add a new source type, click save as.
 
-![[Screenshot from 2025-02-18 12-14-33.png]]
-
 looking for rare values of fields makes more sense because more popular stuff are probably automated system programs.
 
 lookup: are ways to add additional data that isn't in the original data.

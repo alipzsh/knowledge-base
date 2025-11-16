@@ -42,5 +42,5 @@ send malformed requests:  `<a href:{FUZZ}javascript:>`
 - a 403 means WAAF (or whatever) is sensitive to that payload so it's blocking it, the file
   might not even exist on the server.
 - infer what's happening based on the path/function you are on ->
-  `.../send-code/...` could mean that it's rate limited  because it's sending
-  code (?)
+  `.../send-code/...` could mean that it's rate limited  because it's se nding
+  code (?).

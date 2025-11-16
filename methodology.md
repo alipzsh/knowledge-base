@@ -278,6 +278,12 @@ Methodology is where to test, what to test.
   --> observe
   - we notice that even though we changed the URL, we get an email invalid error
   test -> insert your server's address, see if anything comes
+
+
+  * notice that the email will be parsed differently in html that lets say
+    python or curl.
+    e.g. `https://www.capcut.com@www.capcut.com/`
+
   Q8: how are the order of the checker functions and other functionalities
   (e.g sending recovery email, rate limits)?
   * there could also be rate limit before either
@@ -301,8 +307,50 @@ Methodology is where to test, what to test.
 
   08:06 26
 
-  --> so we notice that it checks for the valid host (not the fixed validating
-  method) => it's either regex or URL parsing
+  --> so we notice that it checks for the valid host
+    => it's either regex or URL parsing
+
+  - is it checking for a fixed string?
+    hand fuzz and infer:
+    - is it accepting string with the fixed part intact?
+    - or is it checking the whole thing.
+    no.
+
+  %40    -> OK, but not redirected to evil.com (not bypassed)
+  %5c%40 -> error
+  %23%40 -> error
+
+  --> take the one that worked (e.g email sent) and work more on that:
+  e.g add `a`, `%01` to the start:
+  - `%01https://....` -> error
+  - double url encode:
+  `..:pass%25%5c..` -> ok `..:pass%5c@..` but didn't bypass
+  - `..:pass%23%5c..`
+  - `www.evil.com%40google.com%40www.capcut.com` ->
+    `www.evil1.com%2540google.com@www.capcut.com`
+    * we notice that it added a %25 to our valid input.
+    * this is an example of change after checker function, which is a very
+      interesting test opportunity.
+  - `www.evil.com%26%23x25%3b%40www.capcut.com` -> fail
+    * we expect this to take us to google.com but no it doesn't.
+    * &#x23 -> JavaScript is encoded in html attributes (?)
+
+  * test these is jsfiddle.com to see if it's ever going to work:
+    `<a href="https://google.com&#x23;@capcut.com">click</a>`
+
+
+  Q: why are we not getting anywhere even though we did in `jsfiddle.com`?
+  it's x-www-form-urlencoded -> the webserver decodes the input before the
+  checker function.
+  --> the function get `www.evil.com&#23;www.capcut.com`
+  --> then drops `www.evil.com&#23;`
+
+  --> also try other email providers
+
+  --> at this point try other payloads
+
+  --> move on to other tests
+  url/path
 
 # how to know whether there is a reverse proxy
 

@@ -1,5 +1,3 @@
-
-[[Linux storage]]
 # qemu
 
 `
@@ -91,6 +89,8 @@ $ virt-customize -a MY-CLOUD-IMAGE.qcow2 \
 #### thin images
 
 
+having an updated base image -> faster compared to containers
+
 - info on backing https://libvirt.org/kbase/backing_chains.html
 - snapshut, backing store and comming:
   https://dustymabe.com/2015/01/11/qemu-img-backing-files-a-poor-mans-snapshotrollback/
@@ -148,3 +148,4 @@ to see list of assigned network: `virsh domiflist noble-072812.0612`
 
 `virt-customize: error: libguestfs error: guestfs_launch failed.` means the vm is running, it should be stopped.
 
+[[Linux storage]]

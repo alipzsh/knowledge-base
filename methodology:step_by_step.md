@@ -29,6 +29,11 @@
      - js   -> DOM
      - http -> reflections
    - notice the request bodies
+
+  forget password:
+  - credentials + hostname -> reset link
+  --> threat model -> link poisoning
+
 6. [threat modelling](threat modeling)
 
 - go through the whole process, observer the parameters added, remain along the
@@ -39,6 +44,7 @@ determine the order of functionalities:
 e.g checker functions and functions to interact with the servers
 
 - what are the type of the [ratelimitation](ratelimit.md)
+- how is the workflow of [URL_validation](URL_validation)
 
 
 # attention

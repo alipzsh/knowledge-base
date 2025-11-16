@@ -1,25 +1,19 @@
-## challenges
+[The linux command line](TLCL.md)
 
-[[hack the box]]
-[[vulnhub]]
-[[pwn.college]]
-[[overthewire]]
-[[portswigger academy]]
+- Networking top-down approach:
+  - [networking](networking.md)
+  - [control plane](control_plane.md)
+  - [data plane](dataPlane.md)
 
-## reading/learning
+- [Splunk](Splunk.md)
+  - [[Splunk Search & Reporting]]
+  - [[botsv1]]
+  - [[Example queries]]
 
-[The-linux-command-line](TLCL.md)
+- [qemu](qemu.md)
+- [lxc](lxc.md)
+- [netcat](netcat.md)
+- [curl](curl.md)
 
-Networking top-down approach:
 
-- [networking](networking.md)
-- [control plane](control_plane.md)
-- [data plane](dataPlane.md)
-
-## tools
-
-[Splunk](Splunk.md)
-[qemu](qemu.md)
-[lxc](lxc.md)
-[curl](curl.md)
-[netcat](netcat.md)
+[Root-Me](Root-Me.md)

@@ -11,14 +11,26 @@ logically centralized control: a controller computes the forwarding tables. used
 ## routing algorithms
 
 the goal is to find the least cost path through the network of routers.
+there are limitations on which packets a router is allowed to forward.
 
-there are limitations on packets a router is allowed to forward.
+## LS
 
-centralized routing algorithm: takes the connectivity between all nodes and all link costs
-as inputs, then calculates it. could be in a controller or routers; e.g. link-state
-algorithms.
+centralized routing algorithm (link-state): aware of the cost of each link in
+the network.
 
-decentralized routing algorithm: calculation is distributed between routers, no node has
-complete information about the whole network instead of it's own directly attached links.
-then with the help of nearby nodes, it iteratively calculated the costs to the destination;
-e.g. distance-vector algorithms.
+- packets containing information about each link's costs are sent to all other
+  routers
+
+decentralized routing algorithm: each node only know the costs of it's own
+directly attached links. It gradually calculates the least-cost path to the
+destination.
+
+
+distance-vector algorithm: each node maintains a vector of sesame of costs for
+all other nodes in the network.
+
+
+static routing algorithms: routes costs change very slowly
+dynamic routing algorithms: change due to traffic load or topology change.
+load sensitive algorithms: costs change due to the level of congestion.
+

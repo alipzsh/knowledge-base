@@ -15,7 +15,7 @@ ch 10 upto but not DOM XSS
 
 # networking
 * up to 4 finished
-* 5.2, but not 5.2.1 and the rest
+* 5.2, but not 5.2.1-2 the first couple of paragraphs
 
 # bugbounty bootcamp
 * 1,5
