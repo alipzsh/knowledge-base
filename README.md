@@ -1,19 +1,16 @@
 # 📚 Knowledge Base
 
 > Personal notes and references built while learning computer science fundamentals, networking, web development, and security concepts.
-> [View on GitHub](https://github.com/alipzsh/knowledge-base)
 
 ---
 
 ## What I've Learned
 
-This knowledge base reflects a broad, self-directed education across the core building blocks of computing and the web — starting from how networks and operating systems work, through to how web applications are built and secured.
+**Networking & systems** form the foundation: how data moves across the internet (IP, DNS, HTTP, TCP), how Linux works under the hood (storage, permissions, processes), and how to use the command-line tools.
 
-**Networking & systems** form the foundation: how data moves across the internet (IP, DNS, HTTP, TCP), how Linux works under the hood (storage, permissions, processes), and how to use the command-line tools that professionals rely on daily.
+**Web development fundamentals** came next: HTML, the DOM, JSON, XML, APIs, authentication flows (OAuth, JWT), and how browsers and servers communicate.
 
-**Web development fundamentals** came next: HTML, the DOM, JSON, XML, APIs, authentication flows (OAuth, JWT), and how browsers and servers communicate. This gave a solid picture of how modern web applications are actually constructed.
-
-**Programming** runs throughout: Python for scripting and automation, JavaScript and React for the front end, Golang for systems-level work, and Bash for the command line.
+**Programming** Python and Golang for scripting and automation, Bash for the command line.
 
 **Security** grew naturally out of understanding how things work — once you understand how a web app handles user input, SQL queries, or authentication tokens, the failure modes become clear. This includes studying common vulnerability classes (XSS, SQL injection, SSRF, XXE, access control issues), how cryptography is applied in practice (AES, HMAC, JWT), and how to think methodically about finding weaknesses in systems.
 
