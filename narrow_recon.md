@@ -1,6 +1,7 @@
 # phase zero
 
 05-06
+
 - work with the website like a *normal* user.
 - create a mind map of functionalities that you are later going to test your checklist on.
 

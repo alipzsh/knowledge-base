@@ -274,8 +274,8 @@ define:
 `days=([0]=Sun [1]=Mon [2]=Tue [3]=Wed [4]=Thu [5]=Fri [6]=Sat)`
 assigning multiple values
 
-`for i in ${animals[@]}; do echo $i; done` outputs the contents of the array
-`for i in "${animals[@]}"; do echo $i; done` each element in one line
+`for i in ${animals[@]}; do echo $i; done`  each element in one line
+`for i in "${animals[@]}"; do echo $i; done` outputs the contents of the array
 `echo ${#a[@]}`  # number of array elements
 `echo ${#a[100]}`  # length of element 100
 
@@ -455,7 +455,7 @@ ERE: `( ) { } ? + |`
 * `( ) { }` will be *meta* if escaped in BRE.
 * any ERE meta characters will be literal if escaped.
 
-all the rest need `-E`
+**all the rest need `-E`**
 
 ## alternation
 

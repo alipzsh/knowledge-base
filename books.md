@@ -14,8 +14,9 @@ ch 10 upto but not DOM XSS
 * chap 14,15,16,17,18,19,23,32
 
 # networking
-* up to 4 finished
-* 5.2, but not 5.2.1-2 the first couple of paragraphs
+
+* first 5
+* 5.2.1-2
 
 # bugbounty bootcamp
 * 1,5
@@ -35,9 +36,23 @@ ch 10 upto but not DOM XSS
 # Linux administrator's handbook
 
 - ch 23, read "facts" page 832
+- chapter 19, upto 19.4
 
 # elequest JS
 
 + ch 1-11
 - Asynchronous Programming
 - Project: A Programming Language
+
+# security eng
+
+- 9-9.3.3
+-
+# ARRL
+
+- 3-3.1
+
+# architecture
+
+
+2-7 but not hdl and most *

@@ -1,4 +1,5 @@
 # environment
+
 * some programmes look for values stored in the environment.
 
 * set shows shell and environment variables and shell functions.

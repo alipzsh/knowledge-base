@@ -57,7 +57,7 @@
   
 `sh-copy-id remote_host`
 
-`ssh-keygen -R <vm-ip-or-hostname>`
+* `ssh-keygen -R <vm-ip-or-hostname>` deletes all keys related to IP
 
 
 [ssh to access the service running on the target](76/README.md##ssh_tunnel)

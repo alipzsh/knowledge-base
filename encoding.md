@@ -1,8 +1,8 @@
 # encoding
 
-to understand/make payloads, bypass WAF, transferring characters to the server.
-
 different ways of showing stuff.
+
+to understand/make payloads, bypass WAF, transferring characters to the server.
 
 # html encoding
 
@@ -14,6 +14,7 @@ different ways of showing stuff.
 ## not in the ASCII table
 
 3. character reference:
+
   showing characters that aren't in the ASCII table: > --> &gt;
 
 - html attributes are decoded automatically in the browser: <a href="&#x61" ... --> ... href="a" ...
